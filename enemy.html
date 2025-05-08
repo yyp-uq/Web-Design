@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyrule Compass - Enemy</title>
+
+  <!-- Import Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="../CSS/enemy.css">
+</head>
+
+<body>
+
+<!-- Red header/menu with buttons -->
+<header class="main-header">
+  <div class="logo-left">
+    <span class="brand-text">Nintendo</span>
+    <div class="menu-container">
+      <span id="menu-toggle" class="menu-toggle">Menu</span>
+      <div id="dropdown-menu" class="dropdown-menu">
+        <a href="homepage.html">Homepage</a>
+        <a href="enemy.html">Enemy</a>
+        <a href="weapon.html" class="active">Weapon</a>
+        <a href="zonai.html">Zonai</a>
+        <a href="skill.html">Skill</a>
+        <a href="character.html">Character</a>
+        <a href="story.html">Story</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
+
+  <div class="header-links">
+    <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
+    <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
+  </div>
+</header>
+
+
+  <!-- Scrollable container wrapping all sections -->
+  <div class="scroll-snapper">
+
+    <!-- Section one: High resolution background, all the background in other sections are blurred-->
+    <section class="section" style="background-image: url('../PICTURES/enemy_background2.png'); background-position: bottom; background-size: 100% 94%; background-repeat: no-repeat;"></section>
+
+    <!-- Section two: Normal enemies and general descriptions -->
+    <section class="section blurred-background">
+      <div class="enemy-layout">
+        <div class="single-enemy-container middle-column">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/1.png" alt="Enemy 1">
+          </div>
+          <div class="enemy-text">Bokoblin</div>
+        </div>
+        <div class="single-enemy-container">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/2.png" alt="Enemy 2">
+          </div>
+          <div class="enemy-text">Bokoblin.</div>
+        </div>
+        <div class="single-enemy-container middle-column">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/3.png" alt="Enemy 3">
+          </div>
+          <div class="enemy-text">Keese</div>
+        </div>
+        <div class="single-enemy-container">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/4.png" alt="Enemy 4">
+          </div>
+          <div class="enemy-text">Lizalfos</div>
+        </div>
+        <div class="single-enemy-container middle-column">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/5.png" alt="Enemy 5">
+          </div>
+          <div class="enemy-text">Moblins</div>
+        </div>
+        <div class="single-enemy-container">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/6.png" alt="Enemy 6">
+          </div>
+          <div class="enemy-text">Horriblins</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section three: Normal enemies and general descriptions -->
+    <section class="section blurred-background">
+      <div class="enemy-layout">
+        <div class="single-enemy-container middle-column">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/7.png" alt="Enemy 7">
+          </div>
+          <div class="enemy-text">Like Likes</div>
+        </div>
+        <div class="single-enemy-container">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/8.jpg" alt="Enemy 8">
+          </div>
+          <div class="enemy-text">Stone Taluses</div>
+        </div>
+        <div class="single-enemy-container middle-column">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/9.png" alt="Enemy 9">
+          </div>
+          <div class="enemy-text">Stone Taluses.</div>
+        </div>
+        <div class="single-enemy-container">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/10.png" alt="Enemy 10">
+          </div>
+          <div class="enemy-text">Flux Constructs</div>
+        </div>
+        <div class="single-enemy-container middle-column">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/11.png" alt="Enemy 11">
+          </div>
+          <div class="enemy-text">Frox</div>
+        </div>
+        <div class="single-enemy-container">
+          <div class="enemy-image-controller">
+            <img src="../PICTURES/Enemy/12.jpg" alt="Enemy 12">
+          </div>
+          <div class="enemy-text">Gibdos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section four: Boss enemies and general descriptions -->
+    <section class="section blurred-background boss-video">
+      <div class="enemy-layout boss-layout" style="grid-template-columns: repeat(4, 1fr); gap: 80px 60px;">
+
+        <!-- First row -->
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/13.jpg" alt="Enemy 13">
+          </div>
+          <div class="enemy-text">Thunder Gleeok</div>
+          <div class="boss-name" data-boss-video="Thunder Gleeok">Thunder Gleeok</div>
+        </div>
+
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/14.jpg" alt="Enemy 14">
+          </div>
+          <div class="enemy-text">Frost Talus</div>
+          <div class="boss-name" data-boss-video="Frost Talus">Frost Talus</div>
+        </div>
+
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/15.jpg" alt="Enemy 15">
+          </div>
+          <div class="enemy-text">Silver Lynel</div>
+          <div class="boss-name" data-boss-video="Silver Lynel">Silver Lynel</div>
+        </div>
+
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/16.jpg" alt="Enemy 16">
+          </div>
+          <div class="enemy-text">Molduga</div>
+          <div class="boss-name" data-boss-video="Molduga">Molduga</div>
+        </div>
+
+        <!-- Second row -->
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/17.jpg" alt="Enemy 17">
+          </div>
+          <div class="enemy-text">Frost Gleeok</div>
+          <div class="boss-name" data-boss-video="Frost Gleeok">Frost Gleeok</div>
+        </div>
+
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/18.jpg" alt="Enemy 18">
+          </div>
+          <div class="enemy-text">Black Hinox</div>
+          <div class="boss-name" data-boss-video="Black Hinox">Black Hinox</div>
+        </div>
+
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/19.jpg" alt="Enemy 19">
+          </div>
+          <div class="enemy-text">Stalnox</div>
+          <div class="boss-name" data-boss-video="Stalnox">Stalnox</div>
+        </div>
+
+        <div class="single-enemy-container single-boss-container">
+          <div class="enemy-image-controller boss-image-controller">
+            <img src="../PICTURES/Enemy/20.jpg" alt="Enemy 20">
+          </div>
+          <div class="enemy-text">Flame Gleeok</div>
+          <div class="boss-name" data-boss-video="Flame Gleeok">Flame Gleeok</div>
+        </div>
+
+      </div>
+    </section>
+
+    
+  </div>
+
+  <!-- Enemy detail popup -->
+  <div id="enemy-detail" class="enemy-detail hidden">
+    <h2 id="enemy-title"></h2>
+    <p id="enemy-info"></p>
+    <a href="#" id="enemy-back-button">Back</a>
+  </div>
+
+  <div id="videoModal" class="enemy-video-modal">
+    <iframe id="youtubePlayer" frameborder="0" allowfullscreen></iframe>
+    <button onclick="closeVideo()" class="video-close-btn">×</button>
+  </div>
+
+  <!-- External JavaScript -->
+  <script src="../JAVASCRIPT/enemy.js"></script>
+</body>
+</html>
