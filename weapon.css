@@ -1,0 +1,450 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Caveat', cursive;
+  background-color: white;
+  color: white;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+/* Scroll Snap */
+.scroll-snapper {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+/* Sections */
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: 
+              url('../PICTURES/white.png') center center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Header */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+  padding: 0px 20px;
+  z-index: 10;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.main-header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.main-header * {
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.logo-left {
+  font-weight: bold;
+}
+
+.header-title {
+  font-style: italic;
+}
+
+.header-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Section content */
+.section-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Buttons */
+.menu-btn, .option-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn:hover, .option-btn:hover {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px 2px rgba(175, 223, 239, 0.5); }
+  to { box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9); }
+}
+
+/* 横向滚动动画 */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Weapon Scroll */
+.encyclopedia-animation-container {
+  width: 100%;
+  height: 880px;
+  background: url('../PICTURES/white.jpg') no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.encyclopedia-animation-window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.encyclopedia-animation-player {
+  display: flex;
+  align-items: center;
+  animation: scroll 30s linear infinite;
+}
+
+
+.encyclopedia-animation-player img {
+  height: 880px;
+  width: auto;
+  margin-right: 20px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.weapon-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 80px;
+  padding: 100px;
+  justify-items: center;
+  align-items: start;
+}
+
+.single-weapon-container {
+  width: 100%;
+  max-width: 180px;
+  min-height: 250px;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+
+/* 图片和文字 */
+.weapon-image-controller {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.weapon-image-controller img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.5s ease;
+  border-radius: 20px;
+}
+
+.weapon-image-controller img:hover {
+  transform: scale(1.05);
+}
+
+.weapon-text {
+  margin-top: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
+}
+
+.ice-text,
+.electric-text,
+.fire-text,
+.light-text {
+  color: black;
+}
+
+/* ❗隐藏逻辑：保持布局不变 */
+.single-weapon-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.single-weapon-container.hidden .weapon-image-controller,
+.single-weapon-container.hidden .weapon-text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* 灰掉非高亮元素（可选） */
+.single-weapon-container.dimmed {
+  opacity: 0.3;
+  filter: grayscale(100%);
+  transition: opacity 0.3s ease;
+}
+
+/* Weapon detail 展示框 */
+.weapon-detail {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+  pointer-events: auto;
+  max-width: 20%;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.weapon-detail.show {
+  opacity: 1;
+}
+
+.weapon-detail.hidden {
+  display: none;
+  pointer-events: none;
+}
+
+#back-button {
+  text-decoration: underline;
+  color: black;
+  font-size: 16px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+#back-button:hover {
+  opacity: 0.8;
+}
+
+/* Header right links container */
+.header-links {
+  display: flex;
+  align-items: center;  /* ✅ 确保按钮和文字垂直对齐 */
+}
+
+/* 圆形红白播放/暂停按钮 */
+.media-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: red;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 暂停按钮 ❚❚ */
+.pause-btn::before,
+.pause-btn::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 4px;
+  height: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pause-btn::before {
+  left: 9px;
+}
+
+.pause-btn::after {
+  left: 19px;
+}
+
+/* 播放按钮 ▶ */
+.play-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid white;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+/* Menu 样式 */
+.menu-container {
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+}
+
+.menu-toggle {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.9);  /* ✅ 半透明红色 */
+  border-radius: 10px;                    /* ✅ 圆角边框 */
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;          /* ✅ 可选：磨砂感 */
+}
+
+.dropdown-menu a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+
+.dropdown-menu a:hover {
+  color: #D4AF37;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-menu a.active {
+  color: black;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 背景动画在底层并模糊 */
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(8px); /* 磨砂模糊效果 */
+  z-index: 0;
+  pointer-events: none; /* 不阻挡鼠标点击 */
+}
+
+/* Section2 上内容提升到上层 */
+#section2 .weapon-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.section2-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+}
+
+#toggle-section2-btn.media-btn {
+  position: relative;
+}
+
+/* Section 3：两行五列布局 */
+#section3 .weapon-layout {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 每行5列 */
+  gap: 90px 90px;
+  justify-items: center;
+  padding: 40px 0;
+}
+
+.weapon-vedios {
+  position: relative;
+  z-index: 10;
+  padding: 40px;
+  margin-top: 120px;
+  pointer-events: auto; /* 允许点击 */
+}
+
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;           /* 允许换行 */
+  gap: 40px;
+  justify-content: center;   /* 居中排列 */
+  margin-bottom: 40px;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px; /* 固定宽度以保持列数一致 */
+}
+
+.video-item iframe {
+  width: 100%;
+  height: 225px;
+  border-radius: 12px;
+}
+
+.video-item div {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: black;
+  text-align: center;
+}
+
+.weapon-vedios h1 {
+  font-size: 2.8rem;       /* 放大字体 */
+  text-align: center;      /* 居中对齐 */
+  color: black;            /* 可选：设置字体颜色 */
+  margin-bottom: 40px;     /* 和下方视频拉开间距 */
+}

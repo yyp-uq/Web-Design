@@ -1,0 +1,504 @@
+/* Global reset for box model and spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Caveat', cursive;
+  background-color: white;
+  color: white;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+/* Enable vertical scroll snapping per section */
+.scroll-snapper {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+/* General styling for each full-screen section */
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: 
+              url('../PICTURES/white.png') center center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Top fixed header bar with title and navigation */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+  padding: 0px 20px;
+  z-index: 10;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.main-header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.main-header * {
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.logo-left {
+  font-weight: bold;
+}
+
+.header-title {
+  font-style: italic;
+}
+
+.header-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Section content */
+.section-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Buttons */
+.menu-btn, .option-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn:hover, .option-btn:hover {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  animation: glow 1s infinite alternate;
+}
+
+.scroll-snapper {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+:root {
+  --section1-bg: url('../PICTURES/enemy_background2.png');
+}
+
+/* Section with blur background */
+.blurred-background {
+  background-image: var(--section1-bg);
+  background-size: 100% 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.blurred-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  z-index: 1;
+  background: transparent;
+}
+
+/* Menu 样式 */
+.menu-container {
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+}
+
+.menu-toggle {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.9);  
+  border-radius: 10px;                  
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;        
+}
+
+.dropdown-menu a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+
+.dropdown-menu a:hover {
+  color: #D4AF37;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-menu a.active {
+  color: black;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header-title {
+  font-style: italic;
+  color: white;
+  font-weight: bold;
+}
+
+.header-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+/* Layout for enemies */
+.enemy-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px 100px;
+  padding: 200px 60px 120px;
+  justify-items: center;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+.single-enemy-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;   
+  text-align: center;
+  max-width: 350px;
+  min-height: 250px;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+
+.enemy-image-controller {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.enemy-image-controller img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.enemy-image-controller img:hover {
+  transform: scale(1.05);
+}
+
+.enemy-text {
+  visibility: hidden;
+}
+
+/* Hidden effect */
+.single-enemy-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+
+.enemy-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.enemy-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.overlay-image img {
+  width: 80%;
+  height: auto;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  animation: fadeIn 0.5s ease;
+}
+
+.overlay-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  z-index: 2;
+  font-family: 'Times New Roman', serif;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.overlay-text h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.overlay-text p {
+  font-size: 1rem;
+  margin-right: 100px;
+}
+
+.overlay-text a {
+  margin-top: 30px;
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.overlay-text a:hover {
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+.overlay-image iframe {
+  width: 80vw;
+  height: 80vh;
+  border: none;
+}
+
+
+.boss-video .enemy-image-controller img {
+  transform: scale(0.6);
+}
+
+.boss-name {
+  margin-top: -50px;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1rem;
+  color: rgb(240, 240, 248);
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;  
+}
+
+.boss-name:hover {
+  opacity: 0.8;
+}
+
+.boss-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.overlay-image img {
+  width: 80%;
+  height: auto;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  animation: fadeIn 0.5s ease;
+}
+
+
+.boss-image-controller img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.boss-image-controller img:hover {
+  transform: scale(0.65);
+}
+
+
+.enemy-video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.enemy-video-modal iframe {
+  width: 90%;
+  height: 90%;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.video-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 2rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.boss-overlay .boss-image img {
+  width: 60% !important;
+}
+
+
+
+.boss-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.boss-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.boss-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.boss-image img {
+  width: 60%;
+  height: auto;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  animation: fadeIn 0.5s ease;
+}
+
+.boss-overlay .overlay-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  z-index: 2;
+  font-family: 'Times New Roman', serif;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.boss-overlay .overlay-text h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.boss-overlay .overlay-text p {
+  font-size: 1rem;
+  margin-right: 100px;
+}
+
+.boss-overlay .overlay-text a {
+  margin-top: 30px;
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boss-overlay .overlay-text a:hover {
+  opacity: 0.8;
+}

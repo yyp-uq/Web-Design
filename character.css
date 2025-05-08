@@ -1,0 +1,163 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Caveat', cursive;
+  background-color: black;
+  color: white;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+/* Scroll Snap */
+.scroll-snapper {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+/* Sections */
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Header */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+  padding: 10px 20px;
+  z-index: 10;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.main-header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.main-header * {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.logo-left {
+  font-weight: bold;
+}
+
+.header-title {
+  font-style: italic;
+}
+
+.header-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Section content */
+.section-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Character area inside sections */
+.character-area {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+/* Character text description */
+.character-description {
+  width: 250px;
+  height: 300px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.black-text {
+  color: black;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.white-text {
+  color: white;
+  text-align: left;
+  margin-left: 20px;
+}
+
+/* Character images */
+.character-img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.character-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.7);
+}
+
+/* Character title label */
+.character-label {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Caveat', cursive;
+  color: white;
+  pointer-events: none; 
+}
+
+
+/* Hover animation for all option buttons */
+.menu-btn, .option-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn:hover, .option-btn:hover {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px 2px rgba(175, 223, 239, 0.5); }
+  to { box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9); }
+}

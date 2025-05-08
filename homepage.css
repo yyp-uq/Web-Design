@@ -1,0 +1,334 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Caveat', cursive;
+  background-color: black;
+  color: white;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+/* scroll snapping container */
+.scroll-snapper {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 0px;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+/* Every section can be scroll snapping */
+.section {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  height: 100vh;
+  display: flex;
+}
+
+/* Header */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+  padding: 10px 20px;
+  z-index: 10;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.main-header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.main-header * {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.logo-left {
+  font-weight: bold;
+}
+
+.header-title {
+  font-style: italic;
+}
+
+.header-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Section1 content */
+.section-content {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding-top: 60px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Left menu and Right menu (with buttons) */
+.menu-left, .menu-right {
+  width: 138px;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn:hover, .option-btn:hover {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  animation: glow 1s infinite alternate;
+  transition: box-shadow 0.3s ease;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px 2px rgba(175, 223, 239, 0.484);
+  }
+  to {
+    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9);
+  }
+}
+
+#right-options {
+  margin-top: 5px;
+}
+
+.menu-btn, .option-btn {
+  width: 138px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-btn img.menu-icon {
+  width: 138px;
+  height: 138px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.menu-left .menu-btn.rotated img.menu-icon {
+  transform: rotate(-180deg);
+}
+
+.menu-right .menu-btn.rotated img.menu-icon {
+  transform: rotate(180deg);
+}
+
+.option-btn img.option-icon {
+  width: 138px;
+  height: 138px;
+  object-fit: contain;
+}
+
+.btn-label {
+  margin-top: 8px;
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-family: 'Caveat', cursive;
+}
+
+/* Background animation */
+.video-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.menu-options.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Section2 content */
+.section2-bg {
+  background: url('../PICTURES/panorama1.jpg') center top/cover no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.section2-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 靠左 */
+  justify-content: flex-start; /* 从上往下 */
+  width: 100%;
+  height: 100%;
+  padding: 100px; /* 内边距 */
+  background: none; /* 取消原来的 darkgreen 背景 */
+  color: white;
+}
+
+
+
+
+.section2-content h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Section2 IGN video button and introduction */
+.play-video-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 130px;
+}
+
+.play-video-btn img {
+  width: 500px;
+  border-radius: 10px;
+}
+
+.ign-intro {
+  margin-top: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  margin-left: 100px;
+  color: black;
+}
+
+.ign-description {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin-left: 100px;
+  color: black;
+}
+
+.ratings-img {
+  margin-top: 40px;
+  margin-left: 130px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.ign-summary {
+  margin-top: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  margin-left: 100px;
+  color: black;
+}
+
+/* Video Modal */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.video-modal iframe {
+  width: 90%;
+  height: 90%;
+}
+
+.close-video-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Section3 video grid */
+.section3-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  width: 100%;
+  height: 100%;
+  padding-top: 100px; 
+  background: none; 
+  color: white;
+}
+
+
+.section3-bg {
+  background: url('../PICTURES/panorama1.jpg') center bottom/cover no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.video-grid {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-item iframe {
+  width: 400px;
+  height: 225px;
+}
+
+.video-item div {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: white;
+}
