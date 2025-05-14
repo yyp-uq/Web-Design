@@ -4,11 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hyrule Compass - Weapon</title>
-
-  <!-- Install Caveat font -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-
-  <!-- Merge with weapon.css -->
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/weapon.css">
 </head>
 
@@ -35,7 +31,7 @@
   <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
 
   <div class="header-links">
-    <button id="toggle-animation-btn" class="media-btn pause-btn" title="Pause"></button>
+    <button id="animation-btn-1" class="media-btn pause-btn" title="Pause"></button>
     <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
     <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
   </div>
@@ -53,7 +49,7 @@
       <!-- Encyclopedia-style animation as background -->
       <div class="encyclopedia-animation-container">
         <div class="encyclopedia-animation-window">
-          <div class="encyclopedia-animation-player">
+          <div class="encyclopedia-animation-player" id="animation-player-1">
             <img src="../PICTURES/1.jpg" alt="Weapon 1">
             <img src="../PICTURES/2.jpg" alt="Weapon 2">
             <img src="../PICTURES/3.jpg" alt="Weapon 3">
@@ -84,7 +80,7 @@
   <!-- Encyclopedia-style animation as background, the background is blurred-->
   <div class="encyclopedia-animation-container blur-background">
     <div class="encyclopedia-animation-window">
-      <div class="encyclopedia-animation-player" id="scrolling-section2">
+      <div class="encyclopedia-animation-player" id="animation-player-2">
         <img src="../PICTURES/1.jpg" alt="Weapon 1">
         <img src="../PICTURES/2.jpg" alt="Weapon 2">
         <img src="../PICTURES/3.jpg" alt="Weapon 3">
@@ -113,7 +109,7 @@
         <div class="weapon-image-controller">
           <img src="../PICTURES/Naydra.jpg" alt="Naydra's Horn Weapon">
         </div>
-        <div class="weapon-text ice-text">
+        <div class="weapon-text">
           <h3>Naydra's Horn Weapon</h3>
           <p>Element: Ice</p>
           <p>Attack Bonus: +26</p>
@@ -126,7 +122,7 @@
         <div class="weapon-image-controller">
           <img src="../PICTURES/Farosh.jpg" alt="Farosh's Horn Weapon">
         </div>
-        <div class="weapon-text electric-text">
+        <div class="weapon-text">
           <h3>Farosh's Horn Weapon</h3>
           <p>Element: Electric</p>
           <p>Attack Bonus: +26</p>
@@ -139,7 +135,7 @@
         <div class="weapon-image-controller">
           <img src="../PICTURES/Silver_Lynel_Horn.jpg" alt="Silver Lynel Horn">
         </div>
-        <div class="weapon-text light-text">
+        <div class="weapon-text">
           <h3>Silver Lynel Horn</h3>
           <p>Attack Bonus: +30</p>
           <p>Effect: Powerful physical boost</p>
@@ -152,7 +148,7 @@
         <div class="weapon-image-controller">
           <img src="../PICTURES/Dinraal.jpg" alt="Dinraal's Horn Weapon">
         </div>
-        <div class="weapon-text fire-text">
+        <div class="weapon-text">
           <h3>Dinraal's Horn Weapon</h3>
           <p>Element: Fire</p>
           <p>Attack Bonus: +26</p>
@@ -165,7 +161,7 @@
         <div class="weapon-image-controller">
           <img src="../PICTURES/Light_Dragon.jpg" alt="Light Dragon's Horn Weapon">
         </div>
-        <div class="weapon-text light-text">
+        <div class="weapon-text">
           <h3>Light Dragon's Horn Weapon</h3>
           <p>Element: Light</p>
           <p>Attack Bonus: +20</p>
@@ -178,7 +174,7 @@
         <div class="weapon-image-controller">
           <img src="../PICTURES/Silver_Lynel_Horn_Shard.jpg" alt="Broken Silver Lynel Horn">
         </div>
-        <div class="weapon-text light-text">
+        <div class="weapon-text">
           <h3>Broken Silver Lynel Horn</h3>
           <p>Attack Bonus: +12</p>
           <p>Effect: Fragment with faint power</p>
@@ -186,10 +182,10 @@
         </div>
       </div>
 
-      <!-- Button that control encyclopedia-style animation -->
-      <div class="section2-controls">
-        <button id="toggle-section2-btn" class="media-btn pause-btn" title="Pause"></button>
-      </div>
+    <!-- Button that control encyclopedia-style animation -->
+    <div class="buttons-in-all-sections">
+      <button id="animation-btn-2" class="media-btn pause-btn" title="Pause"></button>
+    </div>
 
     </div>
   </section>
@@ -204,7 +200,7 @@
     <!-- Encyclopedia-style animation as background, the background is blurred-->
     <div class="encyclopedia-animation-container blur-background">
       <div class="encyclopedia-animation-window">
-        <div class="encyclopedia-animation-player" id="scrolling-section3">
+        <div class="encyclopedia-animation-player" id="animation-player-3">
           <img src="../PICTURES/1.jpg" alt="Weapon 1">
           <img src="../PICTURES/2.jpg" alt="Weapon 2">
           <img src="../PICTURES/3.jpg" alt="Weapon 3">
@@ -352,9 +348,9 @@
       </div>
 
       <!-- Button that control encyclopedia-style animation -->
-      <div class="section2-controls">
-        <button id="toggle-section3-btn" class="media-btn pause-btn" title="Pause"></button>
-      </div>
+    <div class="buttons-in-all-sections">
+      <button id="animation-btn-3" class="media-btn pause-btn" title="Pause"></button>
+    </div>
 
     </div>
   </section>
@@ -364,7 +360,7 @@
     <!-- Encyclopedia-style animation as background, the background is blurred-->
     <div class="encyclopedia-animation-container blur-background">
       <div class="encyclopedia-animation-window">
-        <div class="encyclopedia-animation-player" id="scrolling-section4">
+        <div class="encyclopedia-animation-player" id="animation-player-4">
           <img src="../PICTURES/1.jpg" alt="Weapon 1">
           <img src="../PICTURES/2.jpg" alt="Weapon 2">
           <img src="../PICTURES/3.jpg" alt="Weapon 3">
@@ -424,8 +420,8 @@
     </div>
 
     <!-- Button that control encyclopedia-style animation -->
-    <div class="section2-controls">
-      <button id="toggle-section4-btn" class="media-btn pause-btn" title="Pause"></button>
+    <div class="buttons-in-all-sections">
+      <button id="animation-btn-4" class="media-btn pause-btn" title="Pause"></button>
     </div>
 
   </section>

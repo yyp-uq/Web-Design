@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hyrule Compass - Weapon</title>
+  <title>Hyrule Compass - Zonai</title>
 
-  <!-- Install Caveat font -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap" rel="stylesheet">
   <!-- Merge with weapon.css -->
   <link rel="stylesheet" href="../CSS/zonai.css">
 </head>
@@ -35,7 +33,7 @@
   <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
 
   <div class="header-links">
-    <button id="toggle-animation-btn" class="media-btn pause-btn" title="Pause"></button>
+    <button id="animation-btn-1" class="media-btn pause-btn" title="Pause"></button>
     <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
     <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
   </div>
@@ -53,7 +51,7 @@
       <!-- Encyclopedia-style animation as background -->
       <div class="encyclopedia-animation-container">
         <div class="encyclopedia-animation-window">
-          <div class="encyclopedia-animation-player">
+          <div class="encyclopedia-animation-player" id="animation-player-1">
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
             <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
@@ -79,7 +77,7 @@
   <!-- Encyclopedia-style animation as background, the background is blurred-->
   <div class="encyclopedia-animation-container blur-background">
     <div class="encyclopedia-animation-window">
-      <div class="encyclopedia-animation-player">
+      <div class="encyclopedia-animation-player" id="animation-player-2">
         <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
         <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
         <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
@@ -180,10 +178,10 @@
     </div>
   
 
-      <!-- Button that control encyclopedia-style animation -->
-      <div class="section2-controls">
-        <button id="toggle-section2-btn" class="media-btn pause-btn" title="Pause"></button>
-      </div>
+    <!-- Button that control encyclopedia-style animation -->
+    <div class="buttons-in-all-sections">
+      <button id="animation-btn-2" class="media-btn pause-btn" title="Pause"></button>
+    </div>
 
     </div>
   </section>
@@ -198,7 +196,7 @@
     <!-- Encyclopedia-style animation as background, the background is blurred-->
     <div class="encyclopedia-animation-container blur-background">
         <div class="encyclopedia-animation-window">
-          <div class="encyclopedia-animation-player">
+          <div class="encyclopedia-animation-player" id="animation-player-3">
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
             <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
@@ -351,10 +349,10 @@
     
       </div>
 
-      <!-- Button that control encyclopedia-style animation -->
-      <div class="section2-controls">
-        <button id="toggle-section3-btn" class="media-btn pause-btn" title="Pause"></button>
-      </div>
+    <!-- Button that control encyclopedia-style animation -->
+    <div class="buttons-in-all-sections">
+      <button id="animation-btn-3" class="media-btn pause-btn" title="Pause"></button>
+    </div>
 
     </div>
   </section>
@@ -364,7 +362,7 @@
     <!-- Encyclopedia-style animation as background, the background is blurred-->
     <div class="encyclopedia-animation-container blur-background">
         <div class="encyclopedia-animation-window">
-          <div class="encyclopedia-animation-player">
+          <div class="encyclopedia-animation-player" id="animation-player-4">
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
             <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
@@ -415,12 +413,11 @@
         </div>
       </div>
       
-
     </div>
 
     <!-- Button that control encyclopedia-style animation -->
-    <div class="section2-controls">
-      <button id="toggle-section4-btn" class="media-btn pause-btn" title="Pause"></button>
+    <div class="buttons-in-all-sections">
+      <button id="animation-btn-4" class="media-btn pause-btn" title="Pause"></button>
     </div>
 
   </section>

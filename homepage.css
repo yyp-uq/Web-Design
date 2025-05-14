@@ -49,10 +49,6 @@ html, body {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.main-header.hidden {
-  opacity: 0;
-  transform: translateY(-100%);
-}
 
 .main-header * {
   font-family: Arial, sans-serif;
@@ -74,6 +70,59 @@ html, body {
   text-decoration: none;
 }
 
+.menu-container {
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+}
+
+.menu-toggle {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.9);  
+  border-radius: 10px;                  
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;       
+}
+
+.dropdown-menu a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+
+.dropdown-menu a:hover {
+  color: #D4AF37;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-menu a.active {
+  color: black;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 /* Section1 content */
 .section-content {
   display: flex;
@@ -85,77 +134,6 @@ html, body {
   align-items: stretch;
 }
 
-/* Left menu and Right menu (with buttons) */
-.menu-left, .menu-right {
-  width: 138px;
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: space-around;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.menu-btn:hover, .option-btn:hover {
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
-  animation: glow 1s infinite alternate;
-  transition: box-shadow 0.3s ease;
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px 2px rgba(175, 223, 239, 0.484);
-  }
-  to {
-    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9);
-  }
-}
-
-#right-options {
-  margin-top: 5px;
-}
-
-.menu-btn, .option-btn {
-  width: 138px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.menu-btn img.menu-icon {
-  width: 138px;
-  height: 138px;
-  object-fit: contain;
-  border-radius: 50%;
-  transition: transform 0.5s ease;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.menu-left .menu-btn.rotated img.menu-icon {
-  transform: rotate(-180deg);
-}
-
-.menu-right .menu-btn.rotated img.menu-icon {
-  transform: rotate(180deg);
-}
-
-.option-btn img.option-icon {
-  width: 138px;
-  height: 138px;
-  object-fit: contain;
-}
-
-.btn-label {
-  margin-top: 8px;
-  font-size: 1rem;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-family: 'Caveat', cursive;
-}
 
 /* Background animation */
 .video-wrapper {
@@ -171,6 +149,22 @@ html, body {
   object-fit: cover;
 }
 
+.unmuted-btn,
+.muted-btn {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 120px;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+}
+
 .menu-options {
   display: flex;
   flex-direction: column;
@@ -181,11 +175,6 @@ html, body {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.menu-options.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
 
 /* Section2 content */
 .section2-bg {
@@ -198,12 +187,12 @@ html, body {
 .section2-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 靠左 */
-  justify-content: flex-start; /* 从上往下 */
+  align-items: flex-start; 
+  justify-content: flex-start; 
   width: 100%;
   height: 100%;
-  padding: 100px; /* 内边距 */
-  background: none; /* 取消原来的 darkgreen 背景 */
+  padding: 100px; 
+  background: none; 
   color: white;
 }
 

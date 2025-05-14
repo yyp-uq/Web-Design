@@ -54,10 +54,6 @@
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
   
-  .main-header.hidden {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
   
   .main-header * {
     font-family: Arial, sans-serif;
@@ -378,7 +374,7 @@
     z-index: 1;
   }
   
-  .section2-controls {
+  .buttons-in-all-sections {
     position: absolute;
     top: 20px;
     right: 20px;

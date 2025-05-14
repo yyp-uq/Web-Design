@@ -1,55 +1,40 @@
-// Smooth scroll snapping like character.js
-const scrollContainer = document.querySelector('.scroll-snapper');
-const header = document.querySelector('.main-header');
+const scrollSnapper = document.querySelector('.scroll-snapper');
+const mainHeader = document.querySelector('.main-header');
 
-// Control the header show/hide based on scroll position
-scrollContainer.addEventListener('scroll', () => {
-  const scrollTop = scrollContainer.scrollTop;
-  const windowHeight = window.innerHeight;
 
-  if (scrollTop >= windowHeight * 0.5) {
-    header.classList.add('hidden');
+// Hide or show the header
+scrollSnapper.addEventListener('scroll', () => {
+  const scrollTop = scrollSnapper.scrollTop;
+  const clientHeight = scrollSnapper.clientHeight;
+  if (scrollTop >= clientHeight * 0.5) {
+    mainHeader.style.opacity = '0';
+    mainHeader.style.transform = 'translateY(-100%)';
+    mainHeader.style.pointerEvents = 'none';
   } else {
-    header.classList.remove('hidden');
+    mainHeader.style.opacity = '1';
+    mainHeader.style.transform = 'translateY(0)';
+    mainHeader.style.pointerEvents = 'auto'; 
   }
 });
 
-// Control smooth wheel scrolling by snapping one full screen at a time
-let isScrolling = false;
 
-scrollContainer.addEventListener('wheel', (event) => {
-  event.preventDefault();
-  const scrollAmount = window.innerHeight;
-  const direction = event.deltaY > 0 ? 1 : -1;
+// Enables smooth scroll snapping and prevents multiple triggers from a single scroll gesture
+let lastScrollTime = 0;
+const SCROLL_DELAY = 500; // ms
 
-  if (!isScrolling) {
-    if (direction > 0) {
-      scrollContainer.scrollTop += scrollAmount;
-    } else {
-      scrollContainer.scrollTop -= scrollAmount;
-    }
-    isScrolling = true;
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-  }
+scrollSnapper.addEventListener('wheel', (e) => {
+  e.preventDefault();
+
+  const now = Date.now();
+  if (now - lastScrollTime < SCROLL_DELAY) return;
+
+  const scrollingHeight = window.innerHeight;
+  const direction = e.deltaY > 0 ? 1 : -1;
+  scrollSnapper.scrollTop += direction * scrollingHeight;
+
+  lastScrollTime = now;
 }, { passive: false });
 
-// Toggle the side menu
-function toggleMenu(side) {
-  const leftMenu = document.getElementById('left-options');
-  const rightMenu = document.getElementById('right-options');
-  const leftBtn = document.getElementById('left-menu-btn');
-  const rightBtn = document.getElementById('right-menu-btn');
-
-  if (side === 'left') {
-    leftMenu.classList.toggle('show');
-    leftBtn.classList.toggle('rotated');
-  } else {
-    rightMenu.classList.toggle('show');
-    rightBtn.classList.toggle('rotated');
-  }
-}
 
 // Open and close the video popup modal
 function openVideo() {
@@ -66,5 +51,47 @@ function closeVideo() {
   player.src = "";
 }
 
+
 // Bind the video play button click event
 document.getElementById('playVideoBtn').addEventListener('click', openVideo);
+
+
+// Dropdown menu toggle
+const menuToggle = document.getElementById("menu-toggle");
+const dropdownMenu = document.getElementById("dropdown-menu");
+
+menuToggle.addEventListener("click", () => {
+  dropdownMenu.classList.toggle("show");
+});
+
+
+// Auto-close dropdown menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+  }
+});
+
+
+// Control the volume of background animation(muted or unmuted)
+const video = document.getElementById('main-theme');
+const unmutedBtn = document.getElementById('unmuted-btn1');
+const mutedBtn = document.getElementById('muted-btn1');
+mutedBtn.style.display = 'none';
+
+unmutedBtn.addEventListener('click', function () {
+  video.muted = false;
+  video.volume = 0.5;
+  video.play();
+  unmutedBtn.style.display = 'none';
+  mutedBtn.style.display = 'inline-block';
+});
+
+mutedBtn.addEventListener('click', function () {
+  video.muted = true;
+  video.volume = 0.5;
+  video.play();
+  mutedBtn.style.display = 'none';
+  unmutedBtn.style.display = 'inline-block';
+});
+

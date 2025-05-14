@@ -107,7 +107,7 @@ html, body {
   to { box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9); }
 }
 
-/* 横向滚动动画 */
+
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -168,7 +168,7 @@ html, body {
   transition: opacity 0.4s ease;
 }
 
-/* 图片和文字 */
+
 .weapon-image-controller {
   width: 100%;
   overflow: hidden;
@@ -193,14 +193,7 @@ html, body {
   color: black;
 }
 
-.ice-text,
-.electric-text,
-.fire-text,
-.light-text {
-  color: black;
-}
 
-/* ❗隐藏逻辑：保持布局不变 */
 .single-weapon-container.hidden {
   opacity: 0;
   visibility: hidden;
@@ -214,14 +207,14 @@ html, body {
   opacity: 0;
 }
 
-/* 灰掉非高亮元素（可选） */
+
 .single-weapon-container.dimmed {
   opacity: 0.3;
   filter: grayscale(100%);
   transition: opacity 0.3s ease;
 }
 
-/* Weapon detail 展示框 */
+
 .weapon-detail {
   position: absolute;
   top: 52%;
@@ -262,10 +255,10 @@ html, body {
 /* Header right links container */
 .header-links {
   display: flex;
-  align-items: center;  /* ✅ 确保按钮和文字垂直对齐 */
+  align-items: center;  
 }
 
-/* 圆形红白播放/暂停按钮 */
+
 .media-btn {
   width: 36px;
   height: 36px;
@@ -279,7 +272,7 @@ html, body {
   vertical-align: middle;
 }
 
-/* 暂停按钮 ❚❚ */
+
 .pause-btn::before,
 .pause-btn::after {
   content: "";
@@ -299,7 +292,7 @@ html, body {
   left: 19px;
 }
 
-/* 播放按钮 ▶ */
+
 .play-btn::before {
   content: "";
   position: absolute;
@@ -313,7 +306,7 @@ html, body {
   border-bottom: 8px solid transparent;
 }
 
-/* Menu 样式 */
+
 .menu-container {
   display: inline-block;
   position: relative;
@@ -331,8 +324,8 @@ html, body {
   position: absolute;
   top: 120%;
   left: 0;
-  background-color: rgba(255, 0, 0, 0.9);  /* ✅ 半透明红色 */
-  border-radius: 10px;                    /* ✅ 圆角边框 */
+  background-color: rgba(255, 0, 0, 0.9);  
+  border-radius: 10px;                  
   padding: 10px 0;
   display: flex;
   flex-direction: column;
@@ -341,7 +334,7 @@ html, body {
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-  z-index: 100;          /* ✅ 可选：磨砂感 */
+  z-index: 100;       
 }
 
 .dropdown-menu a {
@@ -367,25 +360,25 @@ html, body {
   transform: translateY(0);
 }
 
-/* 背景动画在底层并模糊 */
+
 .blur-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  filter: blur(8px); /* 磨砂模糊效果 */
+  filter: blur(8px); 
   z-index: 0;
-  pointer-events: none; /* 不阻挡鼠标点击 */
+  pointer-events: none; 
 }
 
-/* Section2 上内容提升到上层 */
+
 #section2 .weapon-layout {
   position: relative;
   z-index: 1;
 }
 
-.section2-controls {
+.buttons-in-all-sections {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -396,10 +389,10 @@ html, body {
   position: relative;
 }
 
-/* Section 3：两行五列布局 */
+
 #section3 .weapon-layout {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 每行5列 */
+  grid-template-columns: repeat(5, 1fr);
   gap: 90px 90px;
   justify-items: center;
   padding: 40px 0;
@@ -410,15 +403,15 @@ html, body {
   z-index: 10;
   padding: 40px;
   margin-top: 120px;
-  pointer-events: auto; /* 允许点击 */
+  pointer-events: auto; 
 }
 
 
 .video-grid {
   display: flex;
-  flex-wrap: wrap;           /* 允许换行 */
+  flex-wrap: wrap;          
   gap: 40px;
-  justify-content: center;   /* 居中排列 */
+  justify-content: center;   
   margin-bottom: 40px;
 }
 
@@ -426,7 +419,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px; /* 固定宽度以保持列数一致 */
+  width: 400px; 
 }
 
 .video-item iframe {
@@ -443,8 +436,8 @@ html, body {
 }
 
 .weapon-vedios h1 {
-  font-size: 2.8rem;       /* 放大字体 */
-  text-align: center;      /* 居中对齐 */
-  color: black;            /* 可选：设置字体颜色 */
-  margin-bottom: 40px;     /* 和下方视频拉开间距 */
+  font-size: 2.8rem;      
+  text-align: center;     
+  color: black;           
+  margin-bottom: 40px;     
 }

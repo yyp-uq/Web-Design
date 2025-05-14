@@ -1,64 +1,95 @@
-// Smooth scroll snapping 
-const scrollContainer = document.querySelector('.scroll-snapper');
-const header = document.querySelector('.main-header');
+const scrollSnapper = document.querySelector('.scroll-snapper');
+const mainHeader = document.querySelector('.main-header');
 
-// Control the header show/hide based on scroll position
-scrollContainer.addEventListener('scroll', () => {
-  const scrollTop = scrollContainer.scrollTop;
-  const windowHeight = window.innerHeight;
-
-  if (scrollTop >= windowHeight * 0.5) {
-    header.classList.add('hidden');
+// Hide or show the header
+scrollSnapper.addEventListener('scroll', () => {
+  const scrollTop = scrollSnapper.scrollTop;
+  const clientHeight = scrollSnapper.clientHeight;
+  if (scrollTop >= clientHeight * 0.5) {
+    mainHeader.style.opacity = '0';
+    mainHeader.style.transform = 'translateY(-100%)';
+    mainHeader.style.pointerEvents = 'none';
   } else {
-    header.classList.remove('hidden');
+    mainHeader.style.opacity = '1';
+    mainHeader.style.transform = 'translateY(0)';
+    mainHeader.style.pointerEvents = 'auto'; 
   }
 });
 
-// Control smooth wheel scrolling by snapping one full screen at a time
-let isScrolling = false;
 
-scrollContainer.addEventListener('wheel', (event) => {
-  event.preventDefault();
-  const scrollAmount = window.innerHeight;
-  const direction = event.deltaY > 0 ? 1 : -1;
+// Enables smooth scroll snapping and prevents multiple triggers from a single scroll gesture
+let lastScrollTime = 0;
+const SCROLL_DELAY = 500; // ms
 
-  if (!isScrolling) {
-    if (direction > 0) {
-      scrollContainer.scrollTop += scrollAmount;
-    } else {
-      scrollContainer.scrollTop -= scrollAmount;
-    }
-    isScrolling = true;
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-  }
+scrollSnapper.addEventListener('wheel', (e) => {
+  e.preventDefault();
+
+  const now = Date.now();
+  if (now - lastScrollTime < SCROLL_DELAY) return;
+
+  const scrollingHeight = window.innerHeight;
+  const direction = e.deltaY > 0 ? 1 : -1;
+  scrollSnapper.scrollTop += direction * scrollingHeight;
+
+  lastScrollTime = now;
 }, { passive: false });
 
-const toggleBtn = document.getElementById('toggle-animation-btn');
-const scrollingContainer = document.querySelector('.encyclopedia-animation-player');
+
+// Control the encyclopedia animation in all sections (Play or Pause)
+const animationBtn_1 = document.getElementById('animation-btn-1');
+const animationBtn_2 = document.getElementById('animation-btn-2');
+const animationBtn_3 = document.getElementById('animation-btn-3');
+const animationBtn_4 = document.getElementById('animation-btn-4');
+
+const animationPlayer_1 = document.getElementById('animation-player-1');
+const animationPlayer_2 = document.getElementById('animation-player-2');
+const animationPlayer_3 = document.getElementById('animation-player-3');
+const animationPlayer_4 = document.getElementById('animation-player-4');
 
 let isPaused = false;
 
-toggleBtn.addEventListener('click', () => {
+// Toggle all animations in all sections
+function ConnectAllAnimations() {
   isPaused = !isPaused;
 
+  let state;
   if (isPaused) {
-    scrollingContainer.style.animationPlayState = 'paused';
-    toggleBtn.classList.remove('pause-btn');
-    toggleBtn.classList.add('play-btn');
-    toggleBtn.title = "Play";
+    state = 'paused';
   } else {
-    scrollingContainer.style.animationPlayState = 'running';
-    toggleBtn.classList.remove('play-btn');
-    toggleBtn.classList.add('pause-btn');
-    toggleBtn.title = "Pause";
+    state = 'running';
   }
-});
+
+  // Set animation play state
+  animationPlayer_1.style.animationPlayState = state;
+  animationPlayer_2.style.animationPlayState = state;
+  animationPlayer_3.style.animationPlayState = state;
+  animationPlayer_4.style.animationPlayState = state;
+
+  // Update all buttons together
+  const allBtns = [animationBtn_1, animationBtn_2, animationBtn_3, animationBtn_4];
+  for (let i = 0; i < allBtns.length; i++) {
+    const btn = allBtns[i];
+    if (isPaused) {
+      btn.classList.remove('pause-btn');
+      btn.classList.add('play-btn');
+      btn.title = 'Play';
+    } else {
+      btn.classList.remove('play-btn');
+      btn.classList.add('pause-btn');
+      btn.title = 'Pause';
+    }
+  }
+}
+
+// Bind the toggle function to all four buttons
+animationBtn_1.addEventListener('click', ConnectAllAnimations);
+animationBtn_2.addEventListener('click', ConnectAllAnimations);
+animationBtn_3.addEventListener('click', ConnectAllAnimations);
+animationBtn_4.addEventListener('click', ConnectAllAnimations);
+
 
 
 // Get element of weapons
-const weaponBlocks = document.querySelectorAll('.single-weapon-container');
 const weaponDetail = document.getElementById('weapon-detail');
 const weaponTitle = document.getElementById('weapon-title');
 const weaponInfo = document.getElementById('weapon-info');
@@ -228,51 +259,83 @@ When defeated, they drop a horn with bone fragments and eerie energy. Fusing it 
 
 };
 
-
-// Get elements
-const middleBlocks = document.querySelectorAll('.middle-column');
-const backButton = document.getElementById('back-button');
-
+// Clicking a weapon image hides the central images and displays the weapon details.
+const allWeaponContainers = document.querySelectorAll('.single-weapon-container');
+const middleContainers = document.querySelectorAll('.middle-column');
 let lastClicked = null;
+for (let i = 0; i < allWeaponContainers.length; i++) {
+  let singleContainer = allWeaponContainers[i];
 
-// Click event for weapon blocks
-weaponBlocks.forEach(block => {
-  block.addEventListener('click', () => {
-    const title = block.querySelector('h3')?.innerText;
-    const detail = weaponDetails[title];
+  singleContainer.addEventListener('click', function () {
+    let titleElement = singleContainer.querySelector('h3');
+    let title;
 
-    const isSameClick = (lastClicked === block);
-    lastClicked = isSameClick ? null : block;
+    if (titleElement) {
+      title = titleElement.innerText;
+    } else {
+      title = null;
+    }
+
+    let detail = weaponDetails[title];
+
+    let isSameClick = false;
+    if (lastClicked === singleContainer) {
+      isSameClick = true;
+    }
 
     if (isSameClick) {
-      middleBlocks.forEach(mid => mid.classList.remove('hidden'));
+      lastClicked = null;
+
+      for (let j = 0; j < middleContainers.length; j++) {
+        middleContainers[j].classList.remove('hidden');
+      }
+
       weaponDetail.classList.remove('show');
       weaponDetail.classList.add('hidden');
       return;
+    } else {
+      lastClicked = singleContainer;
     }
 
     // Hide the middle column blocks
-    middleBlocks.forEach(mid => mid.classList.add('hidden'));
+    for (let j = 0; j < middleContainers.length; j++) {
+      middleContainers[j].classList.add('hidden');
+    }
 
     // Set weapon detail content
     weaponTitle.innerText = title;
-    weaponInfo.innerText = detail?.info || "No details available.";
-    weaponTitle.style.color = detail?.color || "#fff";
-    weaponInfo.style.color = detail?.color || "#fff";
+
+    if (detail && detail.info) {
+      weaponInfo.innerText = detail.info;
+    } else {
+      weaponInfo.innerText = "No details available.";
+    }
+
+    if (detail && detail.color) {
+      weaponTitle.style.color = detail.color;
+      weaponInfo.style.color = detail.color;
+    } else {
+      weaponTitle.style.color = "#fff";
+      weaponInfo.style.color = "#fff";
+    }
 
     // Show the detail panel
     weaponDetail.classList.remove('hidden');
-    void weaponDetail.offsetWidth; // Force DOM reflow
+    void weaponDetail.offsetWidth; 
     weaponDetail.classList.add('show');
   });
-});
+}
 
-// Back button event
+const backButton = document.getElementById('back-button');
+
+// Clicking the same image again or pressing the back button restores the central images and hides the details.
 backButton.addEventListener('click', (e) => {
   e.preventDefault();
 
   // Show the middle column blocks
-  middleBlocks.forEach(mid => mid.classList.remove('hidden'));
+  for (let i = 0; i < middleContainers.length; i++) {
+    middleContainers[i].classList.remove('hidden');
+  }
 
   // Hide the detail panel
   weaponDetail.classList.remove('show');
@@ -282,17 +345,20 @@ backButton.addEventListener('click', (e) => {
   lastClicked = null;
 });
 
-// Auto-hide detail panel when scrolling the scroll-snapper container
-const scrollSnapper = document.querySelector('.scroll-snapper');
-
+// When the user scrolls the page, hide the weapon detail panel
 scrollSnapper.addEventListener('scroll', () => {
   if (!weaponDetail.classList.contains('hidden')) {
     weaponDetail.classList.remove('show');
     weaponDetail.classList.add('hidden');
-    middleBlocks.forEach(mid => mid.classList.remove('hidden'));
+    for (let i = 0; i < middleContainers.length; i++) {
+      middleContainers[i].classList.remove('hidden');
+    }
     lastClicked = null;
   }
 });
+
+
+
 
 // Dropdown menu toggle
 const menuToggle = document.getElementById("menu-toggle");
@@ -308,34 +374,3 @@ document.addEventListener("click", (e) => {
     dropdownMenu.classList.remove("show");
   }
 });
-
-// Get section toggle buttons and animation containers
-const toggleSection2Btn = document.getElementById('toggle-section2-btn');
-const toggleSection3Btn = document.getElementById('toggle-section3-btn');
-const toggleSection4Btn = document.getElementById('toggle-section4-btn');
-const section2Scroll = document.getElementById('scrolling-section2');
-const section3Scroll = document.getElementById('scrolling-section3');
-const section4Scroll = document.getElementById('scrolling-section4');
-
-let isPausedShared = false;
-
-// Toggle all animations in all sections
-function toggleAllAnimations() {
-  isPausedShared = !isPausedShared;
-  const state = isPausedShared ? 'paused' : 'running';
-
-  section2Scroll.style.animationPlayState = state;
-  section3Scroll.style.animationPlayState = state;
-  section4Scroll.style.animationPlayState = state;
-
-  [toggleSection2Btn, toggleSection3Btn, toggleSection4Btn].forEach(btn => {
-    btn.classList.toggle('pause-btn', !isPausedShared);
-    btn.classList.toggle('play-btn', isPausedShared);
-    btn.title = isPausedShared ? 'Play' : 'Pause';
-  });
-}
-
-// Bind the toggle function to all three section buttons
-toggleSection2Btn.addEventListener('click', toggleAllAnimations);
-toggleSection3Btn.addEventListener('click', toggleAllAnimations);
-toggleSection4Btn.addEventListener('click', toggleAllAnimations);
