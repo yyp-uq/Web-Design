@@ -1,34 +1,35 @@
-const scrollContainer = document.querySelector('.scroll-snapper');
-const header = document.querySelector('.main-header');
+const scrollSnapper = document.querySelector('.scroll-snapper');
+const mainHeader = document.querySelector('.main-header');
 
-scrollContainer.addEventListener('scroll', () => {
-  const scrollTop = scrollContainer.scrollTop;
-  const windowHeight = window.innerHeight;
-
-  if (scrollTop >= windowHeight * 0.5) {
-    header.classList.add('hidden');
+// Hide or show the header
+scrollSnapper.addEventListener('scroll', () => {
+  const scrollTop = scrollSnapper.scrollTop;
+  const clientHeight = scrollSnapper.clientHeight;
+  if (scrollTop >= clientHeight * 0.5) {
+    mainHeader.style.opacity = '0';
+    mainHeader.style.transform = 'translateY(-100%)';
+    mainHeader.style.pointerEvents = 'none';
   } else {
-    header.classList.remove('hidden');
+    mainHeader.style.opacity = '1';
+    mainHeader.style.transform = 'translateY(0)';
+    mainHeader.style.pointerEvents = 'auto'; 
   }
 });
 
-// Smooth scroll control
-let isScrolling = false;
 
-scrollContainer.addEventListener('wheel', (event) => {
-  event.preventDefault();
-  const scrollAmount = window.innerHeight;
-  const direction = event.deltaY > 0 ? 1 : -1;
+// Enables smooth scroll snapping and prevents multiple triggers from a single scroll gesture
+let lastScrollTime = 0;
+const SCROLL_DELAY = 500; // ms
 
-  if (!isScrolling) {
-    if (direction > 0) {
-      scrollContainer.scrollTop += scrollAmount;
-    } else {
-      scrollContainer.scrollTop -= scrollAmount;
-    }
-    isScrolling = true;
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-  }
+scrollSnapper.addEventListener('wheel', (e) => {
+  e.preventDefault();
+
+  const now = Date.now();
+  if (now - lastScrollTime < SCROLL_DELAY) return;
+
+  const scrollingHeight = window.innerHeight;
+  const direction = e.deltaY > 0 ? 1 : -1;
+  scrollSnapper.scrollTop += direction * scrollingHeight;
+
+  lastScrollTime = now;
 }, { passive: false });
