@@ -54,11 +54,6 @@ html, body {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.main-header.hidden {
-  opacity: 0;
-  transform: translateY(-100%);
-}
-
 .main-header * {
   font-family: Arial, sans-serif;
   font-size: 1.2rem;
