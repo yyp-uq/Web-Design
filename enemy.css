@@ -33,10 +33,6 @@ html, body {
   display: flex;
   flex-direction: column;
   position: relative;
-  background: 
-              url('../PICTURES/white.png') center center/cover no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 
 /* Top fixed header bar with title and navigation */
@@ -118,8 +114,9 @@ html, body {
 }
 
 :root {
-  --section1-bg: url('../PICTURES/enemy_background2.png');
+  --section1-bg: url('../PICTURES/Enemy/enemy_background2.png');
 }
+
 
 /* Section with blur background */
 .blurred-background {
@@ -139,7 +136,6 @@ html, body {
   background: transparent;
 }
 
-/* Menu 样式 */
 .menu-container {
   display: inline-block;
   position: relative;
@@ -211,7 +207,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 80px 100px;
-  padding: 200px 60px 120px;
+  padding: 130px 60px 150px;
   justify-items: center;
   align-items: start;
   position: relative;

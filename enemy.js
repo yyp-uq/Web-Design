@@ -1,35 +1,39 @@
+const scrollSnapper = document.querySelector('.scroll-snapper');
+const mainHeader = document.querySelector('.main-header');
 
-// Smooth scroll snapping 
-const scrollContainer = document.querySelector('.scroll-snapper');
-const header = document.querySelector('.main-header');
-
-// Control the header show/hide based on scroll position
-scrollContainer.addEventListener('scroll', () => {
-  const scrollTop = scrollContainer.scrollTop;
-  const windowHeight = window.innerHeight;
-
-  if (scrollTop >= windowHeight * 0.5) {
-    header.classList.add('hidden');
+// Hide or show the header
+scrollSnapper.addEventListener('scroll', () => {
+  const scrollTop = scrollSnapper.scrollTop;
+  const clientHeight = scrollSnapper.clientHeight;
+  if (scrollTop >= clientHeight * 0.5) {
+    mainHeader.style.opacity = '0';
+    mainHeader.style.transform = 'translateY(-100%)';
+    mainHeader.style.pointerEvents = 'none';
   } else {
-    header.classList.remove('hidden');
+    mainHeader.style.opacity = '1';
+    mainHeader.style.transform = 'translateY(0)';
+    mainHeader.style.pointerEvents = 'auto'; 
   }
 });
 
-// Menu toggle logic for showing and hiding
-const menuToggle = document.getElementById('menu-toggle');
-const dropdownMenu = document.getElementById('dropdown-menu');
 
-// Show the menu when clicking menu button
-menuToggle.addEventListener('click', () => {
-  dropdownMenu.classList.toggle('show');  
-});
+// Enables smooth scroll snapping and prevents multiple triggers from a single scroll gesture
+let lastScrollTime = 0;
+const SCROLL_DELAY = 500; // ms
 
-// Auto-close dropdown menu when clicking outside
-document.addEventListener("click", (e) => {
-  if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-    dropdownMenu.classList.remove("show");
-  }
-});
+scrollSnapper.addEventListener('wheel', (e) => {
+  e.preventDefault();
+
+  const now = Date.now();
+  if (now - lastScrollTime < SCROLL_DELAY) return;
+
+  const scrollingHeight = window.innerHeight;
+  const direction = e.deltaY > 0 ? 1 : -1;
+  scrollSnapper.scrollTop += direction * scrollingHeight;
+
+  lastScrollTime = now;
+}, { passive: false });
+
 
 // Get all the detailed elements of every single enemy
 const enemyBlocks = document.querySelectorAll('.single-enemy-container');
@@ -205,8 +209,7 @@ Drops include Flame Gleeok Horns, Wings, and Guts. These materials fuel powerful
 
 let lastClicked = null;
 
-// Create container that new image and enemy description can show
-// This overlay are working in section two and three as they are not bosses
+// Create overlay for normal enemies(little monsters)
 const overlay = document.createElement('div');
 overlay.className = 'enemy-overlay hidden';
 overlay.innerHTML = `
@@ -218,13 +221,13 @@ overlay.innerHTML = `
   </div>
 `;
 document.body.appendChild(overlay);
-const overlayImage = overlay.querySelector('.overlay-image');
-const overlayTitle = overlay.querySelector('#enemy-title');
-const overlayInfo = overlay.querySelector('#enemy-info');
-const overlayBack = overlay.querySelector('#enemy-back-button');
 
-// Create container that new image and enemy description can show
-// This overlay are working in section four as they are bosses
+const monsterImage = overlay.querySelector('.overlay-image');
+const monsterTitle = overlay.querySelector('#enemy-title');
+const monsterInfo = overlay.querySelector('#enemy-info');
+const monsterBack = overlay.querySelector('#enemy-back-button');
+
+// Create overlay for boss enemies
 const bossOverlay = document.createElement('div');
 bossOverlay.className = 'boss-overlay hidden';
 bossOverlay.innerHTML = `
@@ -242,115 +245,91 @@ const bossTitle = bossOverlay.querySelector('#boss-title');
 const bossInfo = bossOverlay.querySelector('#boss-info');
 const bossBack = bossOverlay.querySelector('#boss-back-button');
 
-// Clicking an image displays an enlarged version on the left and its description on the right.
-// Clicking the same image again restores the original layout.
-enemyBlocks.forEach(block => {
+// Add click event to each enemy block
+for (let i = 0; i < enemyBlocks.length; i++) {
+  const block = enemyBlocks[i];
   block.addEventListener('click', () => {
-    const title = block.querySelector('.enemy-text')?.textContent;
+    const nowClicked = block;
+    const isBoss = nowClicked.classList.contains('single-boss-container');
+    const title = nowClicked.querySelector('.enemy-text').textContent.trim();
     const detail = enemyDetails[title] || 'No details available.';
-    const imgSrc = block.querySelector('img')?.src;
+    const imgSrc = nowClicked.querySelector('img')?.src;
 
-    const isSameClick = (lastClicked === block);
-    lastClicked = isSameClick ? null : block;
+    if (nowClicked !== lastClicked) {
+      // Case 1: Clicked a different image → Hide all other blocks
+      for (let j = 0; j < enemyBlocks.length; j++) {
+        enemyBlocks[j].classList.add('hidden');
+      }
 
-    // Check out whether they are normal enemies or bosses
-    const isBoss = block.classList.contains('single-boss-container');
+      if (isBoss) {
+        bossImage.innerHTML = `<img src="${imgSrc}" alt="${title}" />`;
+        bossTitle.innerText = title;
+        bossInfo.innerText = detail;
 
-    if (isSameClick) {
-      enemyBlocks.forEach(b => b.classList.remove('hidden'));
+        bossOverlay.classList.remove('hidden');
+        void bossOverlay.offsetWidth;
+        bossOverlay.classList.add('show');
+      } else {
+        monsterImage.innerHTML = `<img src="${imgSrc}" alt="${title}" />`;
+        monsterTitle.innerText = title;
+        monsterInfo.innerText = detail;
+
+        overlay.classList.remove('hidden');
+        void overlay.offsetWidth;
+        overlay.classList.add('show');
+      }
+
+      lastClicked = nowClicked;
+    } else {
+      // Case 2: Clicked the same image → Restore layout
+      for (let j = 0; j < enemyBlocks.length; j++) {
+        enemyBlocks[j].classList.remove('hidden');
+      }
       overlay.classList.add('hidden');
       bossOverlay.classList.add('hidden');
-      return;
-    }
-
-    // Hide all other elements
-    enemyBlocks.forEach(b => b.classList.add('hidden'));
-
-    if (isBoss) {
-      // Hide or show the boss image(section four)
-      bossImage.innerHTML = `<img src="${imgSrc}" alt="${title}" />`;
-      bossTitle.innerText = title;
-      bossInfo.innerText = detail;
-
-      bossOverlay.classList.remove('hidden');
-      void bossOverlay.offsetWidth;
-      bossOverlay.classList.add('show');
-
-    } else {
-      // Hide or show the normal enemy image(section two and three)
-      overlayImage.innerHTML = `<img src="${imgSrc}" alt="${title}" />`;
-      overlayTitle.innerText = title;
-      overlayInfo.innerText = detail;
-
-      overlay.classList.remove('hidden');
-      void overlay.offsetWidth;
-      overlay.classList.add('show');
+      lastClicked = null;
     }
   });
-});
+}
 
-
-// Back button, clicking it can back to original layout(normal enemy)
-overlayBack.addEventListener('click', (e) => {
+// Back button for normal enemy
+monsterBack.addEventListener('click', (e) => {
   e.preventDefault();
   overlay.classList.remove('show');
   overlay.classList.add('hidden');
-  enemyBlocks.forEach(b => b.classList.remove('hidden'));
+  for (let i = 0; i < enemyBlocks.length; i++) {
+    enemyBlocks[i].classList.remove('hidden');
+  }
   lastClicked = null;
 });
 
-// Back button, clicking it can back to original layout(boss)
+// Back button for boss enemy
 bossBack.addEventListener('click', (e) => {
   e.preventDefault();
   bossOverlay.classList.remove('show');
   bossOverlay.classList.add('hidden');
-  enemyBlocks.forEach(b => b.classList.remove('hidden'));
+  for (let i = 0; i < enemyBlocks.length; i++) {
+    enemyBlocks[i].classList.remove('hidden');
+  }
   lastClicked = null;
 });
 
-
-// Automatically hide the overlay and restore all enemy blocks when scrolling
+// Auto-hide overlays on scroll
 scrollContainer.addEventListener('scroll', () => {
-  if (!overlay.classList.contains('hidden')) {
-    overlay.classList.remove('show');   
+  if (!overlay.classList.contains('hidden') || !bossOverlay.classList.contains('hidden')) {
+    overlay.classList.remove('show');
     overlay.classList.add('hidden');
-    enemyBlocks.forEach(b => b.classList.remove('hidden')); 
-    lastClicked = null;  
+
+    bossOverlay.classList.remove('show');
+    bossOverlay.classList.add('hidden');
+
+    for (let i = 0; i < enemyBlocks.length; i++) {
+      enemyBlocks[i].classList.remove('hidden');
+    }
+
+    lastClicked = null;
   }
 });
-
-// Prevent multiple scrolls at once and enable full-page snap scrolling with mouse wheel
-let isScrolling = false;
-
-scrollContainer.addEventListener('wheel', (event) => {
-  event.preventDefault();   
-  if (isScrolling) return; 
-
-  const sections = document.querySelectorAll('.section');
-  const currentScroll = scrollContainer.scrollTop;
-  const viewportHeight = window.innerHeight;
-
-  // Determine which section is currently in view and scroll direction
-  let currentIndex = Math.round(currentScroll / viewportHeight);
-  const direction = event.deltaY > 0 ? 1 : -1; 
-  let nextIndex = currentIndex + direction;
-
-  // Clamp to valid range of section indices
-  nextIndex = Math.max(0, Math.min(nextIndex, sections.length - 1));
-  const nextScroll = nextIndex * viewportHeight;
-
-  // Smooth scroll to the target section
-  isScrolling = true;
-  scrollContainer.scrollTo({
-    top: nextScroll,
-    behavior: 'smooth'
-  });
-
-  // Reset scroll lock after a delay to allow smooth scrolling
-  setTimeout(() => {
-    isScrolling = false;
-  }, 800);
-}, { passive: false });
 
 
 const enemyVideoLinks = {
@@ -366,15 +345,19 @@ const enemyVideoLinks = {
 
 
 
-document.querySelectorAll('.boss-name').forEach(el => {
+const bossNameElements = document.querySelectorAll('.boss-name');
+for (let i = 0; i < bossNameElements.length; i++) {
+  const el = bossNameElements[i];
   el.addEventListener('click', (e) => {
     e.stopPropagation();
 
-    // Prevent enemy-overlay to hide videos
+    // Prevent enemy-overlay from hiding videos
     if (!overlay.classList.contains('hidden')) {
       overlay.classList.remove('show');
       overlay.classList.add('hidden');
-      enemyBlocks.forEach(b => b.classList.remove('hidden'));
+      for (let j = 0; j < enemyBlocks.length; j++) {
+        enemyBlocks[j].classList.remove('hidden');
+      }
       lastClicked = null;
     }
 
@@ -384,7 +367,8 @@ document.querySelectorAll('.boss-name').forEach(el => {
 
     openVideo(videoUrl);
   });
-});
+}
+
 
 function openVideo(videoUrl) {
   const modal = document.getElementById('videoModal');
@@ -406,3 +390,18 @@ document.getElementById('videoModal').addEventListener('click', (e) => {
 });
 
 
+// Menu toggle logic for showing and hiding
+const menuToggle = document.getElementById('menu-toggle');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+// Show the menu when clicking menu button
+menuToggle.addEventListener('click', () => {
+  dropdownMenu.classList.toggle('show');  
+});
+
+// Auto-close dropdown menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+  }
+});
