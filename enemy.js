@@ -35,6 +35,23 @@ scrollSnapper.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 
+// Menu toggle logic for showing and hiding
+const menuToggle = document.getElementById('menu-toggle');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+// Show the menu when clicking menu button
+menuToggle.addEventListener('click', () => {
+  dropdownMenu.classList.toggle('show');  
+});
+
+// Auto-close dropdown menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+  }
+});
+
+
 // Get all the detailed elements of every single enemy
 const enemyBlocks = document.querySelectorAll('.single-enemy-container');
 const enemyDetail = document.getElementById('enemy-detail');
@@ -207,6 +224,65 @@ Flying too close invites incineration, so high mobility and aerial evasion are c
 Drops include Flame Gleeok Horns, Wings, and Guts. These materials fuel powerful flame weapons and are key to crafting armor with fire resistance.`  
 };
 
+const enemyVideoLinks = {
+  'Thunder Gleeok': 'https://www.youtube.com/embed/_TigpoejbbA',
+  'Frost Talus': 'https://www.youtube.com/embed/3PvxTPvIiwo',
+  'Silver Lynel': 'https://www.youtube.com/embed/UnwU_glJlSY',
+  'Molduga': 'https://www.youtube.com/embed/bd-D4V5ahic',
+  'Frost Gleeok': 'https://www.youtube.com/embed/gMxSeOWjE-w',
+  'Black Hinox': 'https://www.youtube.com/embed/530uksZcCZA',
+  'Stalnox': 'https://www.youtube.com/embed/9sfJacRCzRk',
+  'Flame Gleeok': 'https://www.youtube.com/embed/HEmGqW6oYyw'
+};
+
+
+
+const bossNameElements = document.querySelectorAll('.boss-name');
+for (let i = 0; i < bossNameElements.length; i++) {
+  const el = bossNameElements[i];
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    // Prevent enemy-overlay from hiding videos
+    if (!overlay.classList.contains('hidden')) {
+      overlay.classList.remove('show');
+      overlay.classList.add('hidden');
+      for (let j = 0; j < enemyBlocks.length; j++) {
+        enemyBlocks[j].classList.remove('hidden');
+      }
+      lastClicked = null;
+    }
+
+    const bossKey = el.dataset.bossVideo;
+    const videoUrl = enemyVideoLinks[bossKey];
+    if (!videoUrl) return;
+
+    openVideo(videoUrl);
+  });
+}
+
+
+function openVideo(videoUrl) {
+  const modal = document.getElementById('videoModal');
+  const player = document.getElementById('youtubePlayer');
+  modal.style.display = 'flex';
+  player.src = videoUrl + "?autoplay=1";
+}
+
+function closeVideo() {
+  const modal = document.getElementById('videoModal');
+  const player = document.getElementById('youtubePlayer');
+  modal.style.display = 'none';
+  player.src = "";
+}
+
+
+document.getElementById('videoModal').addEventListener('click', (e) => {
+  if (e.target.id === 'videoModal') closeVideo();
+});
+
+
+
 let lastClicked = null;
 
 // Create overlay for normal enemies(little monsters)
@@ -328,80 +404,5 @@ scrollContainer.addEventListener('scroll', () => {
     }
 
     lastClicked = null;
-  }
-});
-
-
-const enemyVideoLinks = {
-  'Thunder Gleeok': 'https://www.youtube.com/embed/_TigpoejbbA',
-  'Frost Talus': 'https://www.youtube.com/embed/3PvxTPvIiwo',
-  'Silver Lynel': 'https://www.youtube.com/embed/UnwU_glJlSY',
-  'Molduga': 'https://www.youtube.com/embed/bd-D4V5ahic',
-  'Frost Gleeok': 'https://www.youtube.com/embed/gMxSeOWjE-w',
-  'Black Hinox': 'https://www.youtube.com/embed/530uksZcCZA',
-  'Stalnox': 'https://www.youtube.com/embed/9sfJacRCzRk',
-  'Flame Gleeok': 'https://www.youtube.com/embed/HEmGqW6oYyw'
-};
-
-
-
-const bossNameElements = document.querySelectorAll('.boss-name');
-for (let i = 0; i < bossNameElements.length; i++) {
-  const el = bossNameElements[i];
-  el.addEventListener('click', (e) => {
-    e.stopPropagation();
-
-    // Prevent enemy-overlay from hiding videos
-    if (!overlay.classList.contains('hidden')) {
-      overlay.classList.remove('show');
-      overlay.classList.add('hidden');
-      for (let j = 0; j < enemyBlocks.length; j++) {
-        enemyBlocks[j].classList.remove('hidden');
-      }
-      lastClicked = null;
-    }
-
-    const bossKey = el.dataset.bossVideo;
-    const videoUrl = enemyVideoLinks[bossKey];
-    if (!videoUrl) return;
-
-    openVideo(videoUrl);
-  });
-}
-
-
-function openVideo(videoUrl) {
-  const modal = document.getElementById('videoModal');
-  const player = document.getElementById('youtubePlayer');
-  modal.style.display = 'flex';
-  player.src = videoUrl + "?autoplay=1";
-}
-
-function closeVideo() {
-  const modal = document.getElementById('videoModal');
-  const player = document.getElementById('youtubePlayer');
-  modal.style.display = 'none';
-  player.src = "";
-}
-
-
-document.getElementById('videoModal').addEventListener('click', (e) => {
-  if (e.target.id === 'videoModal') closeVideo();
-});
-
-
-// Menu toggle logic for showing and hiding
-const menuToggle = document.getElementById('menu-toggle');
-const dropdownMenu = document.getElementById('dropdown-menu');
-
-// Show the menu when clicking menu button
-menuToggle.addEventListener('click', () => {
-  dropdownMenu.classList.toggle('show');  
-});
-
-// Auto-close dropdown menu when clicking outside
-document.addEventListener("click", (e) => {
-  if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-    dropdownMenu.classList.remove("show");
   }
 });
