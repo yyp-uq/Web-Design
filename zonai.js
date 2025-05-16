@@ -227,7 +227,7 @@ const zonaiDetails = {
   Efficient and lightweight, it’s a go-to for safe underground exploration.
       `,
       color: "black"
-    },
+    }, 
     "Zonai Sled": {
       info: `
   The Sled glides across grass, sand, or snow due to its low-friction base, making it ideal for land builds.
@@ -296,96 +296,90 @@ const allZonaiContainers = document.querySelectorAll('.single-zonai-container');
 const middleContainers = document.querySelectorAll('.middle-column');
 let lastClicked = null;
 
+// Make sure all containers are visible initially
 for (let i = 0; i < allZonaiContainers.length; i++) {
-  let singleContainer = allZonaiContainers[i];
+  allZonaiContainers[i].classList.remove('hidden');
+  allZonaiContainers[i].classList.add('show');
+}
 
-  singleContainer.addEventListener('click', function () {
-    let titleElement = singleContainer.querySelector('h3');
-    let title;
+// Add click events to each Zonai container
+for (let i = 0; i < allZonaiContainers.length; i++) {
+  let singleZonaiContainer = allZonaiContainers[i];
 
-    if (titleElement) {
-      title = titleElement.innerText;
+  singleZonaiContainer.addEventListener('click', (e) => {
+    let nowClicked = singleZonaiContainer;
+
+    if (nowClicked !== lastClicked) {
+      // Case 1: Clicked a different image → Hide central containers
+      for (let j = 0; j < middleContainers.length; j++) {
+        middleContainers[j].classList.add('hidden');
+        middleContainers[j].classList.remove('show');
+      }
+
+      // Show detail panel
+      zonaiDetail.classList.remove('hidden');
+      zonaiDetail.classList.add('show');
+
+      lastClicked = nowClicked;
     } else {
-      title = null;
-    }
-
-    let detail = zonaiDetails[title];
-
-    let isSameClick = false;
-    if (lastClicked === singleContainer) {
-      isSameClick = true;
-    }
-
-    if (isSameClick) {
-      lastClicked = null;
-
+      // Case 2: Clicked the same image again → Restore central containers
       for (let j = 0; j < middleContainers.length; j++) {
         middleContainers[j].classList.remove('hidden');
+        middleContainers[j].classList.add('show');
       }
 
       zonaiDetail.classList.remove('show');
       zonaiDetail.classList.add('hidden');
+
+      lastClicked = null;
       return;
-    } else {
-      lastClicked = singleContainer;
     }
 
-    // Hide the middle column blocks
-    for (let j = 0; j < middleContainers.length; j++) {
-      middleContainers[j].classList.add('hidden');
+    // Extract the title and display the corresponding info
+    let titleElement = nowClicked.querySelector('h3');
+    if (titleElement) {
+      let title = titleElement.textContent.replace(/\s+/g, ' ').trim();
+      if (zonaiDetails[title]) {
+        zonaiTitle.innerText = title;
+        zonaiTitle.style.color = zonaiDetails[title].color;
+        zonaiInfo.innerText = zonaiDetails[title].info;
+        zonaiInfo.style.color = zonaiDetails[title].color;
+      } else {
+        zonaiTitle.innerText = "";
+        zonaiInfo.innerText = "No details available.";
+        zonaiInfo.style.color = "black";
+      }
     }
-
-    // Set zonai detail content
-    zonaiTitle.innerText = title;
-
-    if (detail && detail.info) {
-      zonaiInfo.innerText = detail.info;
-    } else {
-      zonaiInfo.innerText = "No details available.";
-    }
-
-    if (detail && detail.color) {
-      zonaiTitle.style.color = detail.color;
-      zonaiInfo.style.color = detail.color;
-    } else {
-      zonaiTitle.style.color = "#fff";
-      zonaiInfo.style.color = "#fff";
-    }
-
-    // Show the detail panel
-    zonaiDetail.classList.remove('hidden');
-    void zonaiDetail.offsetWidth; 
-    zonaiDetail.classList.add('show');
   });
 }
 
+// Back button: restores central images and hides the detail panel
 const backButton = document.getElementById('back-button');
-
-// Clicking the same image again or pressing the back button restores the central images and hides the details.
 backButton.addEventListener('click', (e) => {
   e.preventDefault();
 
-  // Show the middle column blocks
   for (let i = 0; i < middleContainers.length; i++) {
     middleContainers[i].classList.remove('hidden');
+    middleContainers[i].classList.add('show');
   }
 
-  // Hide the detail panel
   zonaiDetail.classList.remove('show');
   zonaiDetail.classList.add('hidden');
 
-  // Reset state
   lastClicked = null;
 });
 
-// When the user scrolls the page, hide the zonai detail panel
-scrollSnapper.addEventListener('scroll', () => {
+// Hide the detail panel when scrolling
+scrollSnapper.addEventListener('wheel', (e) => {
   if (!zonaiDetail.classList.contains('hidden')) {
     zonaiDetail.classList.remove('show');
     zonaiDetail.classList.add('hidden');
+
     for (let i = 0; i < middleContainers.length; i++) {
       middleContainers[i].classList.remove('hidden');
+      middleContainers[i].classList.add('show');
     }
+
     lastClicked = null;
   }
 });

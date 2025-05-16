@@ -263,96 +263,91 @@ When defeated, they drop a horn with bone fragments and eerie energy. Fusing it 
 const allWeaponContainers = document.querySelectorAll('.single-weapon-container');
 const middleContainers = document.querySelectorAll('.middle-column');
 let lastClicked = null;
+
+// Make sure all containers are visible initially
 for (let i = 0; i < allWeaponContainers.length; i++) {
-  let singleContainer = allWeaponContainers[i];
+  allWeaponContainers[i].classList.remove('hidden');
+  allWeaponContainers[i].classList.add('show');
+}
 
-  singleContainer.addEventListener('click', function () {
-    let titleElement = singleContainer.querySelector('h3');
-    let title;
+// Add click events to each Weapon container
+for (let i = 0; i < allWeaponContainers.length; i++) {
+  let singleWeaponContainer = allWeaponContainers[i];
 
-    if (titleElement) {
-      title = titleElement.innerText;
+  singleWeaponContainer.addEventListener('click', (e) => {
+    let nowClicked = singleWeaponContainer;
+
+    if (nowClicked !== lastClicked) {
+      // Case 1: Clicked a different image → Hide central containers
+      for (let j = 0; j < middleContainers.length; j++) {
+        middleContainers[j].classList.add('hidden');
+        middleContainers[j].classList.remove('show');
+      }
+
+      // Show detail panel
+      weaponDetail.classList.remove('hidden');
+      weaponDetail.classList.add('show');
+
+      lastClicked = nowClicked;
     } else {
-      title = null;
-    }
-
-    let detail = weaponDetails[title];
-
-    let isSameClick = false;
-    if (lastClicked === singleContainer) {
-      isSameClick = true;
-    }
-
-    if (isSameClick) {
-      lastClicked = null;
-
+      // Case 2: Clicked the same image again → Restore central containers
       for (let j = 0; j < middleContainers.length; j++) {
         middleContainers[j].classList.remove('hidden');
+        middleContainers[j].classList.add('show');
       }
 
       weaponDetail.classList.remove('show');
       weaponDetail.classList.add('hidden');
+
+      lastClicked = null;
       return;
-    } else {
-      lastClicked = singleContainer;
     }
 
-    // Hide the middle column blocks
-    for (let j = 0; j < middleContainers.length; j++) {
-      middleContainers[j].classList.add('hidden');
+    // Extract the title and display the corresponding info
+    let titleElement = nowClicked.querySelector('h3');
+    if (titleElement) {
+      let title = titleElement.textContent.replace(/\s+/g, ' ').trim();
+      if (weaponDetails[title]) {
+        weaponTitle.innerText = title;
+        weaponTitle.style.color = weaponDetails[title].color;
+        weaponInfo.innerText = weaponDetails[title].info;
+        weaponInfo.style.color = weaponDetails[title].color;
+      } else {
+        weaponTitle.innerText = "";
+        weaponInfo.innerText = "No details available.";
+        weaponInfo.style.color = "black";
+      }
     }
-
-    // Set weapon detail content
-    weaponTitle.innerText = title;
-
-    if (detail && detail.info) {
-      weaponInfo.innerText = detail.info;
-    } else {
-      weaponInfo.innerText = "No details available.";
-    }
-
-    if (detail && detail.color) {
-      weaponTitle.style.color = detail.color;
-      weaponInfo.style.color = detail.color;
-    } else {
-      weaponTitle.style.color = "#fff";
-      weaponInfo.style.color = "#fff";
-    }
-
-    // Show the detail panel
-    weaponDetail.classList.remove('hidden');
-    void weaponDetail.offsetWidth; 
-    weaponDetail.classList.add('show');
   });
 }
 
+// Back button: restores central images and hides the detail panel
 const backButton = document.getElementById('back-button');
-
-// Clicking the same image again or pressing the back button restores the central images and hides the details.
 backButton.addEventListener('click', (e) => {
   e.preventDefault();
 
-  // Show the middle column blocks
   for (let i = 0; i < middleContainers.length; i++) {
     middleContainers[i].classList.remove('hidden');
+    middleContainers[i].classList.add('show');
   }
 
-  // Hide the detail panel
   weaponDetail.classList.remove('show');
   weaponDetail.classList.add('hidden');
 
-  // Reset state
   lastClicked = null;
 });
 
-// When the user scrolls the page, hide the weapon detail panel
-scrollSnapper.addEventListener('scroll', () => {
+// Hide the detail panel when scrolling
+scrollSnapper.addEventListener('wheel', (e) => {
   if (!weaponDetail.classList.contains('hidden')) {
     weaponDetail.classList.remove('show');
     weaponDetail.classList.add('hidden');
+
     for (let i = 0; i < middleContainers.length; i++) {
       middleContainers[i].classList.remove('hidden');
+      middleContainers[i].classList.add('show');
     }
+
     lastClicked = null;
   }
 });
