@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyrule Compass - homepage</title>
+  <link rel="stylesheet" href="CSS/homepage.css">
+  <script src="JAVASCRIPT/homepage.js" async></script>
+  <script src="JAVASCRIPT/shared.js" async></script>
+</head>
+
+<body>
+  <!-- Top Red Header Navigation Bar -->
+  <header class="main-header">
+    <div class="logo-left">
+      Nintendo
+      <div class="menu-container">
+        <span id="menu-toggle" class="menu-toggle">Menu</span>
+        <div id="dropdown-menu" class="dropdown-menu">
+          <a href="INDEX.html">Homepage</a>
+          <a href="HTML/enemy.html">Enemy</a>
+          <a href="HTML/weapon.html">Weapon</a>
+          <a href="HTML/zonai.html">Zonai</a>
+          <a href="HTML/skill.html">Skill</a>
+          <a href="HTML/character.html">Character</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
+
+    <div class="header-links">
+      <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
+      <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
+    </div>
+  </header>
+
+  <!-- Scrollable container wrapping all sections -->
+  <div class="scroll-snapper">
+    
+    <!-- Section one, including background homepage animation and audio controlling button-->
+    <section class="section">
+      <div class="section-content">
+        <figure class="video-wrapper">
+          <video autoplay muted loop playsinline class="background-video" id="main-theme">
+            <source src="PICTURES/Homepage/homepage_animation.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </figure>
+
+        <button id="unmuted-btn1" class="unmuted-btn">🔊 Unmuted</button>
+        <button id="muted-btn1" class="muted-btn">🔇 muted</button>
+      </div>
+    </section>
+
+    <!-- Section two, including IGN video and desciption -->
+    <section class="section section2-bg">
+
+      <article class="section2-content">
+
+        <!-- IGN Video button -->
+        <button id="playVideoBtn" class="play-video-btn">
+          <img src="https://i.ytimg.com/vi/ZdVO_fYoF5g/hqdefault.jpg" alt="Tears of the Kingdom Review">
+        </button>
+
+        <!-- IGN Introduction -->
+        <div class="ign-description">
+          Tears of the Kingdom is an unfathomable follow-up, expanding a world that already felt full beyond expectation and raising the bar ever higher into the clouds. &mdash; <cite>IGN</cite>
+        </div>
+
+        <!-- Ratings from various medias -->
+        <figure>
+          <img src="PICTURES/Homepage/ratings.png" alt="Ratings" class="ratings-img">
+        </figure>
+
+        <p class="ign-summary">
+          Tears of the Kingdom has received unanimous high praise from major media outlets,<br>
+          earning near-perfect scores as a legendary masterpiece.
+        </p>
+
+      </article>
+
+      <!-- Video Popup Modal -->
+      <div id="videoModal" class="video-modal">
+        <iframe id="youtubePlayer" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <button onclick="closeVideo()" class="close-video-btn" aria-label="Close video">&times;</button>
+      </div>
+    </section>
+
+    <!-- Section three, six zelda TOTK videos for beginners from youtube -->
+    <section class="section section3-bg">
+      <div class="section3-content">
+        <ul class="video-grid">
+          
+          <!-- All the list items containing videos -->
+          <li class="video-item">
+            <figure>
+              <button class="play-video-btn" data-video-id="l_Hl1IDSTlI">
+                <img src="https://i.ytimg.com/vi/l_Hl1IDSTlI/hqdefault.jpg" alt="Tears of the Kindom | PRO TIPS">
+              </button>
+              <figcaption class="video-title">Tears of the Kindom | PRO TIPS</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <button class="play-video-btn" data-video-id="NUXl7Z059DI">
+                <img src="https://i.ytimg.com/vi/NUXl7Z059DI/hqdefault.jpg" alt="17 Things To Do First">
+              </button>
+              <figcaption class="video-title">17 Things To Do First</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <button class="play-video-btn" data-video-id="nsJbdggGyM0">
+                <img src="https://i.ytimg.com/vi/nsJbdggGyM0/hqdefault.jpg" alt="15 Early Game Tips & Secrets">
+              </button>
+              <figcaption class="video-title">15 Early Game Tips & Secrets</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <button class="play-video-btn" data-video-id="bzxgabpUBnM">
+                <img src="https://i.ytimg.com/vi/bzxgabpUBnM/hqdefault.jpg" alt="42 Things you Didn’t know">
+              </button>
+              <figcaption class="video-title">42 Things You Didn’t Know About Zelda TotK</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <button class="play-video-btn" data-video-id="DdZAnwY9ktk">
+                <img src="https://i.ytimg.com/vi/DdZAnwY9ktk/hqdefault.jpg" alt="183 Tips & Tricks">
+              </button>
+              <figcaption class="video-title">183 Tips & Tricks to Make Life Easier</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <button class="play-video-btn" data-video-id="l3m6k8-4kSk">
+                <img src="https://i.ytimg.com/vi/l3m6k8-4kSk/hqdefault.jpg" alt="30 Secrets">
+              </button>
+              <figcaption class="video-title">30 Secrets in Zelda TotK</figcaption>
+            </figure>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- Video Modal for poping up videos  -->
+    <div id="videoModal" class="video-modal">
+      <iframe id="youtubePlayer" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <button onclick="closeVideo()" class="close-video-btn">&times;</button>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -4,61 +4,79 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hyrule Compass - Zonai</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap" rel="stylesheet">
-  <!-- Merge with weapon.css -->
   <link rel="stylesheet" href="../CSS/zonai.css">
+  <script src="../JAVASCRIPT/zonai.js" async></script>
+  <script src="../JAVASCRIPT/shared.js" async></script>
 </head>
 
 <body>
 
-<!-- Red header/menu with buttons -->
-<header class="main-header">
-  <div class="logo-left">
-    Nintendo
-    <div class="menu-container">
-      <span id="menu-toggle" class="menu-toggle">Menu</span>
-      <div id="dropdown-menu" class="dropdown-menu">
-        <a href="homepage.html">Homepage</a>
-        <a href="enemy.html">Enemy</a>
-        <a href="weapon.html">Weapon</a>
-        <a href="#" class="active">Zonai</a>
-        <a href="skill.html">Skill</a>
-        <a href="character.html">Character</a>
-        <a href="story.html">Story</a>
+  <!-- Top Red Header Navigation Bar -->
+  <header class="main-header">
+    <div class="logo-left">
+      Nintendo
+      <div class="menu-container">
+        <span id="menu-toggle" class="menu-toggle">Menu</span>
+        <div id="dropdown-menu" class="dropdown-menu">
+          <a href="../INDEX.html">Homepage</a>
+          <a href="enemy.html">Enemy</a>
+          <a href="weapon.html">Weapon</a>
+          <a href="#" class="active">Zonai</a>
+          <a href="skill.html">Skill</a>
+          <a href="character.html">Character</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
+    <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
 
-  <div class="header-links">
-    <button id="animation-btn-1" class="media-btn pause-btn" title="Pause"></button>
-    <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
-    <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
-  </div>
-</header>
+    <div class="header-links">
+      <button id="animation-btn-1" class="media-btn pause-btn" title="Pause"></button>
+      <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
+      <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
+    </div>
+  </header>
 
+  <!-- Scrollable container wrapping all sections -->
+  <div class="scroll-snapper">
 
+    <!-- Section one, including the encyclopedia animation background -->
+    <section class="section" style="background-image: url('../PICTURES/Zonai/carnatio.jpg');">
+      <div class="section-content">
+        <div class="encyclopedia-animation-container">
+          <div class="encyclopedia-animation-window">
+            <div class="encyclopedia-animation-player" id="animation-player-1">
+              <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
+              <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
+              <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
+              <img src="../PICTURES/Zonai/4.jpg" alt="Zonai 4">
+              <img src="../PICTURES/Zonai/5.jpg" alt="Zonai 5">
+              <!-- Duplication -->
+              <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
+              <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
+              <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
+              <img src="../PICTURES/Zonai/4.jpg" alt="Zonai 4">
+              <img src="../PICTURES/Zonai/5.jpg" alt="Zonai 5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Scrollable container wrapping all sections -->
-<div class="scroll-snapper">
-
-  <!-- Section one -->
-  <section class="section" style="background-image: url('../PICTURES/Zonai/carnatio.jpg');">
-    <div class="section-content">
-      
-      <!-- Encyclopedia-style animation as background -->
-      <div class="encyclopedia-animation-container">
+    <!-- Section two, including background animation and six zonai devices(images with description) -->
+    <section id="section2" class="section">
+      <!-- Container for animation background with blur effect -->
+      <div class="encyclopedia-animation-container blur-background">
+        <!-- Defines the visible animation viewport/window -->
         <div class="encyclopedia-animation-window">
-          <div class="encyclopedia-animation-player" id="animation-player-1">
+          <!-- Animation player: horizontally scrolling image loop -->
+          <div class="encyclopedia-animation-player" id="animation-player-2">
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
             <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
             <img src="../PICTURES/Zonai/4.jpg" alt="Zonai 4">
             <img src="../PICTURES/Zonai/5.jpg" alt="Zonai 5">
-            
-            <!-- Duplicate the pictures-->
+            <!-- Duplication -->
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
             <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
@@ -68,133 +86,105 @@
         </div>
       </div>
 
-    </div>
-  </section>
+      <ul class="zonai-layout">
+        <!-- Zonai Fan -->
+        <li class="single-zonai-container">
+          <figure class="zonai-image-controller">
+            <img src="../PICTURES/Zonai/6.jpg" alt="Zonai Fan">
+            <figcaption class="zonai-text">
+              <h3>Zonai Fan</h3>
+              <p>Type: Utility Device</p>
+              <p>Function: Produces strong airflow</p>
+              <p>Use: Propulsion, lift, and cooling</p>
+              <p>Location: Zonai Dispenser Devices</p>
+            </figcaption>
+          </figure>
+        </li>
 
-  <!-- Section two -->
-  <section id="section2" class="section">
+        <!-- Zonai Tracking Platform -->
+        <!-- Middle column is used to hide images at middle(desktop) when a zonai image is clicked, 
+         in mobile mode all the images would be hidden when a zonai image is clicked -->
+        <li class="single-zonai-container middle-column">
+          <figure class="zonai-image-controller">
+            <img src="../PICTURES/Zonai/7.jpg" alt="Tracking Platform Vehicle">
+            <figcaption class="zonai-text">
+              <h3>Tracking Platform Vehicle</h3>
+              <p>Type: Mobility Unit</p>
+              <p>Function: Follows pre-set paths</p>
+              <p>Use: Auto-navigation and patrol</p>
+              <p>Components: Sled + Steering Stick</p>
+            </figcaption>
+          </figure>
+        </li>
 
-  <!-- Encyclopedia-style animation as background, the background is blurred-->
-  <div class="encyclopedia-animation-container blur-background">
-    <div class="encyclopedia-animation-window">
-      <div class="encyclopedia-animation-player" id="animation-player-2">
-        <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
-        <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
-        <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
-        <img src="../PICTURES/Zonai/4.jpg" alt="Zonai 4">
-        <img src="../PICTURES/Zonai/5.jpg" alt="Zonai 5">
-        
-        <!-- Duplicate the pictures-->
-        <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
-        <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
-        <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
-        <img src="../PICTURES/Zonai/4.jpg" alt="Zonai 4">
-        <img src="../PICTURES/Zonai/5.jpg" alt="Zonai 5">
+        <!-- Zonai Wing -->
+        <li class="single-zonai-container">
+          <figure class="zonai-image-controller">
+            <img src="../PICTURES/Zonai/8.jpg" alt="Zonai Wing">
+            <figcaption class="zonai-text">
+              <h3>Zonai Wing</h3>
+              <p>Type: Glider</p>
+              <p>Function: Glides through air</p>
+              <p>Use: Aerial travel and descent</p>
+              <p>Location: Sky Islands and Dispensers</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <!-- Zonai Hover Stone -->
+        <li class="single-zonai-container">
+          <figure class="zonai-image-controller">
+            <img src="../PICTURES/Zonai/9.jpg" alt="Zonai Hover Stone">
+            <figcaption class="zonai-text">
+              <h3>Zonai Hover Stone</h3>
+              <p>Type: Floating Platform</p>
+              <p>Function: Suspends objects in air</p>
+              <p>Use: Stable aerial building support</p>
+              <p>Location: Zonai Device Dispensers</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <!-- Zonai Shock Emitter -->
+        <li class="single-zonai-container middle-column">
+          <figure class="zonai-image-controller">
+            <img src="../PICTURES/Zonai/10.jpg" alt="Zonai Shock Emitter">
+            <figcaption class="zonai-text">
+              <h3>Zonai Shock Emitter</h3>
+              <p>Type: Combat Device</p>
+              <p>Function: Emits continuous electricity</p>
+              <p>Use: Defense and enemy stunning</p>
+              <p>Shape: Dragon Head</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <!-- Zonai Big Wheel -->
+        <li class="single-zonai-container">
+          <figure class="zonai-image-controller">
+            <img src="../PICTURES/Zonai/11.jpg" alt="Zonai Big Wheel">
+            <figcaption class="zonai-text">
+              <h3>Zonai Big Wheel</h3>
+              <p>Type: Mobility Component</p>
+              <p>Function: Rolls and carries builds</p>
+              <p>Use: Vehicles, crushers, speed carts</p>
+              <p>Location: Zonai Shrines & Dispensers</p>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+
+      <!-- Button for animation -->
+      <div class="buttons-in-all-sections">
+        <button id="animation-btn-2" class="media-btn pause-btn" title="Pause"></button>
       </div>
-    </div>
-  </div>
+    </section>
 
-    <div class="zonai-layout">
+    <!-- Section three, including background animation and ten other zonai devices -->
+    <section id="section3" class="section">
 
-      <!-- First row -->
-      <div class="single-zonai-container">
-        <div class="zonai-image-controller">
-          <img src="../PICTURES/Zonai/6.jpg" alt="Zonai Fan">
-        </div>
-        <div class="zonai-text">
-          <h3>Zonai Fan</h3>
-          <p>Type: Utility Device</p>
-          <p>Function: Produces strong airflow</p>
-          <p>Use: Propulsion, lift, and cooling</p>
-          <p>Location: Zonai Dispenser Devices</p>
-        </div>
-      </div>
-      
-      <div class="single-zonai-container middle-column">
-        <div class="zonai-image-controller">
-          <img src="../PICTURES/Zonai/7.jpg" alt="Tracking Platform Vehicle">
-        </div>
-        <div class="zonai-text">
-          <h3>Tracking Platform Vehicle</h3>
-          <p>Type: Mobility Unit</p>
-          <p>Function: Follows pre-set paths</p>
-          <p>Use: Auto-navigation and patrol</p>
-          <p>Components: Sled + Steering Stick</p>
-        </div>
-      </div>
-      
-      <div class="single-zonai-container">
-        <div class="zonai-image-controller">
-          <img src="../PICTURES/Zonai/8.jpg" alt="Zonai Wing">
-        </div>
-        <div class="zonai-text">
-          <h3>Zonai Wing</h3>
-          <p>Type: Glider</p>
-          <p>Function: Glides through air</p>
-          <p>Use: Aerial travel and descent</p>
-          <p>Location: Sky Islands and Dispensers</p>
-        </div>
-      </div>
-      
-
-      <!-- Second row -->
-    <div class="single-zonai-container">
-        <div class="zonai-image-controller">
-        <img src="../PICTURES/Zonai/9.jpg" alt="Zonai Hover Stone">
-        </div>
-        <div class="zonai-text">
-        <h3>Zonai Hover Stone</h3>
-        <p>Type: Floating Platform</p>
-        <p>Function: Suspends objects in air</p>
-        <p>Use: Stable aerial building support</p>
-        <p>Location: Zonai Device Dispensers</p>
-        </div>
-    </div>
-    
-    <div class="single-zonai-container middle-column">
-        <div class="zonai-image-controller">
-        <img src="../PICTURES/Zonai/10.jpg" alt="Zonai Shock Emitter">
-        </div>
-        <div class="zonai-text">
-        <h3>Zonai Shock Emitter</h3>
-        <p>Type: Combat Device</p>
-        <p>Function: Emits continuous electricity</p>
-        <p>Use: Defense and enemy stunning</p>
-        <p>Shape: Dragon Head</p>
-        </div>
-    </div>
-    
-    <div class="single-zonai-container">
-        <div class="zonai-image-controller">
-        <img src="../PICTURES/zonai/11.jpg" alt="Zonai Big Wheel">
-        </div>
-        <div class="zonai-text">
-        <h3>Zonai Big Wheel</h3>
-        <p>Type: Mobility Component</p>
-        <p>Function: Rolls and carries builds</p>
-        <p>Use: Vehicles, crushers, speed carts</p>
-        <p>Location: Zonai Shrines & Dispensers</p>
-        </div>
-    </div>
-  
-
-    <!-- Button that control encyclopedia-style animation -->
-    <div class="buttons-in-all-sections">
-      <button id="animation-btn-2" class="media-btn pause-btn" title="Pause"></button>
-    </div>
-
-    </div>
-  </section>
-
-
-
-  
-
-
-  <!-- Section 3 -->
-  <section id="section3" class="section">
-    <!-- Encyclopedia-style animation as background, the background is blurred-->
-    <div class="encyclopedia-animation-container blur-background">
+      <!-- Encyclopedia-style animation as background -->
+      <div class="encyclopedia-animation-container blur-background">
         <div class="encyclopedia-animation-window">
           <div class="encyclopedia-animation-player" id="animation-player-3">
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
@@ -202,8 +192,7 @@
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
             <img src="../PICTURES/Zonai/4.jpg" alt="Zonai 4">
             <img src="../PICTURES/Zonai/5.jpg" alt="Zonai 5">
-            
-            <!-- Duplicate the pictures-->
+            <!-- duplication -->
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
             <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
@@ -214,153 +203,161 @@
       </div>
 
       <div class="section-content">
-        <div class="zonai-layout">
-          <div class="single-zonai-container">
-            <div class="zonai-image-controller">
+        <ul class="zonai-layout">
+          
+          <!-- Zonai Steering Stick -->
+          <li class="single-zonai-container">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/12.jpg" alt="Zonai Steering Stick">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Steering Stick</h3>
-              <p>Type: Control Device</p>
-              <p>Function: Directs movement of vehicles</p>
-              <p>Use: Essential for precise driving</p>
-              <p>Location: Zonai Dispensers</p>
-            </div>
-          </div>
-      
-          <div class="single-zonai-container middle-column">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Steering Stick</h3>
+                <p>Type: Control Device</p>
+                <p>Function: Directs movement of vehicles</p>
+                <p>Use: Essential for precise driving</p>
+                <p>Location: Zonai Dispensers</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Spring -->
+          <li class="single-zonai-container middle-column">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/13.jpg" alt="Zonai Spring">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Spring</h3>
-              <p>Type: Kinetic Tool</p>
-              <p>Function: Launches objects upward</p>
-              <p>Use: Jump pads, puzzle solving</p>
-              <p>Location: Zonai Shrines & Devices</p>
-            </div>
-          </div>
-      
-          <div class="single-zonai-container middle-column">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Spring</h3>
+                <p>Type: Kinetic Tool</p>
+                <p>Function: Launches objects upward</p>
+                <p>Use: Jump pads, puzzle solving</p>
+                <p>Location: Zonai Shrines & Devices</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Stabilizer -->
+          <li class="single-zonai-container middle-column">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/14.jpg" alt="Zonai Stabilizer">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Stabilizer</h3>
-              <p>Type: Balancing Tool</p>
-              <p>Function: Keeps platforms upright</p>
-              <p>Use: Prevents tipping and rolling</p>
-              <p>Alias: “Zonai Roly-Poly”</p>
-            </div>
-          </div>
-      
-          <div class="single-zonai-container middle-column">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Stabilizer</h3>
+                <p>Type: Balancing Tool</p>
+                <p>Function: Keeps platforms upright</p>
+                <p>Use: Prevents tipping and rolling</p>
+                <p>Alias: “Zonai Roly-Poly”</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Balloon -->
+          <li class="single-zonai-container middle-column">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/15.jpg" alt="Zonai Balloon">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Balloon</h3>
-              <p>Type: Lifting Tool</p>
-              <p>Function: Ascends when heated</p>
-              <p>Use: Combine with flame emitter</p>
-              <p>Location: Sky Island Devices</p>
-            </div>
-          </div>
-      
-          <div class="single-zonai-container">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Balloon</h3>
+                <p>Type: Lifting Tool</p>
+                <p>Function: Ascends when heated</p>
+                <p>Use: Combine with flame emitter</p>
+                <p>Location: Sky Island Devices</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Light -->
+          <li class="single-zonai-container">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/16.jpg" alt="Zonai Light">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Light</h3>
-              <p>Type: Illumination Device</p>
-              <p>Function: Emits strong white light</p>
-              <p>Use: Explore caves and depths</p>
-              <p>Power: Battery-powered</p>
-            </div>
-          </div>
-      
+              <figcaption class="zonai-text">
+                <h3>Zonai Light</h3>
+                <p>Type: Illumination Device</p>
+                <p>Function: Emits strong white light</p>
+                <p>Use: Explore caves and depths</p>
+                <p>Power: Battery-powered</p>
+              </figcaption>
+            </figure>
+          </li>
 
-          <div class="single-zonai-container">
-            <div class="zonai-image-controller">
+          <!-- Zonai Sled -->
+          <li class="single-zonai-container">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/17.jpg" alt="Zonai Sled">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Sled</h3>
-              <p>Type: Platform Vehicle</p>
-              <p>Function: Slides smoothly on ground</p>
-              <p>Use: Foundation for mobile builds</p>
-              <p>Surface: Ice, sand, grass</p>
-            </div>
-          </div>
-          
-          <div class="single-zonai-container middle-column">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Sled</h3>
+                <p>Type: Platform Vehicle</p>
+                <p>Function: Slides smoothly on ground</p>
+                <p>Use: Foundation for mobile builds</p>
+                <p>Surface: Ice, sand, grass</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Cart -->
+          <li class="single-zonai-container middle-column">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/18.jpg" alt="Zonai Cart">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Cart</h3>
-              <p>Type: Wheeled Base</p>
-              <p>Function: Rolls steadily on tracks</p>
-              <p>Use: Transport, rail navigation</p>
-              <p>Compatible with: Fan, Steering Stick</p>
-            </div>
-          </div>
-          
-          <div class="single-zonai-container middle-column">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Cart</h3>
+                <p>Type: Wheeled Base</p>
+                <p>Function: Rolls steadily on tracks</p>
+                <p>Use: Transport, rail navigation</p>
+                <p>Compatible with: Fan, Steering Stick</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Rocket -->
+          <li class="single-zonai-container middle-column">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/19.jpg" alt="Zonai Rocket">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Rocket</h3>
-              <p>Type: Burst Propulsion</p>
-              <p>Function: Launches objects forward</p>
-              <p>Use: One-time high-speed boost</p>
-              <p>Great for: Lifting or ramming</p>
-            </div>
-          </div>
-          
-          <div class="single-zonai-container middle-column">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Rocket</h3>
+                <p>Type: Burst Propulsion</p>
+                <p>Function: Launches objects forward</p>
+                <p>Use: One-time high-speed boost</p>
+                <p>Great for: Lifting or ramming</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Small Wheel -->
+          <li class="single-zonai-container middle-column">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/20.jpg" alt="Zonai Small Wheel">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Small Wheel</h3>
-              <p>Type: Compact Wheel</p>
-              <p>Function: Enables fast movement</p>
-              <p>Use: Lightweight vehicles</p>
-              <p>Speed: High on flat surfaces</p>
-            </div>
-          </div>
-          
-          <div class="single-zonai-container">
-            <div class="zonai-image-controller">
+              <figcaption class="zonai-text">
+                <h3>Zonai Small Wheel</h3>
+                <p>Type: Compact Wheel</p>
+                <p>Function: Enables fast movement</p>
+                <p>Use: Lightweight vehicles</p>
+                <p>Speed: High on flat surfaces</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Zonai Cannon -->
+          <li class="single-zonai-container">
+            <figure class="zonai-image-controller">
               <img src="../PICTURES/Zonai/21.jpg" alt="Zonai Cannon">
-            </div>
-            <div class="zonai-text">
-              <h3>Zonai Cannon</h3>
-              <p>Type: Combat Artillery</p>
-              <p>Function: Fires explosive blasts</p>
-              <p>Use: Offense against enemies</p>
-              <p>Activation: Battery or impact</p>
-            </div>
-          </div>
-          
-    
+              <figcaption class="zonai-text">
+                <h3>Zonai Cannon</h3>
+                <p>Type: Combat Artillery</p>
+                <p>Function: Fires explosive blasts</p>
+                <p>Use: Offense against enemies</p>
+                <p>Activation: Battery or impact</p>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+
+        <!-- Button for playing or pause animation-->
+        <div class="buttons-in-all-sections">
+          <button id="animation-btn-3" class="media-btn pause-btn" title="Pause"></button>
+        </div>
       </div>
+    </section>
 
-    <!-- Button that control encyclopedia-style animation -->
-    <div class="buttons-in-all-sections">
-      <button id="animation-btn-3" class="media-btn pause-btn" title="Pause"></button>
-    </div>
 
-    </div>
-  </section>
-
-  <!-- Section 4 -->
-  <section id="section4" class="section">
-    <!-- Encyclopedia-style animation as background, the background is blurred-->
-    <div class="encyclopedia-animation-container blur-background">
+    <!-- Section four, including background animation and six youtube videos -->
+    <section id="section4" class="section">
+      <!-- Encyclopedia-style animation as background -->
+      <div class="encyclopedia-animation-container blur-background">
         <div class="encyclopedia-animation-window">
           <div class="encyclopedia-animation-player" id="animation-player-4">
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
@@ -368,8 +365,7 @@
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
             <img src="../PICTURES/Zonai/4.jpg" alt="Zonai 4">
             <img src="../PICTURES/Zonai/5.jpg" alt="Zonai 5">
-            
-            <!-- Duplicate the pictures-->
+            <!-- Duplication -->
             <img src="../PICTURES/Zonai/1.jpg" alt="Zonai 1">
             <img src="../PICTURES/Zonai/2.jpg" alt="Zonai 2">
             <img src="../PICTURES/Zonai/3.jpg" alt="Zonai 3">
@@ -379,58 +375,68 @@
         </div>
       </div>
 
-    <div class="zonai-vedios">
+      <section class="zonai-vedios">
+        <h1>How to Unlock the Full Potential of Zonai Devices?</h1>
 
-      <h1>How to Unlock the full potential of Zonai Devices?</h1>
+        <ul class="video-grid">
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/Wy45-fbtPUU" allowfullscreen></iframe>
+              <figcaption>Zelda Tears of the Kingdom How to Use Zonai Devices</figcaption>
+            </figure>
+          </li>
 
-      <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Wy45-fbtPUU" allowfullscreen></iframe>
-          <div>Zelda Tears of the Kingdom How to Use Zonai Devices</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/5QeEWl57BNw" allowfullscreen></iframe>
-          <div>TOTK All Zonai Devices Explained and Dispenser Locations Build Guide</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/PaJHRg46OU8" allowfullscreen></iframe>
-          <div>How Zonai Devices WORK in Tears of the Kingdom</div>
-        </div>
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/5QeEWl57BNw" allowfullscreen></iframe>
+              <figcaption>TOTK All Zonai Devices Explained and Dispenser Locations Build Guide</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/PaJHRg46OU8" allowfullscreen></iframe>
+              <figcaption>How Zonai Devices WORK in Tears of the Kingdom</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/uDG2gx4sDEo" allowfullscreen></iframe>
+              <figcaption>Where to Find EACH Zonai Device (description)</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/JqWKpd9Rp6E" allowfullscreen></iframe>
+              <figcaption>How to Increase ZONAI ENERGY CELL in Zelda TOTK</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/5DoyyRVQUs4" allowfullscreen></iframe>
+              <figcaption>Best Device Dispenser Locations</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Button that controls encyclopedia animation -->
+      <div class="buttons-in-all-sections">
+        <button id="animation-btn-4" class="media-btn pause-btn" title="Pause"></button>
       </div>
-      
-      <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/uDG2gx4sDEo" allowfullscreen></iframe>
-          <div>Where to Find EACH Zonai Device (description)</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/JqWKpd9Rp6E" allowfullscreen></iframe>
-          <div>How to Increase ZONAI ENERGY CELL in Zelda TOTK</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/5DoyyRVQUs4" allowfullscreen></iframe>
-          <div>Best Device Dispenser Locations</div>
-        </div>
-      </div>
-      
+    </section>
+
+    <!-- Hidden detail panel that appears when a Zonai device is selected, showing its name, description, and a back button -->
+    <div id="zonai-detail" class="zonai-detail hidden">
+      <h2 id="zonai-title"></h2>
+      <p id="zonai-info"></p>
+      <a href="#" id="back-button" style="display: block; margin-top: 20px; text-decoration: underline; color: black; cursor: pointer;">Back</a>
     </div>
-
-    <!-- Button that control encyclopedia-style animation -->
-    <div class="buttons-in-all-sections">
-      <button id="animation-btn-4" class="media-btn pause-btn" title="Pause"></button>
-    </div>
-
-  </section>
-
-
-  <div id="zonai-detail" class="zonai-detail hidden">
-    <h2 id="zonai-title"></h2>
-    <p id="zonai-info"></p>
-    <a href="#" id="back-button" style="display: block; margin-top: 20px; text-decoration: underline; color: black; cursor: pointer;">Back</a>
+  
   </div>
-
-<!-- External JS -->
-<script src="../JAVASCRIPT/zonai.js"></script>
 
 </body>
 </html>

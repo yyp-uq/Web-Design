@@ -1,440 +1,736 @@
-/* Reset */
+/* Reset all the elements to ensure a consistent layout behavior */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+
+/* Full-screen with a black background, white bold text, using Times New Roman font */
+html, body {
+  height: 100%;
+  font-family: 'Times New Roman', cursive;
+  background-color: white;
+  color: white;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+/* scroll snapping container */
+.scroll-snapper {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 0px;
+  scroll-behavior: smooth;
+}
   
-  html, body {
-    height: 100%;
-    font-family: 'Caveat', cursive;
-    background-color: white;
-    color: white;
-    scroll-behavior: smooth;
+/* Every section can be scroll snapping */
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: 
+              url('../PICTURES/Zonai/carnatio.jpg') center center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Header */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+  padding: 0px 20px;
+  z-index: 10;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+.main-header * {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.logo-left {
+  font-weight: bold;
+}
+
+.header-title {
+  font-style: italic;
+}
+
+.header-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Section content */
+.section-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* background animation container */
+.encyclopedia-animation-container {
+  width: 100%;
+  height: 880px;
+  background: url('../PICTURES/Zonai/carnatio.jpg') no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animation display window: defines the visible area for scrolling animation */
+.encyclopedia-animation-window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Actual player controlling animation, scroll the weapon pictures infinitely */
+.encyclopedia-animation-player {
+  display: flex;
+  align-items: center;
+  animation: scroll 60s linear infinite;
+}
+
+
+.encyclopedia-animation-player img {
+  height: 880px;
+  width: auto;
+  margin-right: 20px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Scroll all the weapon pictures from right to left, which makes the moving animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Container contains all the zonai devices */
+.zonai-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 80px;
+  padding: 100px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Individual zonai container */
+.single-zonai-container {
+  width: 100%;
+  max-width: 180px;
+  min-height: 250px;
+  text-align: center;
+  transition: opacity 0.4s ease;
+  list-style: none;
+}
+
+/* Image wrapper for each zonai */
+.zonai-image-controller {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.zonai-image-controller img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.5s ease;
+  border-radius: 20px;
+}
+
+.zonai-image-controller img:hover {
+  transform: scale(1.1);
+}
+
+.zonai-text {
+  margin-top: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
+}
+
+/* Hide the zonai detail */
+.single-zonai-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.single-zonai-container.dimmed {
+  opacity: 0.3;
+  filter: grayscale(100%);
+  transition: opacity 0.3s ease;
+}
+
+/* Show the zonai detail */
+.zonai-detail {
+position: absolute;
+top: 52%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+font-family: 'Times New Roman', Times, serif;
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+z-index: 10;
+max-width: 30%;
+line-height: 1.6;
+font-size: 16px;
+transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Show the zonai detail */
+.zonai-detail.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  background: url('../PICTURES/Zonai/carnatio.jpg') center;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.zonai-detail * {
+  transition: opacity 0.5s ease;
+}
+
+/* Hide the zonai detail */
+.zonai-detail.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Back button at the bottom */
+#back-button {
+  text-decoration: underline;
+  color: black;
+  font-size: 16px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+#back-button:hover {
+  opacity: 0.8;
+}
+
+/* Header right links container */
+.header-links {
+  display: flex;
+  align-items: center;  
+}
+
+/* play/pause button at header */
+.media-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: red;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* play -> pause style and vice versa */
+.pause-btn::before,
+.pause-btn::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 4px;
+  height: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pause-btn::before {
+  left: 9px;
+}
+
+.pause-btn::after {
+  left: 19px;
+}
+
+
+.play-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid white;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+/* Container for the dropdown menu button */
+.menu-container {
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+}
+
+/* Menu toggle button */
+.menu-toggle {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Dropdown menu that appears when toggled */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.9);  
+  border-radius: 10px;                  
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;       
+}
+
+.dropdown-menu a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+
+.dropdown-menu a:hover {
+  color: #D4AF37;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-menu a.active {
+  color: black;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Background animation becomes blur in section 2,3,4 */
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(8px); 
+  z-index: 0;
+  pointer-events: none; 
+}
+
+/* Section 2's zonai grid wrapper */
+#section2 .zonai-layout {
+  position: relative;
+  z-index: 1;
+}
+
+/* buttons in section 2,3,4 */
+.buttons-in-all-sections {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+}
+
+#toggle-section2-btn.media-btn {
+  position: relative;
+}
+
+/* Section 3 zonai grid layout */
+#section3 .zonai-layout {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 90px 90px;
+  justify-items: center;
+  padding: 40px 0;
+}
+
+/* Video section container (section 4) */
+.zonai-vedios {
+  position: relative;
+  z-index: 10;
+  padding: 40px;
+  margin-top: 120px;
+  pointer-events: auto; 
+}
+
+/* Caption under the video */
+.video-item figcaption {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: black;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 10px;
+}
+
+/* Video grid container */
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;          
+  gap: 40px;
+  justify-content: center;   
+  margin-bottom: 40px;
+}
+
+/* Single video container */
+.video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px; 
+}
+
+/* Embedded YouTube video frame */
+.video-item iframe {
+  width: 100%;
+  height: 225px;
+  border-radius: 12px;
+}
+
+.zonai-vedios h1 {
+  font-size: 2.8rem;      
+  text-align: center;     
+  color: black;           
+  margin-bottom: 40px;     
+}
+  
+/* Mobile & Tablet mode */
+@media (max-width: 1024px) {
+  /* Header*/
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 2vh 3vw;
+    height: 8vh;
+  }
+
+  /* Vanish Nintendo logo */
+  .logo-left {
+    font-size: 0;
+  }
+
+  .menu-toggle {
+    font-size: 4vw;
+  }
+
+  .header-title {
+    white-space: nowrap;
     overflow: hidden;
-    font-size: 100%;
-    font-weight: bold;
+    text-overflow: ellipsis;
+    font-size: 4vw;
+    margin: 0 2vw;
   }
-  
-  /* Scroll Snap */
-  .scroll-snapper {
+
+  .header-links {
+    display: flex;
+    gap: 1vw;
+  }
+
+  .header-links a {
+    font-size: 3vw;
+  }
+
+  /* Background animation */
+  .encyclopedia-animation-container {
     height: 100vh;
-    width: 100%;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    overscroll-behavior: contain;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  
-  /* Sections */
+
+  .encyclopedia-animation-window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .encyclopedia-animation-player {
+    display: flex;
+    height: 100%;
+    animation: scroll-horizontal 60s linear infinite;
+  }
+
+  .encyclopedia-animation-player img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    margin-right: 3vw;
+    pointer-events: none;
+  }
   .section {
     scroll-snap-align: start;
     height: 100vh;
     display: flex;
     flex-direction: column;
     position: relative;
-    background: 
-                url('../PICTURES/carnatio.jpg') center center/cover no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-image: url('../PICTURES/Zonai/white.png');
+    background-repeat: repeat-y;
+    background-position: top center;
+    background-size: auto 100%;
+    background-attachment: scroll;
   }
-  
-  /* Header */
-  .main-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: red;
-    padding: 0px 20px;
-    z-index: 10;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  
-  .main-header * {
-    font-family: Arial, sans-serif;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .logo-left {
-    font-weight: bold;
-  }
-  
-  .header-title {
-    font-style: italic;
-  }
-  
-  .header-links a {
-    margin-left: 20px;
-    color: white;
-    text-decoration: none;
-  }
-  
-  /* Section content */
-  .section-content {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding-top: 60px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  
-  /* Buttons */
-  .menu-btn, .option-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .menu-btn:hover, .option-btn:hover {
-    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
-    animation: glow 1s infinite alternate;
-  }
-  
-  @keyframes glow {
-    from { box-shadow: 0 0 10px 2px rgba(175, 223, 239, 0.5); }
-    to { box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9); }
-  }
-  
-  
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  /* Weapon Scroll */
-  .encyclopedia-animation-container {
-    width: 100%;
-    height: 880px;
-    background: url('../PICTURES/carnatio.jpg') no-repeat;
-    background-size: 100% 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .encyclopedia-animation-window {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-  
-  .encyclopedia-animation-player {
-    display: flex;
-    align-items: center;
-    animation: scroll 30s linear infinite;
-  }
-  
-  
-  .encyclopedia-animation-player img {
-    height: 880px;
-    width: auto;
-    margin-right: 20px;
-    object-fit: contain;
-    pointer-events: none;
-  }
-  
+
+  /* zonai grid and image controller */
   .zonai-layout {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px 80px;
-    padding: 100px;
-    justify-items: center;
-    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vh 2vw;
+    padding: 5vh 3vw 6vh;
+    margin-top: 10vh;
   }
-  
+
   .single-zonai-container {
-    width: 100%;
-    max-width: 180px;
-    min-height: 250px;
-    text-align: center;
-    transition: opacity 0.4s ease;
+    max-width: 26vw;
+    min-height: 20vh;
   }
-  
-  
-  .zonai-image-controller {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 20px;
-  }
-  
+
   .zonai-image-controller img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: all 0.5s ease;
-    border-radius: 20px;
+    border-radius: 3vw;
   }
-  
-  .zonai-image-controller img:hover {
-    transform: scale(1.1);
+
+  /* Only show the first line of zonai attributes */
+  .zonai-text p:not(:first-of-type) {
+    display: none;
   }
-  
+
+  /* Text for zonai cards */
   .zonai-text {
-    margin-top: 10px;
-    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.5vw;
+  }
+
+  /* Section4 container for zonai videos */
+  .zonai-vedios {
+    padding: 5vh 4vw;     
+    margin-top: 10vh;      
+  }
+
+  .zonai-vedios h1 {
+    font-size: 5vw;       
+    margin-bottom: 4vh;   
+    text-align: center;
     color: black;
   }
-  
-  
-  .single-zonai-container.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
+
+  /* Vertical video stacking for mobile/tablet */
+  .video-grid {
+    flex-direction: column;
+    gap: 3vh;            
   }
-  
-  .single-zonai-container.hidden .zonai-image-controller,
-  .single-zonai-container.hidden .zonai-text {
-    visibility: hidden;
-    opacity: 0;
+
+  .video-item {
+    width: 100%;
+    max-width: 90vw;       
   }
-  
-  
-  .single-zonai-container.dimmed {
-    opacity: 0.3;
-    filter: grayscale(100%);
-    transition: opacity 0.3s ease;
+
+  /* Embedded YouTube iframe */
+  .video-item iframe {
+    height: auto;
+    aspect-ratio: 16/9;   
+    width: 100%;
+    border-radius: 2vw;
+    z-index: 1;
+    pointer-events: auto;
   }
-  
-  
+
+  .video-item div {
+    position: static;
+    font-size: 4vw;
+    margin-top: 2vh;
+    text-align: center;
+    color: black;
+  }
+
+  /* Popup for zonai item details */
   .zonai-detail {
+    width: 80vw;
+    height: 80vh;
+    max-width: 75vw;
+    max-height: 80vh;
+    font-size: 2.5vw;
+    line-height: 1.2;
+    padding: 4vw;
+    overflow-y: auto;
     position: absolute;
-    top: 52%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    z-index: 10;
-    pointer-events: auto;
-    max-width: 20%;
-    line-height: 1.6;
-    font-size: 16px;
+    background: white;
+    color: black;
+    border-radius: 3vw;
+    box-shadow: 0 0 2vw rgba(0,0,0,0.2);
   }
-  
-  .zonai-detail.show {
-    opacity: 1;
-  }
-  
-  .zonai-detail.hidden {
-    display: none;
-    pointer-events: none;
-  }
-  
+
+  /* Back button below popup */
   #back-button {
-    text-decoration: underline;
-    color: black;
-    font-size: 16px;
-    margin-top: 20px;
-    display: inline-block;
+    font-size: 3vw;
+    margin-top: 2vh;
   }
-  
-  #back-button:hover {
-    opacity: 0.8;
-  }
-  
-  /* Header right links container */
-  .header-links {
-    display: flex;
-    align-items: center;  
-  }
-  
-  
-  .media-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 2px solid white;
-    background-color: red;
-    cursor: pointer;
-    position: relative;
-    margin-right: 10px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-  
-  .pause-btn::before,
-  .pause-btn::after {
-    content: "";
-    position: absolute;
-    background-color: white;
-    width: 4px;
-    height: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .pause-btn::before {
-    left: 9px;
-  }
-  
-  .pause-btn::after {
-    left: 19px;
-  }
-  
-  
-  .play-btn::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 12px;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 12px solid white;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-  }
-  
-  
-  .menu-container {
-    display: inline-block;
-    position: relative;
-    margin-left: 15px;
-  }
-  
-  .menu-toggle {
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 120%;
-    left: 0;
-    background-color: rgba(255, 0, 0, 0.9);  
-    border-radius: 10px;                  
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    width: 140px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 100;       
-  }
-  
-  .dropdown-menu a {
-    padding: 8px 16px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-  }
-  
-  
-  .dropdown-menu a:hover {
-    color: #D4AF37;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-  }
-  
-  .dropdown-menu a.active {
-    color: black;
-  }
-  
-  .dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  
-  
-  .blur-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(8px); 
-    z-index: 0;
-    pointer-events: none; 
-  }
-  
-  
-  #section2 .zonai-layout {
-    position: relative;
-    z-index: 1;
-  }
-  
+
+  /* Top-right section control buttons */
   .buttons-in-all-sections {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 6vh;
+    right: 4vw;
     z-index: 20;
   }
-  
-  #toggle-section2-btn.media-btn {
-    position: relative;
+
+  /* Play/pause media button (circular) */
+  .media-btn {
+    width: 8vw;
+    height: 8vw;
+    right: -2vw;
   }
-  
-  
+
+  /* Pause button vertical bars */
+  .pause-btn::before,
+  .pause-btn::after {
+    width: 0.8vw;
+    height: 3vh;
+  }
+
+  .pause-btn::before { left: 2vw; }
+  .pause-btn::after { left: 4vw; }
+
+  /* Play triangle button */
+  .play-btn::before {
+    left: 2.5vw;
+    border-left: 3vw solid white;
+    border-top: 1.5vw solid transparent;
+    border-bottom: 1.5vw solid transparent;
+  }
+
+  /* Section3 grid layout: 3-3-3-1 structure */
   #section3 .zonai-layout {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 90px 90px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 1vh 2vw;
+    padding: 4vh 3vw 6vh;
     justify-items: center;
-    padding: 40px 0;
+    align-items: start;
+    margin-top: -3vh;
   }
-  
+
+  /* Center last item in the middle column */
+  #section3 .zonai-layout .single-zonai-container:last-child {
+    grid-column: 2 / 3;
+  }
+
+  /* Single zonai card layout */
+  #section3 .single-zonai-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 80vh;
+    margin-top: 0;
+  }
+
+  #section3 .zonai-text {
+    font-size: 2.4vw;
+    text-align: center;
+    margin-top: 2vh;
+  }
+
+  #section3 .zonai-detail {
+    font-size: 2.5vw;
+  }
+
+  /* Hide all except first line of text in card */
+  #section3 .zonai-text p:not(:first-of-type) {
+    display: none;
+  }
+
+  /* Shared video section styling */
   .zonai-vedios {
     position: relative;
     z-index: 10;
-    padding: 40px;
-    margin-top: 120px;
-    pointer-events: auto; 
+    padding: 5%;
+    margin-top: 10%;
+    pointer-events: auto;
   }
-  
-  
-  .video-grid {
-    display: flex;
-    flex-wrap: wrap;          
-    gap: 40px;
-    justify-content: center;   
-    margin-bottom: 40px;
+
+  #section4 .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vh 3vw;
+    padding: 2vh 4vw;
+    justify-items: center;
   }
-  
-  .video-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px; 
-  }
-  
-  .video-item iframe {
+
+  #section4 .video-item {
     width: 100%;
-    height: 225px;
-    border-radius: 12px;
   }
-  
-  .video-item div {
-    margin-top: 10px;
-    font-size: 1.2rem;
+
+  .video-item figcaption {
+    margin-top: 3%;
+    font-size: 4.5%;
     color: black;
     text-align: center;
+    line-height: 1.4;
+    padding: 0 2.5%;
   }
-  
-  .zonai-vedios h1 {
-    font-size: 2.8rem;      
-    text-align: center;     
-    color: black;           
-    margin-bottom: 40px;     
+
+  /* Horizontal scroll animation keyframe */
+  @keyframes scroll-horizontal {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
-  
+
+}

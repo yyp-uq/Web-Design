@@ -1,13 +1,14 @@
-/* Global reset for box model and spacing */
+/* Reset all the elements to ensure a consistent layout behavior */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Full-screen with a black background, white bold text, using Times New Roman font */
 html, body {
   height: 100%;
-  font-family: 'Caveat', cursive;
+  font-family: 'Times New Roman', cursive;
   background-color: white;
   color: white;
   scroll-behavior: smooth;
@@ -16,7 +17,7 @@ html, body {
   font-weight: bold;
 }
 
-/* Enable vertical scroll snapping per section */
+/* scroll snapping container */
 .scroll-snapper {
   height: 100vh;
   width: 100%;
@@ -26,7 +27,7 @@ html, body {
   overscroll-behavior: contain;
 }
 
-/* General styling for each full-screen section */
+/* Every section can be scroll snapping */
 .section {
   scroll-snap-align: start;
   height: 100vh;
@@ -35,7 +36,7 @@ html, body {
   position: relative;
 }
 
-/* Top fixed header bar with title and navigation */
+/* Header */
 .main-header {
   position: fixed;
   top: 0;
@@ -56,7 +57,7 @@ html, body {
 }
 
 .main-header * {
-  font-family: Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -86,39 +87,13 @@ html, body {
   position: relative;
 }
 
-/* Buttons */
-.menu-btn, .option-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-btn:hover, .option-btn:hover {
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
-  animation: glow 1s infinite alternate;
-}
-
-.scroll-snapper {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
-
-.section {
-  scroll-snap-align: start;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
+/* Background image */
 :root {
   --section1-bg: url('../PICTURES/Enemy/enemy_background2.png');
 }
 
 
-/* Section with blur background */
+/* Section 2,3,4 with blur background */
 .blurred-background {
   background-image: var(--section1-bg);
   background-size: 100% 100%;
@@ -136,12 +111,14 @@ html, body {
   background: transparent;
 }
 
+/* Container for the dropdown menu button */
 .menu-container {
   display: inline-block;
   position: relative;
   margin-left: 15px;
 }
 
+/* Menu toggle button */
 .menu-toggle {
   color: white;
   font-weight: bold;
@@ -149,6 +126,7 @@ html, body {
   margin-left: 10px;
 }
 
+/* Dropdown menu that appears when toggled */
 .dropdown-menu {
   position: absolute;
   top: 120%;
@@ -172,7 +150,6 @@ html, body {
   color: white;
   font-weight: bold;
 }
-
 
 .dropdown-menu a:hover {
   color: #D4AF37;
@@ -202,7 +179,7 @@ html, body {
   font-weight: bold;
 }
 
-/* Layout for enemies */
+/* Container contains all the enemies */
 .enemy-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -214,6 +191,7 @@ html, body {
   z-index: 2;
 }
 
+/* Individual enemy container */
 .single-enemy-container {
   display: flex;
   flex-direction: column; 
@@ -225,7 +203,7 @@ html, body {
   transition: opacity 0.4s ease;
 }
 
-
+/* Image wrapper for each enemy */
 .enemy-image-controller {
   border-radius: 20px;
   overflow: hidden;
@@ -247,7 +225,7 @@ html, body {
   visibility: hidden;
 }
 
-/* Hidden effect */
+/* Hide the enemy detail */
 .single-enemy-container.hidden {
   opacity: 0;
   visibility: hidden;
@@ -255,7 +233,8 @@ html, body {
   transition: opacity 0.4s ease;
 }
 
-
+/* Container contains all the ordinary enemies */
+/* enemy including (ordinary) enemies and boss, they were seperated */
 .enemy-overlay {
   position: fixed;
   top: 0;
@@ -339,7 +318,7 @@ html, body {
   border: none;
 }
 
-
+/* Shrink boss thumbnail image in video list */
 .boss-video .enemy-image-controller img {
   transform: scale(0.6);
 }
@@ -356,9 +335,10 @@ html, body {
 }
 
 .boss-name:hover {
-  opacity: 0.8;
+  opacity: 0.8; 
 }
 
+/* Boss image container inside popup */
 .boss-image {
   flex: 1;
   display: flex;
@@ -367,16 +347,17 @@ html, body {
   padding: 40px;
 }
 
+/* General image style inside popup */
 .overlay-image img {
   width: 80%;
   height: auto;
   max-height: 80vh;
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.5s ease; 
 }
 
-
+/* Hover zoom-out effect for boss image */
 .boss-image-controller img {
   width: 100%;
   height: auto;
@@ -386,48 +367,15 @@ html, body {
 }
 
 .boss-image-controller img:hover {
-  transform: scale(0.65);
+  transform: scale(0.65); 
 }
 
-
-.enemy-video-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.enemy-video-modal iframe {
-  width: 90%;
-  height: 90%;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-}
-
-.video-close-btn {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  font-size: 2rem;
-  background: none;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
+/* Override boss image size in popup */
 .boss-overlay .boss-image img {
   width: 60% !important;
 }
 
-
-
+/* Boss popup base styling */
 .boss-overlay {
   position: fixed;
   top: 0;
@@ -443,26 +391,10 @@ html, body {
 
 .boss-overlay.show {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto; 
 }
 
-.boss-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-}
-
-.boss-image img {
-  width: 60%;
-  height: auto;
-  max-height: 80vh;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-  animation: fadeIn 0.5s ease;
-}
-
+/* Text block inside popup */
 .boss-overlay .overlay-text {
   flex: 1;
   display: flex;
@@ -474,7 +406,7 @@ html, body {
   line-height: 1.6;
   z-index: 2;
   font-family: 'Times New Roman', serif;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
 }
 
 .boss-overlay .overlay-text h2 {
@@ -497,4 +429,126 @@ html, body {
 
 .boss-overlay .overlay-text a:hover {
   opacity: 0.8;
+}
+
+
+
+@media (max-width: 1024px) {
+
+  /* Header*/
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 2vh 3vw;
+    height: 8vh;
+  }
+
+  /* Vanish Nintendo logo */
+  .logo-left {
+    font-size: 0;
+  }
+
+  .menu-toggle {
+    font-size: 4vw;
+  }
+
+  .header-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 4vw;
+    margin: 0 2vw;
+  }
+
+  .header-links {
+    display: flex;
+    gap: 1vw;
+  }
+
+  .header-links a {
+    font-size: 3vw;
+  }
+
+    /* Section background image settings */
+  .section {
+    background-size: 100% auto !important;
+    background-repeat: repeat-y !important;
+    background-position: top center !important;
+  }
+
+  /* Enemy grid layout for mobile/tablet */
+  .enemy-layout {
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 8.5% !important;
+    column-gap: 3% !important;
+    padding: 7% 5% 10% !important;
+    margin-top: 30%;
+  }
+
+  /* Remove minimum height restriction on enemy cards */
+  .single-enemy-container {
+    min-height: 0 !important;
+  }
+
+  /* Boss grid layout for mobile/tablet */
+  .boss-layout {
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 1% !important;
+    column-gap: 3% !important;
+    padding: 7% 5% 10% !important;
+    margin-top: 10%;
+  }
+
+  .enemy-overlay,
+  .boss-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 3% 18%;
+    gap: 0;
+  }
+
+  /* Image inside the popup */
+  .enemy-overlay .overlay-image img,
+  .boss-overlay .boss-image img {
+    width: 80%;
+    max-height: 30%;
+    object-fit: contain;
+  }
+
+  /* Text content inside the popup */
+  .enemy-overlay .overlay-text,
+  .boss-overlay .overlay-text {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 3.4%;
+    line-height: 1.4;
+    max-height: 65%;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  .enemy-overlay .overlay-text h2,
+  .boss-overlay .overlay-text h2 {
+    font-size: 4.5%;
+    margin: 0 0 1.5%;
+  }
+
+  /* Popup paragraph spacing */
+  .enemy-overlay .overlay-text p,
+  .boss-overlay .overlay-text p {
+    margin: 0 0 1.5%;
+  }
+
+  /* Popup link styling */
+  .enemy-overlay .overlay-text a,
+  .boss-overlay .overlay-text a {
+    display: block;
+    margin-top: 1.5%;
+  }
+
 }

@@ -1,12 +1,14 @@
+/* Reset all the elements to ensure a consistent layout behavior */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Full-screen with a black background, white bold text, using Times New Roman font */
 html, body {
   height: 100%;
-  font-family: 'Caveat', cursive;
+  font-family: 'Times New Roman', cursive;
   background-color: black;
   color: white;
   scroll-behavior: smooth;
@@ -23,13 +25,11 @@ html, body {
   scroll-snap-type: y mandatory;
   scroll-padding-top: 0px;
   scroll-behavior: smooth;
-  overscroll-behavior: contain;
 }
 
 /* Every section can be scroll snapping */
 .section {
-  scroll-snap-align: start;
-  flex-shrink: 0;
+  width: 100vw;   
   height: 100vh;
   display: flex;
 }
@@ -49,14 +49,9 @@ html, body {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-
 .main-header * {
-  font-family: Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.logo-left {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 
@@ -77,8 +72,6 @@ html, body {
 }
 
 .menu-toggle {
-  color: white;
-  font-weight: bold;
   cursor: pointer;
   margin-left: 10px;
 }
@@ -113,9 +106,6 @@ html, body {
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
 }
 
-.dropdown-menu a.active {
-  color: black;
-}
 
 .dropdown-menu.show {
   opacity: 1;
@@ -123,35 +113,17 @@ html, body {
   transform: translateY(0);
 }
 
-/* Section1 content */
-.section-content {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  padding-top: 60px;
-  overflow: hidden;
-  justify-content: center;
-  align-items: stretch;
-}
 
-
-/* Background animation */
-.video-wrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-}
 
 .background-video {
-  width: 100%;
-  height: 100%;
+  width: 100vw;   
+  height: 100vh;
   object-fit: cover;
 }
 
 .unmuted-btn,
 .muted-btn {
-  position: fixed;
+  position: absolute;
   top: 70px;
   right: 20px;
   width: 120px;
@@ -160,25 +132,16 @@ html, body {
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   cursor: pointer;
   z-index: 999;
 }
 
-.menu-options {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
 
 /* Section2 content */
 .section2-bg {
-  background: url('../PICTURES/panorama1.jpg') center top/cover no-repeat;
+  background: url('../PICTURES/Homepage/panorama1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
@@ -188,22 +151,11 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: flex-start; 
-  justify-content: flex-start; 
   width: 100%;
   height: 100%;
   padding: 100px; 
-  background: none; 
-  color: white;
 }
 
-
-
-
-.section2-content h1 {
-  font-family: 'Caveat', cursive;
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
 
 /* Section2 IGN video button and introduction */
 .play-video-btn {
@@ -218,20 +170,15 @@ html, body {
   border-radius: 10px;
 }
 
-.ign-intro {
-  margin-top: 20px;
-  font-family: 'Caveat', cursive;
-  font-size: 1.3rem;
-  margin-left: 100px;
-  color: black;
-}
-
 .ign-description {
   margin-top: 10px;
   font-size: 1.3rem;
   max-width: 600px;
   margin-left: 100px;
   color: black;
+  background-color: rgba(255, 255, 255, 0.6); 
+  padding: 20px; 
+  border-radius: 10px; 
 }
 
 .ratings-img {
@@ -243,10 +190,13 @@ html, body {
 
 .ign-summary {
   margin-top: 20px;
-  font-family: 'Caveat', cursive;
+  font-family: 'Times New Roman', cursive;
   font-size: 1.3rem;
   margin-left: 100px;
   color: black;
+  background-color: rgba(255, 255, 255, 0.6); 
+  border-radius: 10px; 
+  padding: 20px;
 }
 
 /* Video Modal */
@@ -260,12 +210,12 @@ html, body {
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 999;
 }
 
 .video-modal iframe {
-  width: 90%;
-  height: 90%;
+  width: 70%;
+  height: 70%;
 }
 
 .close-video-btn {
@@ -279,45 +229,170 @@ html, body {
   cursor: pointer;
 }
 
-/* Section3 video grid */
-.section3-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center; 
-  width: 100%;
-  height: 100%;
-  padding-top: 100px; 
-  background: none; 
-  color: white;
-}
-
-
+/* Section 3 */
 .section3-bg {
-  background: url('../PICTURES/panorama1.jpg') center bottom/cover no-repeat;
+  background: url('../PICTURES/Homepage/homepage_background.jpg') center bottom/cover no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .video-grid {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
-  margin-bottom: 40px;
+  justify-content: center;
+  margin-top: 10%;
+  margin-right: 10%;
 }
 
 .video-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 450px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.video-item iframe {
-  width: 400px;
-  height: 225px;
+.video-item .play-video-btn img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.video-item div {
+.video-item .play-video-btn:hover img {
+  transform: scale(1.03);
+}
+
+.video-item .video-title {
   margin-top: 10px;
   font-size: 1.2rem;
+  text-align: center;
   color: white;
+  padding-left: 110px;
 }
+
+/* Responsive design, Mobile and Tablet mode */
+@media (max-width: 1024px) {
+  
+  /* Header*/
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 2vh 3vw;
+    height: 8vh;
+  }
+
+  /* Vanish Nintendo logo */
+  .logo-left {
+    font-size: 0;
+  }
+
+  .menu-toggle {
+    font-size: 4vw;
+  }
+
+  .header-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 4vw;
+    margin: 0 2vw;
+  }
+
+  .header-links {
+    display: flex;
+    gap: 1vw;
+  }
+
+  .header-links a {
+    font-size: 3vw;
+  }
+
+  /* Mobile/Tablet section 2 */
+  .section2-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5%;
+    height: auto;
+    overflow: hidden;
+    margin-top: 10%;
+  }
+
+  .play-video-btn {
+    margin: 0 auto 4%;
+  }
+
+  .play-video-btn img {
+    width: 100%;
+    max-width: 72%; 
+    height: auto;
+    border-radius: 3%;
+  }
+
+  .ign-description,
+  .ign-summary,
+  .ratings-img {
+    width: 100%;
+    max-width: 77%; 
+    margin: 4% auto;
+    padding: 3%;
+    font-size: 3.5%;
+  }
+
+  .ign-description,
+  .ign-summary {
+    padding: 3%;
+    font-size: 3.5%;
+  }
+
+  .ratings-img {
+    display: block;
+    height: auto;
+  }
+
+  /* Mobile/Tablet section 3 */
+  .section3-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    overflow: visible;
+    margin-top: 12%;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-auto-rows: auto;
+    gap: 5% 3%; 
+    width: 100%;
+    max-width: 92%;
+    margin: 0 auto;
+  }
+
+  .video-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .video-item .video-title {
+    display: block;
+    font-size: 3.5%;
+    text-align: center;
+    color: black;
+    line-height: 1.3;
+    padding-left: 1.5%;
+  }
+
+}
+
+
+

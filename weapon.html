@@ -4,437 +4,442 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hyrule Compass - Weapon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/weapon.css">
+  <script src="../JAVASCRIPT/weapon.js" async></script>
+  <script src="../JAVASCRIPT/shared.js" async></script>
 </head>
 
 <body>
-
-<!-- Red header/menu with buttons -->
-<header class="main-header">
-  <div class="logo-left">
-    Nintendo
-    <div class="menu-container">
-      <span id="menu-toggle" class="menu-toggle">Menu</span>
-      <div id="dropdown-menu" class="dropdown-menu">
-        <a href="homepage.html">Homepage</a>
-        <a href="enemy.html">Enemy</a>
-        <a href="#" class="active">Weapon</a>
-        <a href="zonai.html">Zonai</a>
-        <a href="skill.html">Skill</a>
-        <a href="character.html">Character</a>
-        <a href="story.html">Story</a>
+ 
+  <!-- Top Red Header Navigation Bar -->
+  <header class="main-header">
+    <div class="logo-left">
+      Nintendo
+      <div class="menu-container">
+        <span id="menu-toggle" class="menu-toggle">Menu</span>
+        <div id="dropdown-menu" class="dropdown-menu">
+          <a href="../INDEX.html">Homepage</a>
+          <a href="enemy.html">Enemy</a>
+          <a href="#" class="active">Weapon</a>
+          <a href="zonai.html">Zonai</a>
+          <a href="skill.html">Skill</a>
+          <a href="character.html">Character</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
+    <div class="header-title">The Legend of Zelda -- Tears of the Kingdom</div>
 
-  <div class="header-links">
-    <button id="animation-btn-1" class="media-btn pause-btn" title="Pause"></button>
-    <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
-    <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
-  </div>
-</header>
+    <div class="header-links">
+      <button id="animation-btn-1" class="media-btn pause-btn" title="Pause"></button>
+      <a href="https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/" target="_blank">Download</a>
+      <a href="https://twitter.com/hashtag/tearsofthekingdom" target="_blank">Community</a>
+    </div>
+  </header>
 
+  <!-- Scrollable container wrapping all sections -->
+  <div class="scroll-snapper">
 
+    <!-- Section one, including the encyclopedia animation background -->
+    <section class="section" style="background-image: url('../PICTURES/Weapon/white.png');">
+      <div class="section-content">
+        <div class="encyclopedia-animation-container">
+          <div class="encyclopedia-animation-window">
+            <div class="encyclopedia-animation-player" id="animation-player-1">
+              <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+              <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+              <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+              <img src="../PICTURES/Weapon/4.jpg" alt="Weapon 4">
+              <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+              <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+              <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+              <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
+              <!-- Duplication -->
+              <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+              <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+              <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+              <img src="../PICTURES/Weapon/4.jpg" alt="Weapon 4">
+              <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+              <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+              <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+              <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Scrollable container wrapping all sections -->
-<div class="scroll-snapper">
-
-  <!-- Section one -->
-  <section class="section" style="background-image: url('../PICTURES/white.png');">
-    <div class="section-content">
-      
-      <!-- Encyclopedia-style animation as background -->
-      <div class="encyclopedia-animation-container">
+    <!-- Section two, including background animation and six rarest weapon(images with description) -->
+    <section id="section2" class="section">
+      <!-- Container for animation background with  blur effect -->
+      <div class="encyclopedia-animation-container blur-background">
+        <!-- Defines the visible animation viewport/window -->
         <div class="encyclopedia-animation-window">
-          <div class="encyclopedia-animation-player" id="animation-player-1">
-            <img src="../PICTURES/1.jpg" alt="Weapon 1">
-            <img src="../PICTURES/2.jpg" alt="Weapon 2">
-            <img src="../PICTURES/3.jpg" alt="Weapon 3">
-            <img src="../PICTURES/4.jpg" alt="Weapon 4">
-            <img src="../PICTURES/5.jpg" alt="Weapon 5">
-            <img src="../PICTURES/6.jpg" alt="Weapon 6">
-            <img src="../PICTURES/7.jpg" alt="Weapon 7">
-            <img src="../PICTURES/8.jpg" alt="Weapon 8">
-            <!-- Duplicate the pictures-->
-            <img src="../PICTURES/1.jpg" alt="Weapon 1">
-            <img src="../PICTURES/2.jpg" alt="Weapon 2">
-            <img src="../PICTURES/3.jpg" alt="Weapon 3">
-            <img src="../PICTURES/4.jpg" alt="Weapon 4">
-            <img src="../PICTURES/5.jpg" alt="Weapon 5">
-            <img src="../PICTURES/6.jpg" alt="Weapon 6">
-            <img src="../PICTURES/7.jpg" alt="Weapon 7">
-            <img src="../PICTURES/8.jpg" alt="Weapon 8">
+          <!-- Animation player: horizontally scrolling image loop -->
+          <div class="encyclopedia-animation-player" id="animation-player-2">
+            <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+            <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+            <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+            <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+            <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+            <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+            <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
+            <!-- duplication -->
+            <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+            <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+            <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+            <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+            <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+            <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+            <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
           </div>
         </div>
       </div>
 
-    </div>
-  </section>
+      <!-- Weapon grid layout -->
+      <ul class="weapon-layout">
+        <!-- Naydra's Horn Weapon -->
+        <li class="single-weapon-container">
+          <figure class="weapon-image-controller">
+            <img src="../PICTURES/Weapon/Naydra.jpg" alt="Naydra's Horn Weapon">
+            <figcaption class="weapon-text">
+              <h3>Naydra's Horn Weapon</h3>
+              <p>Element: Ice</p>
+              <p>Attack Bonus: +26</p>
+              <p>Special Effect: Freezes enemies on hit</p>
+              <p>Region: Lanayru Mountains</p>
+            </figcaption>
+          </figure>
+        </li>
 
-  <!-- Section two -->
-  <section id="section2" class="section">
+        <!-- Farosh's Horn Weapon -->
+        <!-- Middle column is used to hide images at middle(desktop) when a weapon image is clicked, 
+        in mobile mode all the images would be hidden when a weapon image is clicked -->
+        <li class="single-weapon-container middle-column">
+          <figure class="weapon-image-controller">
+            <img src="../PICTURES/Weapon/Farosh.jpg" alt="Farosh's Horn Weapon">
+            <figcaption class="weapon-text">
+              <h3>Farosh's Horn Weapon</h3>
+              <p>Element: Electric</p>
+              <p>Attack Bonus: +26</p>
+              <p>Special Effect: Paralyzes enemies</p>
+              <p>Region: Faron Region</p>
+            </figcaption>
+          </figure>
+        </li>
 
-  <!-- Encyclopedia-style animation as background, the background is blurred-->
-  <div class="encyclopedia-animation-container blur-background">
-    <div class="encyclopedia-animation-window">
-      <div class="encyclopedia-animation-player" id="animation-player-2">
-        <img src="../PICTURES/1.jpg" alt="Weapon 1">
-        <img src="../PICTURES/2.jpg" alt="Weapon 2">
-        <img src="../PICTURES/3.jpg" alt="Weapon 3">
-        
-        <img src="../PICTURES/5.jpg" alt="Weapon 5">
-        <img src="../PICTURES/6.jpg" alt="Weapon 6">
-        <img src="../PICTURES/7.jpg" alt="Weapon 7">
-        <img src="../PICTURES/8.jpg" alt="Weapon 8">
-        <!-- duplicate the pictures-->
-        <img src="../PICTURES/1.jpg" alt="Weapon 1">
-        <img src="../PICTURES/2.jpg" alt="Weapon 2">
-        <img src="../PICTURES/3.jpg" alt="Weapon 3">
-        
-        <img src="../PICTURES/5.jpg" alt="Weapon 5">
-        <img src="../PICTURES/6.jpg" alt="Weapon 6">
-        <img src="../PICTURES/7.jpg" alt="Weapon 7">
-        <img src="../PICTURES/8.jpg" alt="Weapon 8">
+        <!-- Silver Lynel Horn Weapon -->
+        <li class="single-weapon-container">
+          <figure class="weapon-image-controller">
+            <img src="../PICTURES/Weapon/Silver_Lynel_Horn.jpg" alt="Silver Lynel Horn">
+            <figcaption class="weapon-text">
+              <h3>Silver Lynel Horn</h3>
+              <p>Attack Bonus: +30</p>
+              <p>Effect: Powerful physical boost</p>
+              <p>Source: Silver Lynel</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <!-- Dinraal's Horn Weapon -->
+        <li class="single-weapon-container">
+          <figure class="weapon-image-controller">
+            <img src="../PICTURES/Weapon/Dinraal.jpg" alt="Dinraal's Horn Weapon">
+            <figcaption class="weapon-text">
+              <h3>Dinraal's Horn Weapon</h3>
+              <p>Element: Fire</p>
+              <p>Attack Bonus: +26</p>
+              <p>Special Effect: Burns enemies</p>
+              <p>Region: Death Mountain</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <!-- Light Dragon's Horn Weapon -->
+        <li class="single-weapon-container middle-column">
+          <figure class="weapon-image-controller">
+            <img src="../PICTURES/Weapon/Light_Dragon.jpg" alt="Light Dragon's Horn Weapon">
+            <figcaption class="weapon-text">
+              <h3>Light Dragon's Horn Weapon</h3>
+              <p>Element: Light</p>
+              <p>Attack Bonus: +20</p>
+              <p>Special Effect: Durability recovery</p>
+              <p>Region: All over Hyrule</p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <!-- Broken Silver Lynel Horn -->
+        <li class="single-weapon-container">
+          <figure class="weapon-image-controller">
+            <img src="../PICTURES/Weapon/Silver_Lynel_Horn_Shard.jpg" alt="Broken Silver Lynel Horn">
+            <figcaption class="weapon-text">
+              <h3>Broken Silver Lynel Horn</h3>
+              <p>Attack Bonus: +12</p>
+              <p>Effect: Fragment with faint power</p>
+              <p>Source: Defeated Lynel</p>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+
+      <!-- Animation button -->
+      <div class="buttons-in-all-sections">
+        <button id="animation-btn-2" class="media-btn pause-btn" title="Pause"></button>
       </div>
+    </section>
+
+    <!-- Section three, including background animation and ten other good weapons -->
+    <section id="section3" class="section">
+      <div class="encyclopedia-animation-container blur-background">
+        <div class="encyclopedia-animation-window">
+          <div class="encyclopedia-animation-player" id="animation-player-3">
+            <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+            <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+            <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+            <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+            <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+            <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+            <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
+            <!-- duplication -->
+            <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+            <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+            <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+            <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+            <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+            <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+            <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
+          </div>
+        </div>
+      </div>
+
+      <div class="section-content">
+        <ul class="weapon-layout">
+          <!-- Weapons list -->
+          <!-- Black Boss Bokoblin Horn Weapon -->
+          <li class="single-weapon-container">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Black_Boss_Bokoblin_Horn.jpg" alt="Black Boss Bokoblin Horn">
+              <figcaption class="weapon-text">
+                <h3>Black Boss Bokoblin Horn</h3>
+                <p>Attack Bonus: +28</p>
+                <p>Effect: Serrated heavy horn</p>
+                <p>Source: Black Boss Bokoblin</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Black Lizalfos Horn Weapon -->
+          <li class="single-weapon-container middle-column">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Black_Lizalfos_Horn.jpg" alt="Black Lizalfos Horn">
+              <figcaption class="weapon-text">
+                <h3>Black Lizalfos Horn</h3>
+                <p>Attack Bonus: +26</p>
+                <p>Effect: Serrated blade-like horn</p>
+                <p>Source: Black Lizalfos</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Blue Boss Bokoblin Horn Weapon -->
+          <li class="single-weapon-container middle-column">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Blue_Boss_Bokoblin_Horn.jpg" alt="Blue Boss Bokoblin Horn">
+              <figcaption class="weapon-text">
+                <h3>Blue Boss Bokoblin Horn</h3>
+                <p>Attack Bonus: +22</p>
+                <p>Effect: Curved blade horn</p>
+                <p>Source: Blue Boss Bokoblin</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Blue-Maned Lynel Saber Horn Weapon -->
+          <li class="single-weapon-container middle-column">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Blue-Maned_Lynel_Saber_Horn.jpg" alt="Blue-Maned Lynel Saber Horn">
+              <figcaption class="weapon-text">
+                <h3>Blue-Maned Lynel Saber Horn</h3>
+                <p>Attack Bonus: +33</p>
+                <p>Effect: Dual-edged power horn</p>
+                <p>Source: Blue-Maned Lynel</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Silver Boss Bokoblin Horn Weapon -->
+          <li class="single-weapon-container">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Silver_Boss_Bokoblin_Horn.jpg" alt="Silver Boss Bokoblin Horn">
+              <figcaption class="weapon-text">
+                <h3>Silver Boss Bokoblin Horn</h3>
+                <p>Attack Bonus: +33</p>
+                <p>Effect: Serrated horn with arcane power</p>
+                <p>Source: Silver Boss Bokoblin</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Silver Lizalfos Horn Weapon -->
+          <li class="single-weapon-container">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Silver_Lizalfos_Horn.jpg" alt="Silver Lizalfos Horn">
+              <figcaption class="weapon-text">
+                <h3>Silver Lizalfos Horn</h3>
+                <p>Attack Bonus: +31</p>
+                <p>Effect: Sickle-shaped horn</p>
+                <p>Source: Silver Lizalfos</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Soldier Construct III Horn Weapon -->
+          <li class="single-weapon-container middle-column">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Soldier_Construct_III_Horn.jpg" alt="Soldier Construct III Horn">
+              <figcaption class="weapon-text">
+                <h3>Soldier Construct III Horn</h3>
+                <p>Attack Bonus: +27</p>
+                <p>Effect: Sharp blade-like horn</p>
+                <p>Source: Soldier Construct (Lv. III)</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Frost-Breath Lizalfos Horn Weapon -->
+          <li class="single-weapon-container middle-column">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Frost-Breath_Lizalfos_Horn.jpg" alt="Frost-Breath Lizalfos Horn">
+              <figcaption class="weapon-text">
+                <h3>Frost-Breath Lizalfos Horn</h3>
+                <p>Attack Bonus: +20</p>
+                <p>Effect: Icy horn that chills enemies</p>
+                <p>Source: Frost-Breath Lizalfos</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Silver Bokoblin Horn Weapon -->
+          <li class="single-weapon-container middle-column">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Silver_Bokoblin_Horn.jpg" alt="Silver Bokoblin Horn">
+              <figcaption class="weapon-text">
+                <h3>Silver Bokoblin Horn</h3>
+                <p>Attack Bonus: +31</p>
+                <p>Effect: Sharp and deadly horn</p>
+                <p>Source: Silver Bokoblin</p>
+              </figcaption>
+            </figure>
+          </li>
+
+          <!-- Stalnox Horn Weapon -->
+          <li class="single-weapon-container">
+            <figure class="weapon-image-controller">
+              <img src="../PICTURES/Weapon/Stalnox_Horn.jpg" alt="Stalnox Horn">
+              <figcaption class="weapon-text">
+                <h3>Stalnox Horn</h3>
+                <p>Attack Bonus: +33</p>
+                <p>Effect: Horn with skull fragments</p>
+                <p>Source: Stalnox</p>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+
+        <!-- Button for controlling background animation -->
+        <div class="buttons-in-all-sections">
+          <button id="animation-btn-3" class="media-btn pause-btn" title="Pause"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section four, including background animation and six youtube videos -->
+    <section id="section4" class="section">
+      <div class="encyclopedia-animation-container blur-background">
+        <div class="encyclopedia-animation-window">
+          <div class="encyclopedia-animation-player" id="animation-player-4">
+            <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+            <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+            <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+            <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+            <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+            <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+            <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
+            <!-- duplication -->
+            <img src="../PICTURES/Weapon/1.jpg" alt="Weapon 1">
+            <img src="../PICTURES/Weapon/2.jpg" alt="Weapon 2">
+            <img src="../PICTURES/Weapon/3.jpg" alt="Weapon 3">
+            <img src="../PICTURES/Weapon/5.jpg" alt="Weapon 5">
+            <img src="../PICTURES/Weapon/6.jpg" alt="Weapon 6">
+            <img src="../PICTURES/Weapon/7.jpg" alt="Weapon 7">
+            <img src="../PICTURES/Weapon/8.jpg" alt="Weapon 8">
+          </div>
+        </div>
+      </div>
+
+      <section class="weapon-vedios">
+        <h1>How To Get the Most Powerful Weapons?</h1>
+
+        <ul class="video-grid">
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/ed5DDeAGy_A" allowfullscreen></iframe>
+              <figcaption>TOTK Tips BEST Starter Weapons & Armor</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/uls0vlKFZq4" allowfullscreen></iframe>
+              <figcaption>Unbreakable & Powerful WEAPONS Zelda Tears Of The Kingdom!</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/yii4jkQltVQ" allowfullscreen></iframe>
+              <figcaption>Top 10 Best Weapon Fusions in Tears of the Kingdom</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/BZxOSMBtf60" allowfullscreen></iframe>
+              <figcaption>Top 10 Best Arrow Fusions in Tears of the Kingdom</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/YxrFy8QDNAs" allowfullscreen></iframe>
+              <figcaption>ALL 118 Weapons Ranked | Tears of the Kingdom</figcaption>
+            </figure>
+          </li>
+
+          <li class="video-item">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/_sHhYR6ks48" allowfullscreen></iframe>
+              <figcaption>I Ranked Every Shield In Tears of the kingdom</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Animation control button -->
+      <div class="buttons-in-all-sections">
+        <button id="animation-btn-4" class="media-btn pause-btn" title="Pause"></button>
+      </div>
+    </section>
+
+    <!-- Hidden detail panel that appears when a weapon is selected, showing its name, description, and a back button -->
+    <div id="weapon-detail" class="weapon-detail hidden">
+      <h2 id="weapon-title"></h2>
+      <p id="weapon-info"></p>
+      <a href="#" id="back-button" style="display: block; margin-top: 20px; text-decoration: underline; color: black; cursor: pointer;">Back</a>
     </div>
+
   </div>
-
-    <div class="weapon-layout">
-
-      <!-- First row -->
-      <div class="single-weapon-container">
-        <div class="weapon-image-controller">
-          <img src="../PICTURES/Naydra.jpg" alt="Naydra's Horn Weapon">
-        </div>
-        <div class="weapon-text">
-          <h3>Naydra's Horn Weapon</h3>
-          <p>Element: Ice</p>
-          <p>Attack Bonus: +26</p>
-          <p>Special Effect: Freezes enemies on hit</p>
-          <p>Region: Lanayru Mountains</p>
-        </div>
-      </div>
-
-      <div class="single-weapon-container middle-column">
-        <div class="weapon-image-controller">
-          <img src="../PICTURES/Farosh.jpg" alt="Farosh's Horn Weapon">
-        </div>
-        <div class="weapon-text">
-          <h3>Farosh's Horn Weapon</h3>
-          <p>Element: Electric</p>
-          <p>Attack Bonus: +26</p>
-          <p>Special Effect: Paralyzes enemies</p>
-          <p>Region: Faron Region</p>
-        </div>
-      </div>
-
-      <div class="single-weapon-container">
-        <div class="weapon-image-controller">
-          <img src="../PICTURES/Silver_Lynel_Horn.jpg" alt="Silver Lynel Horn">
-        </div>
-        <div class="weapon-text">
-          <h3>Silver Lynel Horn</h3>
-          <p>Attack Bonus: +30</p>
-          <p>Effect: Powerful physical boost</p>
-          <p>Source: Silver Lynel</p>
-        </div>
-      </div>
-
-      <!-- Second row -->
-      <div class="single-weapon-container">
-        <div class="weapon-image-controller">
-          <img src="../PICTURES/Dinraal.jpg" alt="Dinraal's Horn Weapon">
-        </div>
-        <div class="weapon-text">
-          <h3>Dinraal's Horn Weapon</h3>
-          <p>Element: Fire</p>
-          <p>Attack Bonus: +26</p>
-          <p>Special Effect: Burns enemies</p>
-          <p>Region: Death Mountain</p>
-        </div>
-      </div>
-
-      <div class="single-weapon-container middle-column">
-        <div class="weapon-image-controller">
-          <img src="../PICTURES/Light_Dragon.jpg" alt="Light Dragon's Horn Weapon">
-        </div>
-        <div class="weapon-text">
-          <h3>Light Dragon's Horn Weapon</h3>
-          <p>Element: Light</p>
-          <p>Attack Bonus: +20</p>
-          <p>Special Effect: Durability recovery</p>
-          <p>Region: All over Hyrule</p>
-        </div>
-      </div>
-
-      <div class="single-weapon-container">
-        <div class="weapon-image-controller">
-          <img src="../PICTURES/Silver_Lynel_Horn_Shard.jpg" alt="Broken Silver Lynel Horn">
-        </div>
-        <div class="weapon-text">
-          <h3>Broken Silver Lynel Horn</h3>
-          <p>Attack Bonus: +12</p>
-          <p>Effect: Fragment with faint power</p>
-          <p>Source: Defeated Lynel</p>
-        </div>
-      </div>
-
-    <!-- Button that control encyclopedia-style animation -->
-    <div class="buttons-in-all-sections">
-      <button id="animation-btn-2" class="media-btn pause-btn" title="Pause"></button>
-    </div>
-
-    </div>
-  </section>
-
-
-
-  
-
-
-  <!-- Section 3 -->
-  <section id="section3" class="section">
-    <!-- Encyclopedia-style animation as background, the background is blurred-->
-    <div class="encyclopedia-animation-container blur-background">
-      <div class="encyclopedia-animation-window">
-        <div class="encyclopedia-animation-player" id="animation-player-3">
-          <img src="../PICTURES/1.jpg" alt="Weapon 1">
-          <img src="../PICTURES/2.jpg" alt="Weapon 2">
-          <img src="../PICTURES/3.jpg" alt="Weapon 3">
-  
-          <img src="../PICTURES/5.jpg" alt="Weapon 5">
-          <img src="../PICTURES/6.jpg" alt="Weapon 6">
-          <img src="../PICTURES/7.jpg" alt="Weapon 7">
-          <img src="../PICTURES/8.jpg" alt="Weapon 8">
-          <!-- duplicate the pictures-->
-          <img src="../PICTURES/1.jpg" alt="Weapon 1">
-          <img src="../PICTURES/2.jpg" alt="Weapon 2">
-          <img src="../PICTURES/3.jpg" alt="Weapon 3">
-          
-          <img src="../PICTURES/5.jpg" alt="Weapon 5">
-          <img src="../PICTURES/6.jpg" alt="Weapon 6">
-          <img src="../PICTURES/7.jpg" alt="Weapon 7">
-          <img src="../PICTURES/8.jpg" alt="Weapon 8">
-        </div>
-      </div>
-    </div>
-
-    <div class="section-content">
-      <div class="weapon-layout">
-        <div class="single-weapon-container">
-          <div class="weapon-image-controller">
-            <img src="../PICTURES/Black_Boss_Bokoblin_Horn.jpg" alt="Black Boss Bokoblin Horn">
-          </div>
-          <div class="weapon-text">
-            <h3>Black Boss Bokoblin Horn</h3>
-            <p>Attack Bonus: +28</p>
-            <p>Effect: Serrated heavy horn</p>
-            <p>Source: Black Boss Bokoblin</p>
-          </div>
-        </div>
-
-        <div class="single-weapon-container middle-column">
-          <div class="weapon-image-controller">
-            <img src="../PICTURES/Black_Lizalfos_Horn.jpg" alt="Black Lizalfos Horn">
-          </div>
-          <div class="weapon-text">
-            <h3>Black Lizalfos Horn</h3>
-            <p>Attack Bonus: +26</p>
-            <p>Effect: Serrated blade-like horn</p>
-            <p>Source: Black Lizalfos</p>
-          </div>
-        </div>
-
-        <div class="single-weapon-container middle-column">
-          <div class="weapon-image-controller">
-            <img src="../PICTURES/Blue_Boss_Bokoblin_Horn.jpg" alt="Blue Boss Bokoblin Horn">
-          </div>
-          <div class="weapon-text">
-            <h3>Blue Boss Bokoblin Horn</h3>
-            <p>Attack Bonus: +22</p>
-            <p>Effect: Curved blade horn</p>
-            <p>Source: Blue Boss Bokoblin</p>
-          </div>
-        </div>
-
-        <div class="single-weapon-container middle-column">
-          <div class="weapon-image-controller">
-            <img src="../PICTURES/Blue-Maned_Lynel_Saber_Horn.jpg" alt="Blue-Maned Lynel Saber Horn">
-          </div>
-          <div class="weapon-text">
-            <h3>Blue-Maned Lynel Saber Horn</h3>
-            <p>Attack Bonus: +33</p>
-            <p>Effect: Dual-edged power horn</p>
-            <p>Source: Blue-Maned Lynel</p>
-          </div>
-        </div>
-
-        <div class="single-weapon-container">
-          <div class="weapon-image-controller">
-            <img src="../PICTURES/Silver_Boss_Bokoblin_Horn.jpg" alt="Silver Boss Bokoblin Horn">
-          </div>
-          <div class="weapon-text">
-            <h3>Silver Boss Bokoblin Horn</h3>
-            <p>Attack Bonus: +33</p>
-            <p>Effect: Serrated horn with arcane power</p>
-            <p>Source: Silver Boss Bokoblin</p>
-          </div>
-        </div>
-
-        <div class="single-weapon-container">
-          <div class="weapon-image-controller">
-            <img src="../PICTURES/Silver_Lizalfos_Horn.jpg" alt="Silver Lizalfos Horn">
-          </div>
-          <div class="weapon-text">
-            <h3>Silver Lizalfos Horn</h3>
-            <p>Attack Bonus: +31</p>
-            <p>Effect: Sickle-shaped horn</p>
-            <p>Source: Silver Lizalfos</p>
-          </div>
-        </div>
-
-        
-    <div class="single-weapon-container middle-column">
-      <div class="weapon-image-controller">
-        <img src="../PICTURES/Soldier_Construct_III_Horn.jpg" alt="Soldier Construct III Horn">
-      </div>
-      <div class="weapon-text">
-        <h3>Soldier Construct III Horn</h3>
-        <p>Attack Bonus: +27</p>
-        <p>Effect: Sharp blade-like horn</p>
-        <p>Source: Soldier Construct (Lv. III)</p>
-      </div>
-    </div>
-
-    <div class="single-weapon-container middle-column">
-      <div class="weapon-image-controller">
-        <img src="../PICTURES/Frost-Breath_Lizalfos_Horn.jpg" alt="Frost-Breath Lizalfos Horn">
-      </div>
-      <div class="weapon-text">
-        <h3>Frost-Breath Lizalfos Horn</h3>
-        <p>Attack Bonus: +20</p>
-        <p>Effect: Icy horn that chills enemies</p>
-        <p>Source: Frost-Breath Lizalfos</p>
-      </div>
-    </div>
-
-    <div class="single-weapon-container middle-column">
-      <div class="weapon-image-controller">
-        <img src="../PICTURES/Silver_Bokoblin_Horn.jpg" alt="Silver Bokoblin Horn">
-      </div>
-      <div class="weapon-text">
-        <h3>Silver Bokoblin Horn</h3>
-        <p>Attack Bonus: +31</p>
-        <p>Effect: Sharp and deadly horn</p>
-        <p>Source: Silver Bokoblin</p>
-      </div>
-    </div>
-
-    <div class="single-weapon-container">
-      <div class="weapon-image-controller">
-        <img src="../PICTURES/Stalnox_Horn.jpg" alt="Stalnox Horn">
-      </div>
-      <div class="weapon-text">
-        <h3>Stalnox Horn</h3>
-        <p>Attack Bonus: +33</p>
-        <p>Effect: Horn with skull fragments</p>
-        <p>Source: Stalnox</p>
-      </div>
-    </div>
-    
-      </div>
-
-      <!-- Button that control encyclopedia-style animation -->
-    <div class="buttons-in-all-sections">
-      <button id="animation-btn-3" class="media-btn pause-btn" title="Pause"></button>
-    </div>
-
-    </div>
-  </section>
-
-  <!-- Section 4 -->
-  <section id="section4" class="section">
-    <!-- Encyclopedia-style animation as background, the background is blurred-->
-    <div class="encyclopedia-animation-container blur-background">
-      <div class="encyclopedia-animation-window">
-        <div class="encyclopedia-animation-player" id="animation-player-4">
-          <img src="../PICTURES/1.jpg" alt="Weapon 1">
-          <img src="../PICTURES/2.jpg" alt="Weapon 2">
-          <img src="../PICTURES/3.jpg" alt="Weapon 3">
-  
-          <img src="../PICTURES/5.jpg" alt="Weapon 5">
-          <img src="../PICTURES/6.jpg" alt="Weapon 6">
-          <img src="../PICTURES/7.jpg" alt="Weapon 7">
-          <img src="../PICTURES/8.jpg" alt="Weapon 8">
-          <!-- duplicate the pictures-->
-          <img src="../PICTURES/1.jpg" alt="Weapon 1">
-          <img src="../PICTURES/2.jpg" alt="Weapon 2">
-          <img src="../PICTURES/3.jpg" alt="Weapon 3">
-          
-          <img src="../PICTURES/5.jpg" alt="Weapon 5">
-          <img src="../PICTURES/6.jpg" alt="Weapon 6">
-          <img src="../PICTURES/7.jpg" alt="Weapon 7">
-          <img src="../PICTURES/8.jpg" alt="Weapon 8">
-        </div>
-      </div>
-    </div>
-
-    <div class="weapon-vedios">
-
-      <h1>How To Get the Most Powerful Weapons?</h1>
-
-      <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/ed5DDeAGy_A" allowfullscreen></iframe>
-          <div>TOTK Tips BEST Starter Weapons & Armor</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/uls0vlKFZq4" allowfullscreen></iframe>
-          <div>Unbreakable & Powerful WEAPONS Zelda Tears Of The Kingdom!</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/yii4jkQltVQ" allowfullscreen></iframe>
-          <div>Top 10 Best Weapon Fusions in Tears of the Kingdom</div>
-        </div>
-      </div>
-      
-      <div class="video-grid">
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/BZxOSMBtf60" allowfullscreen></iframe>
-          <div>Top 10 Best Arrow Fusions in Tears of the Kingdom</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/YxrFy8QDNAs" allowfullscreen></iframe>
-          <div>ALL 118 Weapons Ranked | Tears of the Kingdom</div>
-        </div>
-        <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/_sHhYR6ks48" allowfullscreen></iframe>
-          <div>I Ranked Every Shield In Tears of the kingdom</div>
-        </div>
-      </div>
-      
-
-    </div>
-
-    <!-- Button that control encyclopedia-style animation -->
-    <div class="buttons-in-all-sections">
-      <button id="animation-btn-4" class="media-btn pause-btn" title="Pause"></button>
-    </div>
-
-  </section>
-
-
-  <div id="weapon-detail" class="weapon-detail hidden">
-    <h2 id="weapon-title"></h2>
-    <p id="weapon-info"></p>
-    <a href="#" id="back-button" style="display: block; margin-top: 20px; text-decoration: underline; color: black; cursor: pointer;">Back</a>
-  </div>
-
-<!-- External JS -->
-<script src="../JAVASCRIPT/weapon.js"></script>
 
 </body>
 </html>

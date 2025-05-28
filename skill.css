@@ -1,13 +1,14 @@
-/* Global reset for box model and spacing */
+/* Reset all the elements to ensure a consistent layout behavior */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Full-screen with a black background, white bold text, using Times New Roman font */
 html, body {
   height: 100%;
-  font-family: 'Caveat', cursive;
+  font-family: 'Times New Roman', cursive;
   background-color: white;
   color: white;
   scroll-behavior: smooth;
@@ -16,7 +17,7 @@ html, body {
   font-weight: bold;
 }
 
-/* Enable vertical scroll snapping per section */
+/* scroll snapping container */
 .scroll-snapper {
   height: 100vh;
   width: 100%;
@@ -26,7 +27,7 @@ html, body {
   overscroll-behavior: contain;
 }
 
-/* General styling for each full-screen section */
+/* Every section can be scroll snapping */
 .section {
   scroll-snap-align: start;
   height: 100vh;
@@ -39,7 +40,7 @@ html, body {
   background-position: center;
 }
 
-/* Top fixed header bar with title and navigation */
+/* Header */
 .main-header {
   position: fixed;
   top: 0;
@@ -55,7 +56,7 @@ html, body {
 }
 
 .main-header * {
-  font-family: Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -116,30 +117,22 @@ html, body {
   --section1-bg: url('../PICTURES/Skill/skill_background.jpg');
 }
 
-/* Section with blur background */
-.blurred-background {
-  background-image: var(--section1-bg);
-  background-size: 100% 100%;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
 .blurred-background::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  backdrop-filter: blur(8px);
-  z-index: 1;
-  background: transparent;
-}
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);   
+    z-index: 0;
+  }
 
+/* Container for the dropdown menu button */
 .menu-container {
   display: inline-block;
   position: relative;
   margin-left: 15px;
 }
 
+/* Menu toggle button */
 .menu-toggle {
   color: white;
   font-weight: bold;
@@ -147,6 +140,7 @@ html, body {
   margin-left: 10px;
 }
 
+/* Dropdown menu that appears when toggled */
 .dropdown-menu {
   position: absolute;
   top: 120%;
@@ -200,33 +194,35 @@ html, body {
   font-weight: bold;
 }
 
+/* Outer layout of the entire skill section */
 .skill-layout {
   display: flex;
-  flex-direction: column;
-  gap: 60px;
-  padding: 40px 80px;
+  flex-direction: column;   
+  gap: 60px;               
+  padding: 40px 80px;      
   position: relative;
-  z-index: 2;
+  z-index: 2;               
 }
 
+/* Individual block containing video and text */
 .skill-block {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap;              
   position: relative;
   z-index: 2;
 }
 
 .skill-text, .skill-video-frame {
-  flex: 1;
-  max-width: 48%;
+  flex: 1;               
+  max-width: 48%;           
   position: relative;
   z-index: 2;
 }
 
 .skill-text h2 {
-  font-family: 'Baloo 2', cursive;
+  font-family: 'Times New Roman', cursive;  
   font-size: 2.5em;
   margin-bottom: 12px;
   position: relative;
@@ -234,25 +230,27 @@ html, body {
 }
 
 .skill-text p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.2em;
+  font-family: 'Times New Roman', sans-serif;  
+  font-size: 1.3em;
   line-height: 1.8em;
   position: relative;
   z-index: 2;
 }
 
+/* Styling for embedded skill video */
 .skill-video-frame video {
   width: 100%;
-  border: 6px solid #d4b472;
+  border: 6px solid #d4b472;  
   border-radius: 8px;
   position: relative;
   z-index: 2;
 }
 
+/* Overall section for YouTube video grid */
 .skill-youtube-video {
   padding: 40px;
   background-color: transparent;
-  color: white;
+  color: white;               
   text-align: center;
   position: relative;
   z-index: 3;
@@ -265,34 +263,197 @@ html, body {
   z-index: 3;
 }
 
+/* Video grid container */
 .video-grid {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 40px;                            
+  justify-items: center;              
+  margin-bottom: 20px;
+  list-style: none;
 }
 
+/* Single video container */
 .video-item {
-  flex: 1 1 300px;
-  max-width: 32%;
+  max-width: 300px;
   position: relative;
   z-index: 3;
 }
 
+/* Embedded YouTube video frame */
 .video-item iframe {
   width: 100%;
-  height: 200px;
+  height: 250px;
   border-radius: 8px;
   position: relative;
   z-index: 3;
 }
 
-.video-item div {
-  margin-top: 10px;
-  font-size: 1em;
-  position: relative;
-  z-index: 3;
+/* Caption under the video */
+.video-item figcaption {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: white;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 10px;
+}
+
+/* Mobile & Tablet mode */
+@media (max-width: 1024px) {
+
+  /* Header*/
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 2vh 3vw;
+    height: 8vh;
+  }
+
+  /* Vanish Nintendo logo */
+  .logo-left {
+    font-size: 0;
+  }
+
+  .menu-toggle {
+    font-size: 4vw;
+  }
+
+  .header-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 4vw;
+    margin: 0 2vw;
+  }
+
+  .header-links {
+    display: flex;
+    gap: 1vw;
+  }
+
+  .header-links a {
+    font-size: 3vw;
+  }
+  /* Repeat background vertically */
+  .section {
+    background-size: contain !important;      
+    background-repeat: repeat-y !important;     
+    background-position: top center !important;
+  }
+
+  .blurred-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);   
+    z-index: 0;
+  }
+
+  /* Skill block for video and text */
+  .skill-block {
+    flex-direction: column !important; 
+    align-items: center;
+    gap: 6px;
+    padding: 10px 6px;
+  }
+
+  .skill-video-frame {
+    order: 1;                
+    width: 100%;
+  }
+
+  .skill-layout {
+    padding: 10px 10px;    
+    gap: 20px;
+  }
+
+  .skill-block {
+    flex-direction: column !important;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .skill-video-frame {
+    order: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 5px;      
+  }
+
+  .skill-text {
+    order: 2;
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+  }
+
+  .skill-text h2 {
+    font-size: 1.1em;
+    margin-top: 6px;
+    margin-bottom: 2px;
+  }
+
+  .skill-text p {
+    font-size: 0.75em;
+    line-height: 1.2em;
+    padding: 0;
+    text-align: justify;
+  }
+
+  .skill-video-frame video {
+    width: 80%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;    
+    border-width: 3px;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;        
+  }
+
+  /* youtube video grid */
+  .skill-youtube-video .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-auto-rows: auto;
+    gap: 30px;
+    padding: 30px;
+    justify-items: center;
+    align-items: start;
+  }
+
+  .skill-youtube-video .video-item {
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 16 / 9;     
+    position: relative;        
+    overflow: hidden;
+  }
+
+  .skill-youtube-video .video-item iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  /* Hide text under video */
+  .skill-youtube-video .video-item div {
+    display: none;
+  }
+
+  /* Reduce video section heading size */
+  .skill-youtube-video h1 {
+    font-size: 1.2em;
+    margin-bottom: 16px;
+  }
+
 }

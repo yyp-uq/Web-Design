@@ -1,55 +1,28 @@
-const scrollSnapper = document.querySelector('.scroll-snapper');
-const mainHeader = document.querySelector('.main-header');
 
-// Hide or show the header
-scrollSnapper.addEventListener('scroll', () => {
-  const scrollTop = scrollSnapper.scrollTop;
-  const clientHeight = scrollSnapper.clientHeight;
-  if (scrollTop >= clientHeight * 0.5) {
-    mainHeader.style.opacity = '0';
-    mainHeader.style.transform = 'translateY(-100%)';
-    mainHeader.style.pointerEvents = 'none';
+function updateHeaderTitleForMobile() {
+  const headerTitle = document.querySelector('.header-title');
+
+  // Check whether the haed title element exists
+  if (!headerTitle) return;
+
+  // If on a small mobile device, shorten the title to "TOTK"
+  if (!headerTitle.dataset.originalTitle) {
+    headerTitle.dataset.originalTitle = headerTitle.innerText;
+  }
+
+  // restore the original full title when the screen width change to desktop
+  if (window.innerWidth <= 600) {
+    headerTitle.innerText = "TOTK";
   } else {
-    mainHeader.style.opacity = '1';
-    mainHeader.style.transform = 'translateY(0)';
-    mainHeader.style.pointerEvents = 'auto'; 
+    headerTitle.innerText = headerTitle.dataset.originalTitle;
   }
-});
+}
 
+// Call the function once on initial page load to apply the correct title
+updateHeaderTitleForMobile();
 
-// Enables smooth scroll snapping and prevents multiple triggers from a single scroll gesture
-let lastScrollTime = 0;
-const SCROLL_DELAY = 500; // ms
-
-scrollSnapper.addEventListener('wheel', (e) => {
-  e.preventDefault();
-
-  const now = Date.now();
-  if (now - lastScrollTime < SCROLL_DELAY) return;
-
-  const scrollingHeight = window.innerHeight;
-  const direction = e.deltaY > 0 ? 1 : -1;
-  scrollSnapper.scrollTop += direction * scrollingHeight;
-
-  lastScrollTime = now;
-}, { passive: false });
-
-
-// Menu toggle logic for showing and hiding
-const menuToggle = document.getElementById('menu-toggle');
-const dropdownMenu = document.getElementById('dropdown-menu');
-
-// Show the menu when clicking menu button
-menuToggle.addEventListener('click', () => {
-  dropdownMenu.classList.toggle('show');  
-});
-
-// Auto-close dropdown menu when clicking outside
-document.addEventListener("click", (e) => {
-  if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-    dropdownMenu.classList.remove("show");
-  }
-});
+// Listen for window resize events and update the header title accordingly in real time
+window.addEventListener('resize', updateHeaderTitleForMobile);
 
 
 // Get all the detailed elements of every single enemy
@@ -224,65 +197,6 @@ Flying too close invites incineration, so high mobility and aerial evasion are c
 Drops include Flame Gleeok Horns, Wings, and Guts. These materials fuel powerful flame weapons and are key to crafting armor with fire resistance.`  
 };
 
-const enemyVideoLinks = {
-  'Thunder Gleeok': 'https://www.youtube.com/embed/_TigpoejbbA',
-  'Frost Talus': 'https://www.youtube.com/embed/3PvxTPvIiwo',
-  'Silver Lynel': 'https://www.youtube.com/embed/UnwU_glJlSY',
-  'Molduga': 'https://www.youtube.com/embed/bd-D4V5ahic',
-  'Frost Gleeok': 'https://www.youtube.com/embed/gMxSeOWjE-w',
-  'Black Hinox': 'https://www.youtube.com/embed/530uksZcCZA',
-  'Stalnox': 'https://www.youtube.com/embed/9sfJacRCzRk',
-  'Flame Gleeok': 'https://www.youtube.com/embed/HEmGqW6oYyw'
-};
-
-
-
-const bossNameElements = document.querySelectorAll('.boss-name');
-for (let i = 0; i < bossNameElements.length; i++) {
-  const el = bossNameElements[i];
-  el.addEventListener('click', (e) => {
-    e.stopPropagation();
-
-    // Prevent enemy-overlay from hiding videos
-    if (!overlay.classList.contains('hidden')) {
-      overlay.classList.remove('show');
-      overlay.classList.add('hidden');
-      for (let j = 0; j < enemyBlocks.length; j++) {
-        enemyBlocks[j].classList.remove('hidden');
-      }
-      lastClicked = null;
-    }
-
-    const bossKey = el.dataset.bossVideo;
-    const videoUrl = enemyVideoLinks[bossKey];
-    if (!videoUrl) return;
-
-    openVideo(videoUrl);
-  });
-}
-
-
-function openVideo(videoUrl) {
-  const modal = document.getElementById('videoModal');
-  const player = document.getElementById('youtubePlayer');
-  modal.style.display = 'flex';
-  player.src = videoUrl + "?autoplay=1";
-}
-
-function closeVideo() {
-  const modal = document.getElementById('videoModal');
-  const player = document.getElementById('youtubePlayer');
-  modal.style.display = 'none';
-  player.src = "";
-}
-
-
-document.getElementById('videoModal').addEventListener('click', (e) => {
-  if (e.target.id === 'videoModal') closeVideo();
-});
-
-
-
 let lastClicked = null;
 
 // Create overlay for normal enemies(little monsters)
@@ -388,21 +302,4 @@ bossBack.addEventListener('click', (e) => {
     enemyBlocks[i].classList.remove('hidden');
   }
   lastClicked = null;
-});
-
-// Auto-hide overlays on scroll
-scrollContainer.addEventListener('scroll', () => {
-  if (!overlay.classList.contains('hidden') || !bossOverlay.classList.contains('hidden')) {
-    overlay.classList.remove('show');
-    overlay.classList.add('hidden');
-
-    bossOverlay.classList.remove('show');
-    bossOverlay.classList.add('hidden');
-
-    for (let i = 0; i < enemyBlocks.length; i++) {
-      enemyBlocks[i].classList.remove('hidden');
-    }
-
-    lastClicked = null;
-  }
 });

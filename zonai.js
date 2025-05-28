@@ -1,93 +1,3 @@
-const scrollSnapper = document.querySelector('.scroll-snapper');
-const mainHeader = document.querySelector('.main-header');
-
-// Hide or show the header
-scrollSnapper.addEventListener('scroll', () => {
-  const scrollTop = scrollSnapper.scrollTop;
-  const clientHeight = scrollSnapper.clientHeight;
-  if (scrollTop >= clientHeight * 0.5) {
-    mainHeader.style.opacity = '0';
-    mainHeader.style.transform = 'translateY(-100%)';
-    mainHeader.style.pointerEvents = 'none';
-  } else {
-    mainHeader.style.opacity = '1';
-    mainHeader.style.transform = 'translateY(0)';
-    mainHeader.style.pointerEvents = 'auto'; 
-  }
-});
-
-
-// Enables smooth scroll snapping and prevents multiple triggers from a single scroll gesture
-let lastScrollTime = 0;
-const SCROLL_DELAY = 500; // ms
-
-scrollSnapper.addEventListener('wheel', (e) => {
-  e.preventDefault();
-
-  const now = Date.now();
-  if (now - lastScrollTime < SCROLL_DELAY) return;
-
-  const scrollingHeight = window.innerHeight;
-  const direction = e.deltaY > 0 ? 1 : -1;
-  scrollSnapper.scrollTop += direction * scrollingHeight;
-
-  lastScrollTime = now;
-}, { passive: false });
-
-
-// Control the encyclopedia animation in all sections (Play or Pause)
-const animationBtn_1 = document.getElementById('animation-btn-1');
-const animationBtn_2 = document.getElementById('animation-btn-2');
-const animationBtn_3 = document.getElementById('animation-btn-3');
-const animationBtn_4 = document.getElementById('animation-btn-4');
-
-const animationPlayer_1 = document.getElementById('animation-player-1');
-const animationPlayer_2 = document.getElementById('animation-player-2');
-const animationPlayer_3 = document.getElementById('animation-player-3');
-const animationPlayer_4 = document.getElementById('animation-player-4');
-
-let isPaused = false;
-
-// Toggle all animations in all sections
-function ConnectAllAnimations() {
-  isPaused = !isPaused;
-
-  let state;
-  if (isPaused) {
-    state = 'paused';
-  } else {
-    state = 'running';
-  }
-
-  // Set animation play state
-  animationPlayer_1.style.animationPlayState = state;
-  animationPlayer_2.style.animationPlayState = state;
-  animationPlayer_3.style.animationPlayState = state;
-  animationPlayer_4.style.animationPlayState = state;
-
-  // Update all buttons together
-  const allBtns = [animationBtn_1, animationBtn_2, animationBtn_3, animationBtn_4];
-  for (let i = 0; i < allBtns.length; i++) {
-    const btn = allBtns[i];
-    if (isPaused) {
-      btn.classList.remove('pause-btn');
-      btn.classList.add('play-btn');
-      btn.title = 'Play';
-    } else {
-      btn.classList.remove('play-btn');
-      btn.classList.add('pause-btn');
-      btn.title = 'Pause';
-    }
-  }
-}
-
-// Bind the toggle function to all four buttons
-animationBtn_1.addEventListener('click', ConnectAllAnimations);
-animationBtn_2.addEventListener('click', ConnectAllAnimations);
-animationBtn_3.addEventListener('click', ConnectAllAnimations);
-animationBtn_4.addEventListener('click', ConnectAllAnimations);
-
-
 
 // Get element of zonai devices
 const zonaiDetail = document.getElementById('zonai-detail');
@@ -98,193 +8,193 @@ const zonaiInfo = document.getElementById('zonai-info');
 const zonaiDetails = {
     "Zonai Fan": {
       info: `
-  The Zonai Fan is a versatile and widely-used device from the ancient Zonai civilization. When activated, it produces strong wind to enable propulsion.
-  
-  It is commonly used for aerial or aquatic movement when combined with wings or rafts. Players often use it to fly, drive, or solve air-based puzzles.
-  
-  The fan consumes battery power while active, encouraging strategic planning. It is lightweight and easy to incorporate into quick designs.
-  
-  With multiple fans and careful placement, players can create hovercrafts or automated systems. It is a foundational component in creative builds.
+  The Zonai Fan is a highly adaptable and frequently used device originating from the ancient Zonai civilization. Upon activation, it generates a powerful wind current capable of pushing structures, enabling propulsion, and driving various contraptions forward or upward depending on placement and design.
+
+This fan is especially effective when paired with wings or rafts, making it essential for building flying machines or aquatic vehicles. Players often rely on it to traverse long distances, solve wind-based puzzles, or build advanced transportation systems across Hyrule’s skies and waters.
+
+While operating, the fan gradually drains energy from the Zonai battery, making energy management a key concern in extended use. Its compact size and light weight make it ideal for quick assembly and on-the-go creative experimentation during exploration or combat situations.
+
+With smart positioning and multiple units, players can construct hovercrafts, drones, or self-driving mechanisms. As a core element in engineering builds, the Zonai Fan represents the foundation of player ingenuity and stands out as a must-have tool for inventors in the field.
       `,
       color: "black"
     },
     "Tracking Platform Vehicle": {
       info: `
-  The Tracking Platform combines a Zonai Sled with a Steering Stick to create automated forward movement.
-  
-  It works well on grass, snow, or shrine floors, gliding smoothly across terrain. Players often use it to transport items or ride long distances hands-free.
-  
-  When enhanced with stabilizers or fans, it can function as a self-driving delivery unit or a navigation bot.
-  
-  It’s simple to set up and reliable, making it a valuable tool for creative automation in open areas.
+  The Tracking Platform is a clever combination of a Zonai Sled and a Steering Stick, enabling automatic forward movement without manual control. Once activated, it steadily propels itself forward, offering players an effortless way to transport themselves or objects across the map.
+
+It performs exceptionally well on flat surfaces like grasslands, snowy fields, or shrine interiors, gliding smoothly and maintaining consistent direction. Players commonly use it to deliver materials, cross long distances, or automate repetitive travel tasks in the overworld.
+
+By attaching stabilizers, fans, or additional wheels, this platform can be customized into a fully autonomous vehicle. It becomes a mobile assistant capable of navigating complex paths or maintaining steady transport even over uneven terrain.
+
+Its simplicity, reliability, and ease of deployment make the Tracking Platform a staple for creative automation. Whether for combat logistics or puzzle-solving, it empowers players to explore hands-free and streamline movement-heavy designs.
       `,
       color: "black"
     },
     "Zonai Wing": {
       info: `
-  The Zonai Wing is a glider-shaped device that excels at long-distance air travel when launched from rails or high places.
-  
-  It can be enhanced with Fans for thrust and Steering Sticks for navigation, forming an efficient flying machine.
-  
-  Players use it to transport items or glide from sky islands to the surface with precision.
-  
-  Its success depends on weight balance, and it is a key tool for sky navigation.
+  The Zonai Wing is a glider-shaped aerial device designed for long-distance flight. When launched from elevated platforms, sky rails, or launchers, it soars smoothly through the air. Its aerodynamic form allows it to travel great distances without consuming energy, making it ideal for efficient exploration and descent.
+
+By attaching Zonai Fans at the rear, players can gain forward propulsion, while a Steering Stick enables real-time directional control. This combination transforms the Wing into a controllable aircraft, allowing for midair course adjustments and extended travel paths.
+
+The Wing is commonly used for delivering items across regions, performing airborne rescues, or transitioning between sky islands and the surface. With practice, players can guide it accurately toward distant coordinates, unlocking new routes or shortcuts in vertical gameplay.
+
+To function effectively, the Wing requires careful weight balance and timing. Overloading or uneven setups can destabilize flight. Its design rewards creativity and engineering skills, making it one of the most versatile and strategic Zonai tools in sky navigation.
       `,
       color: "black"
     },
     "Zonai Hover Stone": {
       info: `
-  The Hover Stone is a levitating platform that floats in place once activated. It serves as a stable mid-air foundation.
-  
-  Though it cannot move on its own, it’s excellent for suspended bridges, puzzle solutions, or staging areas.
-  
-  Often combined with propulsion devices or as a launch base, it adds vertical flexibility to static builds.
-  
-  With zero power cost after setup, it is ideal for long-term floating structures.
+  The Hover Stone is a levitating platform from the Zonai arsenal that remains suspended mid-air once activated. It does not drift or fall, providing a reliable floating surface that can be used in various vertical constructions. Its ability to defy gravity makes it a core component in multi-layered builds or suspended navigation paths.
+
+Although the Hover Stone cannot move independently, its static nature is ideal for crafting midair platforms, bridges between floating islands, or staging points during sky exploration. Players often use it to create puzzle mechanisms or stopping points in timed challenges.
+
+The device becomes even more versatile when paired with Zonai Fans, Rockets, or Stabilizers. Used as a foundation, it allows the construction of airborne structures that can be customized for transport, defense, or observation. It also works well as a launch pad for Wings or gliders.
+
+Once placed and activated, the Hover Stone requires no further energy to remain aloft. Its zero-maintenance nature makes it perfect for long-term suspended installations. It supports creative sky-based engineering while conserving battery power for other active Zonai devices.
       `,
       color: "black"
     },
     "Zonai Shock Emitter": {
       info: `
-  This dragon-head-shaped device emits electric shocks in a fixed direction, making it powerful for defense or crowd control.
-  
-  Highly effective against mechanical enemies, it can be attached to vehicles or stationary builds for added impact.
-  
-  It drains battery quickly, so careful energy planning is essential for sustained use.
-  
-  Aggressive and stylish, the Shock Emitter is favored for dynamic combat builds.
+  The Shock Emitter is a dragon-head-shaped Zonai device that unleashes continuous electric discharges in a straight line. Once activated, it becomes a formidable offensive and defensive tool, ideal for shocking enemies that approach from a fixed direction. Its striking appearance also adds flair to any build.
+
+It is especially potent against constructs and other mechanical foes, often disabling them with sustained voltage. Players frequently attach it to moving vehicles or automated turrets, allowing for aggressive engagement in both exploration and defense scenarios.
+
+Despite its power, the Shock Emitter consumes energy rapidly. Prolonged activation will quickly drain Zonai battery reserves, so it requires strategic energy management. Timing its use or pairing it with on-demand switches can maximize efficiency without waste.
+
+With its mix of intimidation and raw damage, this device is a favorite among creative builders focused on crowd control or trap systems. Whether on airborne ships or mobile war rigs, it contributes to a bold and electrifying combat experience.
       `,
       color: "black"
     },
     "Zonai Big Wheel": {
       info: `
-  The Big Wheel is a large, high-torque component ideal for carrying heavy builds across varied terrain.
-  
-  Often used in combat or cargo vehicles, it provides strong ground traction and fast movement.
-  
-  Pairing it with a Steering Stick enables full control for cars or mobile bases.
-  
-  It’s a key part of durable and efficient ground transport systems.
+  The Big Wheel is a robust, high-torque Zonai component designed for transporting large structures across diverse landscapes. Its size and strength allow it to support heavy loads, making it a foundational part of large-scale land vehicles. Whether on rocky terrain or open fields, it maintains steady movement with minimal slippage.
+
+Commonly featured in battle tanks, cargo carriers, or drilling rigs, the Big Wheel excels at providing strong traction and smooth propulsion. Its large diameter allows it to overcome obstacles that smaller wheels might struggle with, ensuring continuous mobility in uneven environments.
+
+When combined with a Steering Stick, players gain full directional control, transforming a static platform into a maneuverable ground vehicle. This pairing allows for precise navigation, whether for exploration, resource transport, or frontline combat situations.
+
+The Big Wheel is essential for builders aiming to create durable and efficient transportation systems. Its stability and raw power make it a go-to choice for grounded mobility, especially when reliability over long distances and heavy loads is a priority.
       `,
       color: "black"
     },
     "Zonai Steering Stick": {
       info: `
-  The Steering Stick allows players to steer Zonai builds in real time by translating player input into directional changes.
-  
-  Essential for rideable vehicles, it pairs with wheels, wings, or sleds to add full navigation control.
-  
-  It is usually mounted centrally and enables smoother, more responsive handling.
-  
-  It is the core interface that transforms passive machines into controllable ones.
+  The Steering Stick is a core Zonai device that gives players real-time directional control over their builds. When activated, it translates player input into smooth turning and movement, making it essential for rideable machines such as vehicles, boats, or aircraft that require navigation during motion.
+
+It is most effective when combined with other Zonai devices like wheels, sleds, wings, or fans. Whether you're crafting a land rover, flying glider, or aquatic skiff, the Steering Stick ensures that your build can respond dynamically to your input, providing both precision and flexibility.
+
+For best performance, it is typically placed near the center of the structure to balance control and ensure fluid turning. Its responsiveness allows players to navigate narrow terrain paths, land precise jumps, or make evasive maneuvers during combat.
+
+By converting static blueprints into interactive machines, the Steering Stick is what elevates Zonai constructs from passive tools to piloted vehicles. It is an indispensable part of player-driven creations, unlocking freedom of movement and creativity in open-world navigation.
       `,
       color: "black"
     },
     "Zonai Spring": {
       info: `
-  The Zonai Spring launches anything placed on top of it into the air using a quick, forceful burst.
-  
-  It’s commonly used in puzzles or as part of a build that needs elevation control.
-  
-  Mounting it on carts or under platforms can enable vertical movement or trap mechanisms.
-  
-  It is reliable, energy-free, and perfect for vertical problem-solving.
+  The Zonai Spring is a compact yet powerful device that propels objects upward using a sudden burst of force. When activated, it instantly launches anything placed on its surface into the air, making it highly useful for solving vertical puzzles or accessing elevated areas in creative ways.
+
+Unlike other movement devices, the Zonai Spring operates without draining energy, making it both reliable and sustainable in long-term builds. It is often used in shrines or sky islands where elevation shifts are required without the need for continuous power.
+
+Integrating it into custom structures allows for unique mechanics such as pop-up traps, emergency escape launches, or even mobile platforms that can reach tall ledges. It can also be attached beneath carts or constructs to create bounce-enabled transport.
+
+Thanks to its simplicity and utility, the Zonai Spring is a favorite among builders who enjoy experimentation. Whether you’re designing a vertical elevator or launching a vehicle mid-air, this spring provides consistent, efficient lift for countless creative applications.
       `,
       color: "black"
     },
     "Zonai Stabilizer": {
       info: `
-  The Stabilizer corrects the orientation of a build, standing it upright when tipped or off balance.
-  
-  Ideal for towers, balloon lifts, or vehicles that fall over easily, it resets their alignment automatically.
-  
-  It is nicknamed the "roly-poly" for its consistent upright behavior.
-  
-  Unobtrusive yet essential, it ensures structural reliability in motion.
+ The Zonai Stabilizer is a compact device that automatically corrects the orientation of any structure it’s attached to. When a build tips over or becomes unbalanced, the Stabilizer activates to restore it to an upright position. It ensures builds remain functional and properly aligned, especially on uneven terrain.
+
+It’s particularly valuable for tall constructs, balloon lifts, or mobile vehicles prone to flipping. Builders often attach one or more Stabilizers to maintain vertical alignment during movement or collision, greatly improving build stability without manual intervention.
+
+Players affectionately nickname it the "roly-poly" due to its habit of rolling structures back into place. This behavior makes it a trusted safety feature in unpredictable environments, from combat zones to steep mountainsides.
+
+Despite its subtle design, the Zonai Stabilizer plays a crucial role in reliable engineering. It doesn’t require energy and activates passively, making it a quiet but essential component in both casual and complex creations.
       `,
       color: "black"
     },
     "Zonai Balloon": {
       info: `
-  The Balloon floats upward when heated, usually via Flame Emitters placed at the base.
-  
-  It enables slow, controlled vertical travel and is used for exploration or puzzle elevation.
-  
-  Best paired with platforms to lift items or players over obstacles.
-  
-  It provides a simple, gentle solution to vertical movement problems.
+  The Zonai Balloon is a lift-based device that rises when exposed to heat, typically from a Flame Emitter placed below it. This allows for steady, controlled vertical travel, ideal for traversing cliffs, towers, or sky islands in a safe and gentle manner. It’s a reliable tool for vertical ascent without the need for complex machinery.
+
+Often combined with wooden or metal platforms, the balloon can carry both players and objects. It’s commonly used in shrines and puzzle solutions that require elevation or timed lifting. The gentle speed offers time to maneuver or prepare for disembarkation.
+
+Though it cannot steer itself, adding directional components like Steering Sticks or Fans enhances its utility. For instance, attaching a fan at an angle provides minimal directional push while still maintaining vertical lift.
+
+As a passive solution that relies on external heat rather than battery power, the Zonai Balloon is both efficient and easy to use. It shines in situations that require upward motion without the need for aggressive propulsion or quick reactions.
       `,
       color: "black"
     },
     "Zonai Light": {
       info: `
-  The Zonai Light emits a strong, focused beam of light to illuminate dark areas like caves and the Depths.
-  
-  It can be mounted on vehicles or builds and powered via batteries.
-  
-  Players use it to reveal hidden threats or terrain in pitch-black zones.
-  
-  Efficient and lightweight, it’s a go-to for safe underground exploration.
+  The Zonai Light is a compact, high-intensity device that emits a focused beam, perfect for navigating pitch-black areas like caves or the Depths. Once activated, it cuts through darkness to reveal terrain, hazards, and hidden materials. Its clear illumination is essential for visibility in underground zones.
+
+It’s commonly mounted on mobile builds such as mining carts or exploration vehicles. Whether you're traversing gloom-covered valleys or spelunking through narrow tunnels, the Zonai Light enhances awareness and reduces the risk of ambush.
+
+The device draws Zonai battery power when active, so energy management is important for long-term use. However, its energy cost is moderate compared to other emitter-based devices, making it practical for prolonged operations.
+
+Lightweight, versatile, and easy to attach, the Zonai Light is a crucial tool for adventurers exploring dark or mysterious environments. It’s a staple for underground expeditions, shrine puzzles, or any build requiring reliable illumination.
       `,
       color: "black"
     }, 
     "Zonai Sled": {
       info: `
-  The Sled glides across grass, sand, or snow due to its low-friction base, making it ideal for land builds.
-  
-  When powered by fans or wheels, it can form the chassis of rafts, hovercrafts, or quick carts.
-  
-  It’s simple and easy to use, great for lightweight transport or early-game designs.
-  
-  Adaptable and battery-friendly, it’s perfect for flat-surface traversal.
+  The Zonai Sled is a basic but highly useful component designed for smooth travel across flat surfaces such as grass, sand, and snow. Thanks to its low-friction underside, it glides effortlessly, making it perfect for basic mobility or foundational builds.
+
+It is often paired with Fans, Big Wheels, or other propulsion devices to create land vehicles like hovercrafts or quick carts. Players frequently use it to transport materials or build mobile platforms for exploration and combat.
+
+Lightweight and easy to attach, the Sled is particularly valuable in early gameplay when parts and energy are limited. Its simplicity allows for rapid experimentation and iteration in creative designs.
+
+With no energy cost when sliding passively and wide compatibility with other Zonai devices, the Sled is a go-to choice for efficient, flat-surface travel. It supports a wide range of utility and combat-focused builds.
       `,
       color: "black"
     },
     "Zonai Cart": {
       info: `
-  The Cart is a wheeled platform that rolls smoothly over tracks and even surfaces.
-  
-  Used in shrine puzzles and transport systems, it’s often powered by fans or momentum.
-  
-  It’s more stable than a sled and perfect for controlled item delivery.
-  
-  Reliable and compact, it’s essential in rail-based solutions.
+  The Zonai Cart is a wheeled platform optimized for movement along rails, flat terrain, or shrine tracks. It rolls smoothly and evenly, making it perfect for guiding objects or players across predefined paths in a controlled manner.
+
+It is frequently seen in shrine puzzles or underground transit systems, where it can be activated using Fans, Springs, or simply gravity. When paired with the Steering Stick or a ramp system, it allows for reliable automation.
+
+Compared to the Sled, the Cart offers greater balance and directional stability, especially when used for item delivery or when transporting Zonai structures. Its wheels reduce friction and allow for consistent speed.
+
+Compact, durable, and versatile, the Cart is essential for puzzle-solving, rail-based builds, and creative transportation. Its adaptability makes it a staple in both combat-free and technical Zonai creations.
       `,
       color: "black"
     },
     "Zonai Rocket": {
       info: `
-  The Rocket gives a one-time burst of thrust when triggered, sending attached objects flying forward or up.
-  
-  It’s great for quick launches, puzzle lifts, or directional boosts.
-  
-  Players often use it with Wings or carts for dramatic movement.
-  
-  Simple to use, it adds fast acceleration to mobile creations.
+  The Zonai Rocket delivers a powerful, one-time burst of thrust when activated, propelling anything it’s attached to in a forward or upward direction. This burst makes it ideal for rapid movement or clearing vertical obstacles instantly.
+
+It’s especially effective for launching gliders like Wings, lifting carts over gaps, or triggering puzzle mechanisms that require sudden propulsion. Once used, the Rocket detaches or burns out, so timing is critical.
+
+Many players use it in emergency situations to escape danger or perform mid-air course corrections. It can also be set up in chain reactions with other Zonai devices for high-speed, complex interactions.
+
+Simple, fast, and energy-efficient, the Rocket is perfect for creating high-impact mobility tools, puzzle solutions, or just having fun with creative launch experiments.
       `,
       color: "black"
     },
     "Zonai Small Wheel": {
       info: `
-  This compact wheel provides fast movement on flat ground, ideal for small, efficient vehicles.
-  
-  It pairs well with Steering Sticks and stabilizers for agile control.
-  
-  Players use it in lightweight designs that require quick travel.
-  
-  Great for tight spaces and low battery consumption.
+  The Small Wheel is a compact Zonai component that delivers fast and responsive movement across flat terrain. It’s ideal for crafting nimble vehicles that prioritize speed and efficiency over raw power.
+
+Lightweight and low in energy consumption, it’s perfect for early-game builds or small transport tools. Players often use it in racing carts, delivery bots, or indoor puzzle vehicles.
+
+When paired with a Steering Stick and stabilizers, it offers smooth handling and precise control. Its small size allows for better maneuverability in tight or cluttered environments.
+
+Due to its low battery drain and easy integration, the Small Wheel is a go-to part for those designing agile, reliable, and battery-efficient Zonai machines.
       `,
       color: "black"
     },
     "Zonai Cannon": {
       info: `
-  The Cannon fires explosive blasts in a straight line, dealing high damage to enemies or structures.
-  
-  Powered by battery energy, it’s used in offense-focused builds or trap mechanisms.
-  
-  Often mounted on vehicles or bases, it adds ranged power to any design.
-  
-  Efficient and impactful, it’s the weapon of choice for destructive players.
+  The Zonai Cannon is a powerful offensive device that launches explosive blasts in a straight line. It excels at dealing heavy damage to enemies, constructs, and terrain from a safe distance.
+
+Activated with battery energy, it’s commonly mounted on combat vehicles, defense turrets, or mobile traps. Players rely on it for clearing enemy camps or protecting moving platforms.
+
+Its straightforward firing pattern makes it easy to aim and devastating upon impact. When used in groups, Cannons can decimate targets in seconds.
+
+Combining simplicity with sheer power, the Cannon is perfect for players who favor destructive builds and long-range combat strategies.
       `,
       color: "black"
     }
@@ -310,13 +220,20 @@ for (let i = 0; i < allZonaiContainers.length; i++) {
     let nowClicked = singleZonaiContainer;
 
     if (nowClicked !== lastClicked) {
-      // Case 1: Clicked a different image → Hide central containers
-      for (let j = 0; j < middleContainers.length; j++) {
-        middleContainers[j].classList.add('hidden');
-        middleContainers[j].classList.remove('show');
+      if (window.innerWidth <= 1024) {
+        // Mobile mode, hide all the images and show description panel when clicking a image
+        for (let j = 0; j < allZonaiContainers.length; j++) {
+          allZonaiContainers[j].classList.add('hidden');
+          allZonaiContainers[j].classList.remove('show');
+        }
+      } else {
+        // Desktop mode, only hide the middle images and show description panel when clicking a image
+        for (let j = 0; j < middleContainers.length; j++) {
+          middleContainers[j].classList.add('hidden');
+          middleContainers[j].classList.remove('show');
+        }
       }
 
-      // Show detail panel
       zonaiDetail.classList.remove('hidden');
       zonaiDetail.classList.add('show');
 
@@ -353,14 +270,23 @@ for (let i = 0; i < allZonaiContainers.length; i++) {
   });
 }
 
-// Back button: restores central images and hides the detail panel
+// Back button
 const backButton = document.getElementById('back-button');
 backButton.addEventListener('click', (e) => {
   e.preventDefault();
 
-  for (let i = 0; i < middleContainers.length; i++) {
-    middleContainers[i].classList.remove('hidden');
-    middleContainers[i].classList.add('show');
+  if (window.innerWidth <= 1024) {
+    // Mobile mode, hide all the images and show description panel when clicking back button
+    for (let i = 0; i < allZonaiContainers.length; i++) {
+      allZonaiContainers[i].classList.remove('hidden');
+      allZonaiContainers[i].classList.add('show');
+    }
+  } else {
+    // Desktop mode, only hide the middle images and show description panel when clicking back button
+    for (let i = 0; i < middleContainers.length; i++) {
+      middleContainers[i].classList.remove('hidden');
+      middleContainers[i].classList.add('show');
+    }
   }
 
   zonaiDetail.classList.remove('show');
@@ -368,35 +294,3 @@ backButton.addEventListener('click', (e) => {
 
   lastClicked = null;
 });
-
-// Hide the detail panel when scrolling
-scrollSnapper.addEventListener('wheel', (e) => {
-  if (!zonaiDetail.classList.contains('hidden')) {
-    zonaiDetail.classList.remove('show');
-    zonaiDetail.classList.add('hidden');
-
-    for (let i = 0; i < middleContainers.length; i++) {
-      middleContainers[i].classList.remove('hidden');
-      middleContainers[i].classList.add('show');
-    }
-
-    lastClicked = null;
-  }
-});
-
-
-// Dropdown menu toggle
-const menuToggle = document.getElementById("menu-toggle");
-const dropdownMenu = document.getElementById("dropdown-menu");
-
-menuToggle.addEventListener("click", () => {
-  dropdownMenu.classList.toggle("show");
-});
-
-// Auto-close dropdown menu when clicking outside
-document.addEventListener("click", (e) => {
-  if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-    dropdownMenu.classList.remove("show");
-  }
-});
-
